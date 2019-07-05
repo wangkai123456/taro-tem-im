@@ -25,7 +25,7 @@ export interface IFunction {
     [K: number]: (...params) => void
 };
 
-export default class EventEmitter<T extends IFunction = IFunction> {
+export default class EventEmitter<T extends IFunction> {
 
     /**
      * 监听列表

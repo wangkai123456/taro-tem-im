@@ -5,6 +5,7 @@ import './app.scss';
 import Index from './pages/index';
 import global from './globalStore';
 import pagesIndexStore from './pages/index/store';
+import init from './init';
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -28,57 +29,62 @@ class App extends Component {
    */
   config: Config = {
     pages: [
-      'pages/roll/index',
       'pages/index/index',
+      'pages/my/index',
+      'pages/roll/index',
       'pages/diy/index',
-      'pages/cart/index',
-      'pages/my/index'
+      'pages/login/index',
+      'pages/cart/index'
     ],
     tabBar: {
       list: [{
-        "iconPath": "./static/images/icon-index-select.png",
-        "selectedIconPath": "./static/images/icon-index-selected.png",
-        "pagePath": "pages/index/index",
-        "text": "首页"
+        'iconPath': './static/images/icon-index-select.png',
+        'selectedIconPath': './static/images/icon-index-selected.png',
+        'pagePath': 'pages/index/index',
+        'text': '首页'
       }, {
-        "iconPath": "./static/images/icon-index-select.png",
-        "selectedIconPath": "./static/images/icon-index-selected.png",
-        "pagePath": "pages/roll/index",
-        "text": "组件"
+        'iconPath': './static/images/icon-index-select.png',
+        'selectedIconPath': './static/images/icon-index-selected.png',
+        'pagePath': 'pages/roll/index',
+        'text': '组件'
       }, {
-        "iconPath": "./static/images/icon-customer-select.png",
-        "selectedIconPath": "./static/images/icon-customer-selected.png",
-        "pagePath": "pages/diy/index",
-        "text": "坑"
+        'iconPath': './static/images/icon-customer-select.png',
+        'selectedIconPath': './static/images/icon-customer-selected.png',
+        'pagePath': 'pages/diy/index',
+        'text': '坑'
       }, {
-        "iconPath": "./static/images/icon-index-select.png",
-        "selectedIconPath": "./static/images/icon-index-selected.png",
-        "pagePath": "pages/cart/index",
-        "text": "绕坑"
+        'iconPath': './static/images/icon-index-select.png',
+        'selectedIconPath': './static/images/icon-index-selected.png',
+        'pagePath': 'pages/cart/index',
+        'text': '绕坑'
       }, {
-        "iconPath": "./static/images/icon-main-select.png",
-        "selectedIconPath": "./static/images/icon-main-selected.png",
-        "pagePath": "pages/my/index",
-        "text": "我的"
+        'iconPath': './static/images/icon-main-select.png',
+        'selectedIconPath': './static/images/icon-main-selected.png',
+        'pagePath': 'pages/my/index',
+        'text': '下拉刷新'
       }]
     },
     window: {
-      backgroundTextStyle: 'light',
+      // 默认颜色不显示下拉加载的loading图片
+      backgroundTextStyle: 'dark',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
     }
   }
 
-  componentDidMount() {
-
+  globalData = {
+    userInfo: null
   }
 
-  componentDidShow() { }
-
-  componentDidHide() { }
-
-  componentDidCatchError() { }
+  /**
+   * 程序初始化
+   *
+   * @memberof App
+   */
+  componentWillMount() {
+    init();
+  }
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数

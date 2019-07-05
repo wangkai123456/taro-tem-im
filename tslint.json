@@ -1,0 +1,31 @@
+{
+    "extends": [
+        "tslint-config-standard"
+    ],
+    "rules": {
+        "semicolon": [
+            false
+        ],
+        "align": [
+            true,
+            "statements"
+        ],
+        "no-angle-bracket-type-assertion": false,
+        "whitespace": [
+            false
+        ],
+        "variable-name": false,
+        "eofline": false,
+        "ter-indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "no-trailing-whitespace": false,
+        "no-floating-promises":false,
+        "space-before-function-paren": false,
+        "switch-case": 2
+    }
+}

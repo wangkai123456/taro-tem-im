@@ -1,5 +1,6 @@
 import Taro from '@tarojs/taro';
 import { apiUrl } from '../../config';
+import EventEmitter from '../event-emitter';
 
 interface Data {
     [key: string]: any
@@ -30,8 +31,22 @@ interface IRequestOption extends Partial<Taro.request.Param<string | Data>> {
 
 }
 
+export enum RequestEventEnum {
+    /**
+     * 即将发送
+     */
+    WillSend,
+    Receive
+}
+
+export interface RequestEventList {
+    [RequestEventEnum.WillSend]: (params: Taro.request.Param<string | Data>) => void
+    [RequestEventEnum.Receive]: (res: Taro.request.Promised<any>) => void
+}
 
 class APPRequest {
+
+    eventEmitter = new EventEmitter();
 
     defaultOptions: IRequestOption = {
         showFailToast: true,
@@ -39,36 +54,25 @@ class APPRequest {
     }
 
     private async getHeader() {
-        Taro.getStorage
-        let token = '';
-
-        try {
-            const data = await Taro.getStorage({ key: 'token' });
-            token = (data as any).token;
-        } catch (error) {
-
-        }
-
         const headers = {};
-        if (token) {
-            headers['Authorization'] = token;
-        }
         headers['Content-Type'] = 'application/json';
         return headers;
     }
-
 
     async request<T>(url: string, data: Data | string = {}, options: IRequestOption): Promise<Taro.request.Promised<T>> {
         url = this.normalizationUrl(url);
         options = { ...this.defaultOptions, ...options };
         let header = await this.getHeader();
-
-        const res = await Taro.request({
+        let params = {
             url,
             data,
             header,
             ...options
-        });
+        };
+
+        await this.eventEmitter.emit(RequestEventEnum.WillSend, params);
+        const res = await Taro.request(params);
+        await this.eventEmitter.emit(RequestEventEnum.Receive, res);
 
         if (options.showFailToast) {
             this.failToast(res, url);
@@ -112,7 +116,6 @@ class APPRequest {
         }
     }
 
-
     private catchFail(response: Taro.request.Promised) {
         return new Promise<Taro.request.Promised>(async (resolve, reject) => {
             if (this.validateStatus(response)) {
@@ -130,14 +133,12 @@ class APPRequest {
 
 let appFetch = new APPRequest();
 
-
 export function get<T = any>(url: string, data?: Data | string, option: IRequestOption = {}) {
     return appFetch.request<T>(url, data, {
         method: 'GET',
         ...option
     });
 }
-
 
 export function post<T = any>(url: string, data?: Data | string, option: IRequestOption = {}) {
     return appFetch.request<T>(url, data, {
@@ -152,7 +153,6 @@ export function put<T = any>(url: string, data?: Data | string, option: IRequest
         ...option
     });
 }
-
 
 export function del<T = any>(url: string, data?: Data | string, option: IRequestOption = {}) {
     return appFetch.request<T>(url, data, {

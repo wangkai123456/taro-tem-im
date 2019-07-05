@@ -6,7 +6,6 @@ import './index.less';
 import { get, post } from '~/components/request';
 import global from '~/globalStore';
 
-
 @observer
 class Index extends Component {
 
@@ -50,7 +49,6 @@ class Index extends Component {
     console.log(jsonString);
   }
 
-
   /**
    * 组件即将销毁
    *
@@ -59,7 +57,6 @@ class Index extends Component {
   componentWillUnmount() {
     console.log('componentWillUnmount');
   }
-
 
   /**
    * 跳转别的页面时生命周期  相对于微信小程序生命周期onHide
@@ -88,19 +85,26 @@ class Index extends Component {
     console.log('componentWillReact');
   }
 
-
-
   renderItem(item: { a: string } | number) {
     let type = typeof item;
     if (type === 'object') {
       return <View>
-        <Text>{item.a}</Text>
+        <Text>{(item as { a: string }).a}</Text>
       </View>
     } else if (type === 'number') {
       return <View>
         <Text>{item}</Text>
       </View>
     }
+  }
+
+  onClickNavigateTo() {
+    Taro.navigateTo({
+      url: '/pages/login/index',
+      params: {
+        a: 1
+      }
+    });
   }
 
   render() {
@@ -123,10 +127,14 @@ class Index extends Component {
           {list.map(value => this.renderItem(value))}
         </View>
 
+        <View>
+          <Text onClick={this.onClickNavigateTo}>跳转登录页</Text>
+        </View>
+
+
       </View>
     )
   }
-
 
 }
 

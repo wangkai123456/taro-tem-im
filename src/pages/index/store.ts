@@ -6,4 +6,3 @@ export let storeObject = {
 
 const store = observable(storeObject)
 export default store;
-

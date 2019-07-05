@@ -32,6 +32,18 @@ class Index extends Component {
    */
   config: Config = {
     navigationBarTitleText: '我的',
+    enablePullDownRefresh: true
+  }
+
+
+  onPullDownRefresh() {
+    console.log(2);
+
+    setTimeout(() => {
+      // 停止下拉动作
+      Taro.stopPullDownRefresh();
+    }, 1000);
+
   }
 
   render() {

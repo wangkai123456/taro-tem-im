@@ -43,7 +43,7 @@ class Index extends Component {
     return new Promise(reslove => {
       setTimeout(() => {
         this.setState({ loadding: false });
-        reslove()
+        reslove();
       }, 5000);
     })
   }

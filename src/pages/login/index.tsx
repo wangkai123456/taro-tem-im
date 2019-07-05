@@ -8,11 +8,15 @@ import * as styles from './index.module.scss';
 class Index extends Component {
 
   config: Config = {
-    navigationBarTitleText: '模板'
+    navigationBarTitleText: '登录'
   }
 
   state = {
 
+  }
+
+  componentDidMount() {
+    console.log('this.$router', this.$router.params);
   }
 
   render() {

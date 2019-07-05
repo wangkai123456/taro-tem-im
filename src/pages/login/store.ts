@@ -1,5 +1,6 @@
 import { observable } from 'mobx'
 
+
 export let storeObject = {
 }
 

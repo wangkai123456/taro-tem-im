@@ -16,6 +16,11 @@ yarn dev
 yarn build
 ```
 
+## vscode 插件安装
+CSS Modules
+TSLint
+Document This
+
 ## 目录结构说明
 
 config:taro 配置  
