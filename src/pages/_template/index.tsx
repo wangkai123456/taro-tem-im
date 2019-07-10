@@ -6,23 +6,21 @@ import * as styles from './index.module.scss';
 
 @autobind
 class Index extends Component {
+    config: Config = {
+        navigationBarTitleText: '模板'
+    };
 
-  config: Config = {
-    navigationBarTitleText: '模板'
-  }
+    state = {
 
-  state = {
+    };
 
-  }
+    render() {
+        return (
+            <View className={styles.page}>
 
-  render() {
-    return (
-      <View className={styles.page}>
-
-      </View>
-    )
-  }
-
+            </View>
+        );
+    }
 }
 
 export default Index as ComponentType;

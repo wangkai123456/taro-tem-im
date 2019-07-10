@@ -1,21 +1,24 @@
+/* eslint-disable no-console */
 
+import * as express from 'express';
+import * as bodyParser from 'body-parser';
+const app = express();
+app.use(bodyParser.json());
 
+app.use(express.static('./'));
 
-const express = require('express')
-const app = express()
+app.listen('8080', () => {
+    console.log('Example app listening on port ' + 8080 + ' !');
+});
 
-app.use(express.static('./'))
+app.get('/', (_req, res) => res.send('Hello World!'));
+app.get('/api', (_req, res) => res.send('api'));
+app.post('/api', (_req, res) => res.send('post api'));
 
-app.listen('8080', function () {
-    console.log('Example app listening on port ' + 8080 + ' !')
-})
+app.post('/data', (req, res) => {
+    res.send(req.body);
+});
 
-app.get('/', (req, res) => res.send('Hello World!'))
-app.get('/api', (req, res) => res.send('api'))
-app.post('/api', (req, res) => res.send('post api'))
-
-
-app.get('/data', (req, res) => res.send({ a: 1, b: 2 }))
-
-
-
+app.post('/code', (req, res) => {
+    res.status(req.body.status).send(req.body.data);
+});

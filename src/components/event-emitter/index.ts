@@ -5,7 +5,7 @@ interface IEventObject<T> {
      * @type {IListener}
      * @memberof IEventObject
      */
-    addListener: T,
+    addListener: T;
 
     /**
      * 用来运行
@@ -13,7 +13,7 @@ interface IEventObject<T> {
      * @type {IListener}
      * @memberof IEventObject
      */
-    listener: any
+    listener: any;
 }
 
 export type IEventList<T> = {
@@ -21,19 +21,18 @@ export type IEventList<T> = {
 };
 
 export interface IFunction {
-    [K: string]: (...params) => void
-    [K: number]: (...params) => void
-};
+    [K: string]: (...params) => void;
+    [K: number]: (...params) => void;
+}
 
 export default class EventEmitter<T extends IFunction> {
-
     /**
      * 监听列表
      *
      * @type {IEventList[]}
      * @memberof EventEmitter
      */
-    private eventList: IEventList<T> = {}
+    private eventList: IEventList<T> = {};
 
     /**
      * 当前key
@@ -41,7 +40,7 @@ export default class EventEmitter<T extends IFunction> {
      * @type {T}
      * @memberof EventEmitter
      */
-    private currentKey: keyof T
+    private currentKey: keyof T;
 
     /**
      * 当前监听事件
@@ -49,7 +48,7 @@ export default class EventEmitter<T extends IFunction> {
      * @type {IListener}
      * @memberof EventEmitter
      */
-    private currentEvent: IEventObject<T[keyof T]>
+    private currentEvent: IEventObject<T[keyof T]>;
 
     /**
      * 添加监听
@@ -64,7 +63,7 @@ export default class EventEmitter<T extends IFunction> {
             this.eventList[key] = [];
         }
 
-        let event = {
+        const event = {
             addListener: listener,
             listener
         };
@@ -81,7 +80,7 @@ export default class EventEmitter<T extends IFunction> {
         if (!this.eventList[key]) {
             this.eventList[key] = [];
         }
-        let event = {
+        const event = {
             addListener: listener,
             listener: async (...param) => {
                 this.removeListener(key, listener);
@@ -99,7 +98,7 @@ export default class EventEmitter<T extends IFunction> {
      * @memberof EventEmitter
      */
     emit<K extends keyof T>(key: K, ...params: any[]) {
-        let funArray = [];
+        const funArray = [];
 
         if (this.eventList[key as any]) {
             this.currentKey = key;
@@ -120,15 +119,15 @@ export default class EventEmitter<T extends IFunction> {
      * @memberof EventEmitter
      */
     removeListener<K extends keyof T>(key: K, listener: T[K & keyof T]) {
-        let list = this.eventList[key];
+        const list = this.eventList[key];
 
         if (list) {
-            let index = list.findIndex(value => value.addListener === listener);
+            const index = list.findIndex(value => value.addListener === listener);
             if (index !== -1) {
-                list.splice(list.findIndex(value => value.addListener === listener), 1)
+                list.splice(list.findIndex(value => value.addListener === listener), 1);
             }
         }
-    };
+    }
 
     /**
      * 删除所有监听
@@ -141,7 +140,7 @@ export default class EventEmitter<T extends IFunction> {
         if (key) {
             this.eventList = {};
         } else {
-            delete this.eventList[key]
+            delete this.eventList[key];
         }
     }
 
@@ -162,11 +161,10 @@ export default class EventEmitter<T extends IFunction> {
      * @memberof EventEmitter
      */
     listenerCount<K extends keyof T>(key: K) {
-        let events = this.eventList[key];
+        const events = this.eventList[key];
         if (events) {
             return events.length;
-        } else {
-            return 0;
         }
+        return 0;
     }
 }

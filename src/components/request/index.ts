@@ -1,9 +1,8 @@
 import Taro from '@tarojs/taro';
 import { apiUrl } from '../../config';
-import EventEmitter from '../event-emitter';
-
+import EventEmitter, { IFunction } from '../event-emitter';
 interface Data {
-    [key: string]: any
+    [key: string]: any;
 }
 
 /**
@@ -19,7 +18,7 @@ interface IRequestOption extends Partial<Taro.request.Param<string | Data>> {
      * @type {boolean}
      * @memberof IFetchOption
      */
-    showFailToast?: boolean
+    showFailToast?: boolean;
 
     /**
      * 是否捕获错误 [接口status错误,阻止代码的继续运行]
@@ -27,7 +26,7 @@ interface IRequestOption extends Partial<Taro.request.Param<string | Data>> {
      * @type {boolean}
      * @memberof IFetchOption
      */
-    isCatchFail?: boolean
+    isCatchFail?: boolean;
 
 }
 
@@ -39,18 +38,54 @@ export enum RequestEventEnum {
     Receive
 }
 
-export interface RequestEventList {
-    [RequestEventEnum.WillSend]: (params: Taro.request.Param<string | Data>) => void
-    [RequestEventEnum.Receive]: (res: Taro.request.Promised<any>) => void
+export interface RequestEventList extends IFunction {
+    [RequestEventEnum.WillSend]: (params: Taro.request.Param<string | Data>) => void;
+    [RequestEventEnum.Receive]: (res: Taro.request.Promised<any>) => void;
 }
 
 class APPRequest {
-
-    eventEmitter = new EventEmitter();
+    eventEmitter = new EventEmitter<RequestEventList>();
 
     defaultOptions: IRequestOption = {
         showFailToast: true,
         isCatchFail: true
+    };
+
+    async request<T>(url: string, data: Data | string = {}, options: IRequestOption): Promise<Taro.request.Promised<T>> {
+        const requestUrl = this.normalizationUrl(url);
+        const requestOptions = { ...this.defaultOptions, ...options };
+        const header = await this.getHeader();
+        const params = {
+            url: requestUrl,
+            data,
+            header,
+            ...requestOptions
+        };
+
+        await this.eventEmitter.emit(RequestEventEnum.WillSend, params);
+
+        let res: Taro.request.Promised<any> = null as any;
+        try {
+            res = await Taro.request(params);
+        } catch (error) {
+            if (requestOptions.showFailToast) {
+                Taro.showToast({
+                    icon: 'none',
+                    title: `网络请求失败！` + error.errMsg
+                });
+            }
+        }
+        await this.eventEmitter.emit(RequestEventEnum.Receive, res);
+
+        if (requestOptions.showFailToast) {
+            this.failToast(res, requestUrl);
+        }
+
+        if (requestOptions.isCatchFail) {
+            await this.catchFail(res);
+        }
+
+        return res;
     }
 
     private async getHeader() {
@@ -59,79 +94,54 @@ class APPRequest {
         return headers;
     }
 
-    async request<T>(url: string, data: Data | string = {}, options: IRequestOption): Promise<Taro.request.Promised<T>> {
-        url = this.normalizationUrl(url);
-        options = { ...this.defaultOptions, ...options };
-        let header = await this.getHeader();
-        let params = {
-            url,
-            data,
-            header,
-            ...options
-        };
-
-        await this.eventEmitter.emit(RequestEventEnum.WillSend, params);
-        const res = await Taro.request(params);
-        await this.eventEmitter.emit(RequestEventEnum.Receive, res);
-
-        if (options.showFailToast) {
-            this.failToast(res, url);
-        }
-
-        if (options.isCatchFail) {
-            await this.catchFail(res);
-        }
-
-        return res;
-    }
-
     private normalizationUrl(url: string) {
-        if (typeof url === 'string') {
+        let requestUrl = url;
 
+        if (typeof requestUrl === 'string') {
             if (apiUrl[apiUrl.length - 1] === '/') {
-                if (url[0] === '/') {
-                    url = url.replace('/', '');
+                if (requestUrl[0] === '/') {
+                    requestUrl = requestUrl.replace('/', '');
                 }
             } else {
-                if (url[0] !== '/') {
-                    url = '/' + url;
+                if (requestUrl[0] !== '/') {
+                    requestUrl = '/' + requestUrl;
                 }
             }
 
-            if (!/^https{0,1}:\/\//g.test(url)) {
-                url = `${apiUrl}${url}`;
+            if (!/^https{0,1}:\/\//g.test(requestUrl)) {
+                requestUrl = `${apiUrl}${requestUrl}`;
             }
         }
 
-        return url;
+        return requestUrl;
     }
 
     private async failToast(response: Taro.request.Promised, url: string) {
         if (!this.validateStatus(response)) {
-            let data = response.data;
+            const { data } = response;
 
             Taro.showToast({
                 title: `url:${url.toString()}:, status:${response.statusCode}, responseText:${data}`
-            })
+            });
         }
     }
 
     private catchFail(response: Taro.request.Promised) {
-        return new Promise<Taro.request.Promised>(async (resolve, reject) => {
+        return new Promise<Taro.request.Promised>((resolve, reject) => {
             if (this.validateStatus(response)) {
                 resolve(response);
             } else {
                 reject(response);
             }
-        })
+        });
     }
 
     private validateStatus(response: Taro.request.Promised) {
-        return response.statusCode >= 200 && response.statusCode < 300
+        return response.statusCode >= 200 && response.statusCode < 300;
     }
 }
 
-let appFetch = new APPRequest();
+const appFetch = new APPRequest();
 
 export function get<T = any>(url: string, data?: Data | string, option: IRequestOption = {}) {
     return appFetch.request<T>(url, data, {
