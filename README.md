@@ -1,5 +1,9 @@
 # 小程序开发模板
 
+## taro环境安装
+npm install -g @tarojs/cli
+npm install -g mirror-config-china
+
 ## 安装
 ```sh
 yarn install
