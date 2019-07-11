@@ -1,10 +1,10 @@
 import { Text, View } from '@tarojs/components';
 import { observer } from '@tarojs/mobx';
 import Taro, { Component, Config } from '@tarojs/taro';
-import { autobind } from 'core-decorators';
 import { ComponentType } from 'react';
 import global from '../../globalStore';
 import './index.scss';
+import { autobind } from '~/components/decorator';
 
 class DiyComponent extends Component {
     render() {

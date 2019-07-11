@@ -15,6 +15,7 @@ class Index extends Component {
     };
 
     componentDidMount() {
+        // eslint-disable-next-line no-console
         console.log('this.$router', this.$router.params);
     }
 
@@ -27,9 +28,20 @@ class Index extends Component {
         });
     }
 
+    async onLogin() {
+        const data = await Taro.login();
+
+        // eslint-disable-next-line no-console
+        console.log(data);
+        const { userInfo } = await Taro.getUserInfo();
+        // eslint-disable-next-line no-console
+        console.log(userInfo);
+    }
+
     render() {
         return (<View className={styles.page}>
             <Button onClick={this.onClick}>跳转到test页面</Button>
+            <Button onClick={this.onLogin}>获取微信授权</Button>
         </View>);
     }
 }

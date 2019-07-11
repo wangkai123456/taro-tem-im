@@ -8,7 +8,7 @@
     "experimentalDecorators": true,
     "noImplicitAny": false,
     "allowSyntheticDefaultImports": true,
-    "outDir": "lib",
+    "outDir": "",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "strictNullChecks": true,
@@ -31,7 +31,10 @@
   },
   "exclude": [
     "node_modules",
-    "dist"
+    "src",
+    "config",
+    "dist",
+    "*.js"
   ],
   "compileOnSave": false
 }

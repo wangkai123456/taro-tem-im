@@ -1,9 +1,9 @@
 import { Text, View } from '@tarojs/components';
 import { observer } from '@tarojs/mobx';
 import Taro, { Component, Config } from '@tarojs/taro';
-import { autobind } from 'core-decorators';
 import { ComponentType } from 'react';
 import './index.scss';
+import { autobind } from '~/components/decorator';
 
 interface PageStateProps {
     global: {

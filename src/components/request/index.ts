@@ -121,7 +121,9 @@ class APPRequest {
             const { data } = response;
 
             Taro.showToast({
-                title: `url:${url.toString()}:, status:${response.statusCode}, responseText:${data}`
+                icon: 'none',
+                title: `url:${url.toString()},code:${data.code},msg:${data.msg}`,
+                duration: 2500
             });
         }
     }

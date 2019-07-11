@@ -16,6 +16,13 @@ yarn dev
 yarn build
 ```
 
+## 编写tools
+```sh
+npm install -g typescript
+tsc -watch
+```
+
+
 ## vscode 插件安装
 ESLint
 CSS Modules
