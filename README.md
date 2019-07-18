@@ -1,33 +1,37 @@
 # 小程序开发模板
 
 ## taro环境安装
-npm install -g @tarojs/cli
-npm install -g mirror-config-china
+
+npm install -g @tarojs/cli  
+npm install -g mirror-config-china  
 
 ## 安装
+
 ```sh
 yarn install
 ```
 
 ## 调试
+
 ```sh
 yarn dev
 ```
 
-
 ## 打包
+
 ```sh
 yarn build
 ```
 
 ## 编写tools
+
 ```sh
 npm install -g typescript
 tsc -watch
 ```
 
-
 ## vscode 插件安装
+
 ESLint
 CSS Modules
 Document This
@@ -52,10 +56,10 @@ Document This
         index.html:html5项目的入口  
         tools:帮助项目开发的脚本目录  
 
-
-
 ## vscode配置
+
 默认vscdoe的eslint不会检测tsx文件，不会自动修复，需要手动开启
+
 ```json
 "eslint.autoFixOnSave": true,
     "eslint.validate": [
@@ -73,12 +77,12 @@ Document This
 ```
 
 ## 其他
+
 AppID  
 接口文档地址  
 
-
-
 ## 资料
+
 https://wangdoc.com/javascript/  
 http://es6.ruanyifeng.com/  
 http://css.cuishifeng.cn/position.html  
