@@ -1,6 +1,6 @@
 {
 	"miniprogramRoot": "dist/",
-	"projectname": "shanghu",
+	"projectname": "weapp-template",
 	"description": "",
 	"appid": "touristappid",
 	"setting": {

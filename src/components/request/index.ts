@@ -68,13 +68,12 @@ class APPRequest {
         try {
             res = await Taro.request(params);
         } catch (error) {
-            if (requestOptions.showFailToast) {
-                Taro.showToast({
-                    icon: 'none',
-                    title: `网络请求失败！` + error.errMsg
-                });
-            }
+            res = {
+                statusCode: -1,
+                data: {}
+            } as any;
         }
+
         await this.eventEmitter.emit(RequestEventEnum.Receive, res);
 
         if (requestOptions.showFailToast) {
@@ -120,11 +119,31 @@ class APPRequest {
         if (!this.validateStatus(response)) {
             const { data } = response;
 
-            Taro.showToast({
-                icon: 'none',
-                title: `url:${url.toString()},code:${data.code},msg:${data.msg}`,
-                duration: 2500
-            });
+            if (data.code) {
+                Taro.showToast({
+                    icon: 'none',
+                    title: `url:${url.toString()},code:${data.code},msg:${data.msg}`,
+                    duration: 2500
+                });
+            } else if (response.statusCode && response.statusCode > 0) {
+                Taro.showToast({
+                    icon: 'none',
+                    title: `url:${url.toString()},statusCode:${response.statusCode}`,
+                    duration: 2500
+                });
+            } else if (response.statusCode && response.statusCode === -1) {
+                Taro.showToast({
+                    icon: 'none',
+                    title: `网络请求失败，请检查您的网络。`,
+                    duration: 2500
+                });
+            } else {
+                Taro.showToast({
+                    icon: 'none',
+                    title: `未知错误，万分抱歉！`,
+                    duration: 2500
+                });
+            }
         }
     }
 

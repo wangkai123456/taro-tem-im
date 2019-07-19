@@ -37,13 +37,26 @@ class Index extends Component {
     }
 
     async onErrorClick() {
-        const { data } = await post('http://localhost:8080/code', {
-            status: 418, data: {
-                'code': 418,
-                'msg': '错误信息'
-            }
-        });
-        console.log(data);
+        try {
+            await post('http://localhost:8080/code', {
+                status: 418, data: {
+                    'code': 418,
+                    'msg': '错误信息'
+                }
+            });
+            console.log('抛出了错误！');
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async onConnectClick() {
+        try {
+            await post('http://www.adfadf.com/xxxxxxxxxx');
+            console.log('抛出了错误！');
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     render() {
@@ -54,6 +67,7 @@ class Index extends Component {
                 <Button onClick={this.onPostDataClick}>传递参数</Button>
                 <Button onClick={this.onUnLoginClick}>未登录</Button>
                 <Button onClick={this.onErrorClick}>错误弹窗</Button>
+                <Button onClick={this.onConnectClick}>网络连接失败</Button>
             </View>
         );
     }
