@@ -1,10 +1,11 @@
 /* eslint-disable no-console */
-import { Button, Text, View } from '@tarojs/components';
+import { Button, Text, View, Image } from '@tarojs/components';
 import { observer } from '@tarojs/mobx';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
 import global from '~/globalStore';
-import './index.less';
+import * as styles from './index.module.scss';
+import imageSrc from './images/image.jpeg';
 
 @observer
 class Index extends Component {
@@ -98,11 +99,20 @@ class Index extends Component {
         });
     }
 
+    onClickImageTo() {
+        Taro.navigateTo({
+            url: '/pages/image/index'
+        });
+    }
+
     render() {
         const { list, getDataString, postDataString } = this.state;
         const { user: { userName }} = global;
         return (
-            <View className="index">
+            <View className={`${styles.page} ${styles.pageBg}`}>
+                <View>
+                    ^ 多个样式
+                </View>
                 <View>
                     <Text>用户名:{userName}</Text>
                 </View>
@@ -116,7 +126,12 @@ class Index extends Component {
                 <View>
                     {list.map(value => this.renderItem(value))}
                 </View>
+                <View>
+                    图片引入
+                </View>
+                <Image src={imageSrc} />
                 <Button onClick={this.onClickNavigateTo}>请求页面</Button>
+                <Button onClick={this.onClickImageTo}>全屏页面</Button>
             </View>
         );
     }

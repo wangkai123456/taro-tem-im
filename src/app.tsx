@@ -35,6 +35,7 @@ class App extends Component {
             'pages/login/index',
             'pages/test/index',
             'pages/request/index',
+            'pages/image/index',
             'pages/cart/index'
         ],
         tabBar: {

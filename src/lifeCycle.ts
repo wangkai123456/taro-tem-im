@@ -1,6 +1,7 @@
 import Taro from '@tarojs/taro';
 import URLSearchParams from 'url-search-params';
 import request, { RequestEventEnum } from '~/components/request';
+import { loginUrl } from './config';
 
 function extendTaroNavigate() {
     function getExtendFuntion(oldFunction) {
@@ -41,7 +42,7 @@ function watchRequest() {
         switch (req.statusCode) {
             case 401:
                 Taro.navigateTo({
-                    url: '/pages/login/index'
+                    url: loginUrl
                 });
                 break;
         }

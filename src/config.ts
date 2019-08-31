@@ -5,3 +5,4 @@ export const apiUrl = isDevelopment ?
     'http://localhost:8080/'
     : 'http://localhost:8080/';
 
+export const loginUrl = '/pages/login/index';

@@ -4,6 +4,7 @@ import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
 import './index.scss';
 import { autobind } from '~/components/decorator';
+import Comp from '~/components/component';
 
 interface PageStateProps {
     global: {
@@ -33,9 +34,12 @@ class Index extends Component {
         enablePullDownRefresh: true
     };
 
-    onPullDownRefresh() {
-        console.log(2);
+    state = {
+        show: true,
+        switchIndex: 0
+    };
 
+    onPullDownRefresh() {
         setTimeout(() => {
             // 停止下拉动作
             // tslint:disable-next-line: semicolon
@@ -43,10 +47,29 @@ class Index extends Component {
         }, 1000);
     }
 
+    renderSwitch() {
+        const { switchIndex } = this.state;
+        switch (switchIndex) {
+            case 0:
+            { return <View>0</View> }
+            case 1:
+            { return <View>1</View> }
+        }
+    }
+
     render() {
+        const { show } = this.state;
         return (
             <View className="content">
                 <Text>{this.config.navigationBarTitleText}</Text>
+                <View>
+                    {show ? 'true' : 'false'}
+                </View>
+                {this.renderSwitch()}
+                <Comp>
+                    <View>组件的儿子</View>
+                    <View>{this.state.switchIndex}</View>
+                </Comp>
             </View>
         );
     }
