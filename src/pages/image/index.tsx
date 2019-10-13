@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Image, View } from '@tarojs/components';
 import { observer } from '@tarojs/mobx';
 import Taro, { Component, Config } from '@tarojs/taro';

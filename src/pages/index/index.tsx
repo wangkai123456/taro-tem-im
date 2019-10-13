@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
-import { Button, Text, View, Image } from '@tarojs/components';
+import { Button, Image, Text, View } from '@tarojs/components';
 import { observer } from '@tarojs/mobx';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
 import global from '~/globalStore';
-import * as styles from './index.module.scss';
 import imageSrc from './images/image.jpeg';
+import * as styles from './index.module.scss';
 
 @observer
 class Index extends Component {
@@ -107,7 +107,7 @@ class Index extends Component {
 
     render() {
         const { list, getDataString, postDataString } = this.state;
-        const { user: { userName }} = global;
+        const { user: { userName } } = global;
         return (
             <View className={`${styles.page} ${styles.pageBg}`}>
                 <View>

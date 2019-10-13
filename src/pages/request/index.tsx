@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { View, Button } from '@tarojs/components';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
