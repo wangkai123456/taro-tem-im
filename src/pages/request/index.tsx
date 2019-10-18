@@ -1,14 +1,18 @@
+/* eslint-disable no-console */
 import { View, Button } from '@tarojs/components';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
 import { autobind } from '~/components/decorator';
-import * as styles from './index.module.scss';
+import * as styles from './index.module.less';
 import { get, post } from '~/components/request';
+import { MMNavigation } from '@wmeimob/weapp-design';
+import TabBar from '~/components/tab-bar';
 
 @autobind
 class Index extends Component {
     config: Config = {
-        navigationBarTitleText: '请求测试页面'
+        navigationBarTitleText: '',
+        navigationStyle: 'custom'
     };
 
     state = {
@@ -61,12 +65,15 @@ class Index extends Component {
     render() {
         return (
             <View className={styles.page}>
+                <MMNavigation title="请求"></MMNavigation>
                 <Button onClick={this.onGetClick}>get请求</Button>
                 <Button onClick={this.onPostClick}>post请求</Button>
                 <Button onClick={this.onPostDataClick}>传递参数</Button>
                 <Button onClick={this.onUnLoginClick}>未登录</Button>
                 <Button onClick={this.onErrorClick}>错误弹窗</Button>
                 <Button onClick={this.onConnectClick}>网络连接失败</Button>
+
+                <TabBar></TabBar>
             </View>
         );
     }

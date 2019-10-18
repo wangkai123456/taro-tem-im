@@ -1,7 +1,7 @@
 import '@tarojs/async-await';
 import { Provider } from '@tarojs/mobx';
 import Taro, { Component, Config } from '@tarojs/taro';
-import './app.scss';
+import './app.less';
 import global from './globalStore';
 import mount from './lifeCycle';
 import Index from './pages/index';
@@ -29,41 +29,24 @@ class App extends Component {
     config: Config = {
         pages: [
             'pages/index/index',
-            'pages/my/index',
-            'pages/roll/index',
-            'pages/diy/index',
-            'pages/login/index',
+            'pages/other/index',
+            'pages/mobx/index',
             'pages/test/index',
-            'pages/request/index',
-            'pages/image/index',
-            'pages/cart/index'
+            'pages/decorator/index',
+            'pages/transparent/index',
+            'pages/request/index'
         ],
         tabBar: {
+            custom: true,
             list: [{
-                'iconPath': './components/assets/images/icon-index-select.png',
-                'selectedIconPath': './components/assets/images/icon-index-selected.png',
                 'pagePath': 'pages/index/index',
                 'text': '首页'
             }, {
-                'iconPath': './components/assets/images/icon-index-select.png',
-                'selectedIconPath': './components/assets/images/icon-index-selected.png',
-                'pagePath': 'pages/roll/index',
-                'text': '组件'
+                'pagePath': 'pages/request/index',
+                'text': '请求'
             }, {
-                'iconPath': './components/assets/images/icon-customer-select.png',
-                'selectedIconPath': './components/assets/images/icon-customer-selected.png',
-                'pagePath': 'pages/diy/index',
-                'text': '坑'
-            }, {
-                'iconPath': './components/assets/images/icon-index-select.png',
-                'selectedIconPath': './components/assets/images/icon-index-selected.png',
-                'pagePath': 'pages/cart/index',
-                'text': '绕坑'
-            }, {
-                'iconPath': './components/assets/images/icon-main-select.png',
-                'selectedIconPath': './components/assets/images/icon-main-selected.png',
-                'pagePath': 'pages/my/index',
-                'text': '下拉刷新'
+                'pagePath': 'pages/other/index',
+                'text': '其他'
             }]
         },
         window: {

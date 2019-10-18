@@ -1,0 +1,54 @@
+@import '../../themes/default.less';
+
+@MMButton: MMButton;
+
+.@{MMButton} {
+    box-sizing: border-box;
+    text-align: center;
+
+    &-default {
+        border          : 1px solid @gray-6;
+        background-color: @gray-1;
+    }
+
+    &-primary {
+        background-color: @primary-color;
+        color           : @gray-1;
+    }
+
+    &-transparent {
+        border          : 1px solid @primary-color;
+        background-color: transparent;
+        color           : @primary-color;
+    }
+
+    &-warning {
+        background-color: @red;
+        color           : @gray-1;
+    }
+
+    &-disabled {
+        opacity: .4;
+    }
+
+    &-large {
+        border-radius: 8px;
+        padding      : 0 20px;
+        height       : 48px;
+        line-height  : 48px;
+        font-size    : 18px;
+    }
+
+    &-small {
+        border-radius: 6px;
+        padding      : 0 10px;
+        height       : 30px;
+        line-height  : 30px;
+        font-size    : 13px;
+    }
+
+    &-inline {
+        display    : inline-block;
+    }
+
+}

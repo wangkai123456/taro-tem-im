@@ -2,7 +2,7 @@
 import { View } from '@tarojs/components';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
-import * as styles from './index.module.scss';
+import * as styles from './index.module.less';
 
 class Index extends Component {
     /**

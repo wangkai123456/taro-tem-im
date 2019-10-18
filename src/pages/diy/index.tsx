@@ -3,7 +3,7 @@ import { observer } from '@tarojs/mobx';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
 import global from '../../globalStore';
-import './index.scss';
+import './index.less';
 import { autobind } from '~/components/decorator';
 
 class DiyComponent extends Component {

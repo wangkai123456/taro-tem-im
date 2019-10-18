@@ -8,7 +8,7 @@
         "experimentalDecorators": true,
         "noImplicitAny": false,
         "allowSyntheticDefaultImports": true,
-        "outDir": "",
+        "outDir": "./out",
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "strictNullChecks": true,
@@ -21,11 +21,15 @@
         "resolveJsonModule": true,
         "typeRoots": [
             "node_modules/@types",
+            "node_modules/@wmeimob",
             "global.d.ts"
         ],
         "paths": {
             "~/*": [
                 "src/*"
+            ],
+            "@wmeimob/weapp-design/src/components": [
+                "node_modules/@wmeimob/weapp-design/src/components/*"
             ]
         }
     },

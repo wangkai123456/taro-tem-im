@@ -1,0 +1,39 @@
+@import '../../themes/default.less';
+
+@MMToast: MMToast;
+
+.@{MMToast} {
+    display       : flex;
+    flex-direction: column;
+    position      : fixed;
+    left          : 0;
+    top           : 200px;
+    width         : 100%;
+    height        : 100%;
+    align-items   : center;
+    pointer-events: none;
+
+    &-message {
+        margin-top      : 5px;
+        padding         : 5px;
+        position        : relative;
+        top             : 200px;
+        color           : white;
+        background-color: @gray-9;
+        transition      : all @transition-timing;
+        opacity         : 0;
+        pointer-events  : none;
+        border-radius   : 3px;
+
+        &--showing {
+            top    : 0px;
+            opacity: 1;
+        }
+
+        &--hideing {
+            top    : -100px;
+            opacity: 0;
+        }
+
+    }
+}

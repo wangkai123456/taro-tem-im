@@ -1,11 +1,15 @@
 /* eslint-disable no-console */
-import { Button, Image, Text, View } from '@tarojs/components';
+import { Image, Text, View } from '@tarojs/components';
 import { observer } from '@tarojs/mobx';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
 import global from '~/globalStore';
 import imageSrc from './images/image.jpeg';
-import * as styles from './index.module.scss';
+import * as styles from './index.module.less';
+import { H2, H3, MMNavigation, MMPopup, MMButton } from '@wmeimob/weapp-design';
+import classNames from 'classnames';
+import TabBar from '~/components/tab-bar';
+import { MMButtonType } from '@wmeimob/weapp-design/src/components/const';
 
 @observer
 class Index extends Component {
@@ -17,20 +21,16 @@ class Index extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
     config: Config = {
-        navigationBarTitleText: '首页'
+        navigationBarTitleText: '',
+        navigationStyle: 'custom'
     };
 
     state = {
-        getDataString: '',
-        postDataString: '',
-        list: [{ xxx: 'a' }, 1, 2, 4, 5]
+        text: '组件',
+        list: [{ object: 'object' }, 1, 2, 4, 5]
     };
 
-    onClick() {
-        Taro.showToast({
-            title: '点击事件'
-        });
-    }
+    private popup: MMPopup;
 
     /**
      * 组件第一次渲染完成
@@ -77,11 +77,11 @@ class Index extends Component {
         console.log('componentWillReact');
     }
 
-    renderItem(item: { xxx: string } | number) {
+    renderItem(item: { object: string } | number) {
         const type = typeof item;
         if (type === 'object') {
             return <View>
-                <Text>{(item as { xxx: string }).xxx}</Text>
+                <Text>{(item as { object: string }).object}</Text>
             </View>;
         } else if (type === 'number') {
             return <View>
@@ -106,34 +106,60 @@ class Index extends Component {
     }
 
     render() {
-        const { list, getDataString, postDataString } = this.state;
+        const { list, text } = this.state;
         const { user: { userName } } = global;
         return (
-            <View className={`${styles.page} ${styles.pageBg}`}>
-                <View>
-                    ^ 多个样式
+            <View>
+                <MMNavigation title="基础用法"></MMNavigation>
+                <View className="container">
+                    <MMPopup ref={ref => this.popup = ref as MMPopup}></MMPopup>
+                    <View className='spacing'></View>
+                    <H2>样式写法</H2>
+                    <H3>单个样式</H3>
+                    <View className={styles.test}></View>
+                    <H3>多个样式</H3>
+                    <View className={classNames(styles.test, styles.test)}></View>
+
+                    <View className='spacing'></View>
+                    <H2>事件写法</H2>
+                    <View onClick={this.onClick}>点击事件</View>
+
+                    <View className='spacing'></View>
+                    <H2>全局变量mobx 类似vuex</H2>
+                    <View>
+                        <Text>用户名:{userName}</Text>
+                    </View>
+
+                    <View className='spacing'></View>
+                    <H2>状态</H2>
+                    <View>
+                        <Text>{text}</Text>
+                    </View>
+
+                    <View className='spacing'></View>
+                    <H2>参数</H2>
+                    <View>
+                        <MMButton type={MMButtonType.Warning}>slot</MMButton>
+                    </View>
+
+                    <View className='spacing'></View>
+                    <H2>数组渲染</H2>
+                    <View>
+                        {list.map(value => this.renderItem(value))}
+                    </View>
+
+                    <View className='spacing'></View>
+                    <H2>图片渲染</H2>
+                    <Image src={imageSrc} />
+
                 </View>
-                <View>
-                    <Text>用户名:{userName}</Text>
-                </View>
-                <View onClick={this.onClick}>点击事件</View>
-                <View>
-                    <Text>get:{getDataString}</Text>
-                </View>
-                <View>
-                    <Text>post:{postDataString}</Text>
-                </View>
-                <View>
-                    {list.map(value => this.renderItem(value))}
-                </View>
-                <View>
-                    图片引入
-                </View>
-                <Image src={imageSrc} />
-                <Button onClick={this.onClickNavigateTo}>请求页面</Button>
-                <Button onClick={this.onClickImageTo}>全屏页面</Button>
+                <TabBar></TabBar>
             </View>
         );
+    }
+
+    private onClick() {
+        this.popup.toast('点击事件');
     }
 }
 

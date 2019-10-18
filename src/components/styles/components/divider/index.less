@@ -1,0 +1,28 @@
+@import '../../themes/default.less';
+
+@MMDivider: MMDivider;
+
+.@{MMDivider} {
+    display            : flex;
+    flex-direction     : column;
+    border-width       : 0;
+    border-bottom-width: 0.5px;
+    border-bottom-color: @divider-color;
+    border-bottom-style: solid;
+
+    &__dotted {
+        border-style: dotted;
+    }
+
+    &__dashed {
+        border-style: dashed;
+    }
+
+    &__vertical {
+        height            : 100%;
+        border-bottom     : none;
+        border-right-width: 0.5px;
+        border-right-color: @divider-color;
+        border-right-style: solid;
+    }
+}

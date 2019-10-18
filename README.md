@@ -2,13 +2,13 @@
 
 ## taro环境安装
 
-npm install -g @tarojs/cli  
-npm install -g mirror-config-china  
+yarn add global @tarojs/cli  
+yarn add global mirror-config-china  
 
 ## 安装
 
 ```sh
-yarn install
+yarn
 ```
 
 ## 调试
@@ -49,7 +49,7 @@ Document This
             utils:公用函数
         pages:页面  
             _template:页面模版  
-        app.scss:样式入口  
+        app.less:样式入口  
         app.tsx:js入口  
         config.ts:配置文件  
         globalStore.ts:全局数据

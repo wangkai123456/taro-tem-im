@@ -1,0 +1,40 @@
+@import '../../themes/default.less';
+
+@MMSkuList: MMSkuList;
+
+.@{MMSkuList} {
+
+    &-title {
+        margin-top : 5px;
+        line-height: 40px;
+        font-size  : 16px;
+        font-weight: bold;
+        color      : @gray-8;
+    }
+
+    &-content {
+        display       : flex;
+        flex-direction: row;
+    }
+
+    &-item {
+        border       : 1px solid @border-color;
+        border-radius: 2px;
+        padding      : 0 8px;
+        margin-right : 10px;
+        height       : 30px;
+        line-height  : 30px;
+    }
+
+    &-item__disabled {
+        color       : @gray-5;
+        border-color: @gray-5;
+    }
+
+    &-item__selected {
+        color           : @gray-1;
+        background-color: @blue;
+        border-color    : @blue;
+    }
+
+}

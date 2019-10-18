@@ -1,0 +1,30 @@
+@import '../../themes/default.less';
+
+@MMTabBar: MMTabBar;
+
+.@{MMTabBar} {
+    margin-top: 20px;
+    height    : 50px;
+
+    &-content {
+        position        : fixed;
+        bottom          : 0;
+        left            : 0;
+        display         : flex;
+        width           : 100%;
+        height          : 50px;
+        border          : 1px solid @border-color;
+        background-color: white;
+        flex-direction  : row;
+        justify-content : space-around;
+        align-items     : center;
+    }
+
+    &-item {
+        display        : flex;
+        flex-direction : column;
+        align-items    : center;
+        justify-content: center;
+        font-size      : 12px;
+    }
+}

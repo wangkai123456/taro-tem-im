@@ -1,0 +1,34 @@
+@import '../../themes/default.less';
+
+@MMPullToRefresh: MMPullToRefresh;
+
+.@{MMPullToRefresh} {
+    flex: 1;
+
+    &-loading {
+        display        : flex;
+        align-items    : center;
+        justify-content: center;
+    }
+
+    &-content {
+        position  : relative;
+        transition: top 0.3s;
+
+        &--refreshing {
+            transition: all 0.4s;
+        }
+
+        &--animationing {
+            transition: all 0.4s;
+        }
+    }
+
+    &-more {
+        display        : flex;
+        height         : 60px;
+        align-items    : center;
+        justify-content: center;
+    }
+
+}
