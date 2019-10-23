@@ -1,0 +1,18 @@
+@import '../../themes/default.less';
+
+@MMInputSearch: MMInputSearch;
+
+.@{MMInputSearch} {
+    display        : flex;
+    flex-direction  : row;
+    padding         : 8px;
+    background-color: @gray5;
+
+    &-input-box {
+        flex: 1;
+
+        input {
+            width: 100%;
+        }
+    }
+}

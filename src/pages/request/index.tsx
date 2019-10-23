@@ -1,12 +1,12 @@
 /* eslint-disable no-console */
-import { View, Button } from '@tarojs/components';
+import { Button, View } from '@tarojs/components';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
 import { autobind } from '~/components/decorator';
-import * as styles from './index.module.less';
 import { get, post } from '~/components/request';
-import { MMNavigation } from '@wmeimob/weapp-design';
-import TabBar from '~/components/tab-bar';
+import MMNavigation from '~/modules/weapp-design/navigation';
+import MMTabBar from '~/modules/weapp-design/tab-bar';
+import * as styles from './index.module.less';
 
 @autobind
 class Index extends Component {
@@ -72,8 +72,7 @@ class Index extends Component {
                 <Button onClick={this.onUnLoginClick}>未登录</Button>
                 <Button onClick={this.onErrorClick}>错误弹窗</Button>
                 <Button onClick={this.onConnectClick}>网络连接失败</Button>
-
-                <TabBar></TabBar>
+                <MMTabBar></MMTabBar>
             </View>
         );
     }

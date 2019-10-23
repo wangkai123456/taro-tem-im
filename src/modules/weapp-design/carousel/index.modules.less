@@ -1,0 +1,51 @@
+@import '../styles/themes/default.less';
+
+@MMCarousel: MMCarousel;
+
+.MMCarousel {
+    position: relative;
+}
+
+.content {
+    position      : relative;
+    width         : 100%;
+    display       : flex;
+    flex-direction: row;
+}
+
+.item {
+    width: 100vw;
+}
+
+.dot {
+    position       : absolute;
+    left           : 0px;
+    bottom         : 10px;
+    width          : 100%;
+    height         : 30px;
+    display        : flex;
+    flex-direction : row;
+    justify-content: center;
+    align-items    : center;
+}
+
+.dotItem {
+    width           : 10px;
+    height          : 10px;
+    border-radius   : 5px;
+    background-color: white;
+    margin          : 0 5px;
+}
+
+.dotItem__selected {
+    background-color: @gray8;
+}
+
+
+.scrollView {
+    ::-webkit-scrollbar {
+        width : 0;
+        height: 0;
+        color : transparent;
+    }
+}

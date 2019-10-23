@@ -4,7 +4,7 @@
 
 ## mobx 数组在render的 map会导致监听失效
 
-## 含有 JSX 的 switch case 语句必须每种情况都用花括号 `{}` 包裹结果,switch 值必须先建构
+## 含有 JSX 的 switch case 语句必须每种情况都用花括号 `{}` 包裹结果,switch 值必须先解构，  不能包含 default
 
 ## map循环的key 不能新建函数放jsx，会取不到key，会不停的警告
 

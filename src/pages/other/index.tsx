@@ -1,10 +1,12 @@
 /* eslint-disable no-console */
 import { View } from '@tarojs/components';
 import Taro, { Component, Config } from '@tarojs/taro';
-import { H2, MMNavigation, MMButton, MMItem } from '@wmeimob/weapp-design';
 import { ComponentType } from 'react';
 import { autobind } from '~/components/decorator';
-import TabBar from '~/components/tab-bar';
+import H2 from '~/modules/weapp-design/head/h2';
+import MMItem from '~/modules/weapp-design/item';
+import MMNavigation from '~/modules/weapp-design/navigation';
+import MMTabBar from '~/modules/weapp-design/tab-bar';
 import * as styles from './index.module.less';
 
 @autobind
@@ -40,7 +42,7 @@ class Index extends Component {
                     })}>mobx和自定义组件</MMItem>
                 </View>
 
-                <TabBar></TabBar>
+                <MMTabBar></MMTabBar>
             </View>
         );
     }

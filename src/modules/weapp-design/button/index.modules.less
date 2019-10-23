@@ -1,0 +1,201 @@
+@import '../styles/themes/default.less';
+
+.MMButton {
+    box-sizing      : border-box;
+    background-color: @buttonColor;
+    height          : @buttonHeight;
+    font-size       : @buttonFontSize;
+    text-align      : center;
+    color           : @gray1;
+    border-radius   : @buttonBorderRadius;
+    padding         : 0 @spacingSize;
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
+
+    &:active {
+        background-color: @buttonColorActive;
+    }
+
+}
+
+.MMButton_content {
+    height     : @buttonFontSize;
+    line-height: @buttonFontSize;
+}
+
+
+.MMButton__success {
+    background-color: @buttonColor__typeSuccess;
+
+    &:active {
+        background-color: @buttonColor__typeSuccessActive;
+    }
+}
+
+.MMButton__warning {
+    background-color: @buttonColor__typeWarning;
+
+    &:active {
+        background-color: @buttonColor__typeWarningActive;
+    }
+}
+
+.MMButton__danger {
+    background-color: @buttonColor__typeDanger;
+
+    &:active {
+        background-color: @buttonColor__typeDangerActive;
+    }
+}
+
+.MMButton__radius_none {
+    border-radius: 0;
+}
+
+.MMButton__radius_large {
+    border-radius: 22px;
+}
+
+.MMButton__small {
+    height: 37px;
+}
+
+.MMButton__small.MMButton__radius_large {
+    border-radius: 18px;
+}
+
+.MMButton__tiny {
+    height: 30px;
+}
+
+.MMButton__tiny.MMButton__radius_large {
+    border-radius: 14px;
+}
+
+// 类型
+.MMButton__type_hollow {
+    background-color: @gray1;
+    border          : 1px solid @buttonColor;
+    color           : @buttonColor;
+
+    &:active {
+        background-color: @gray1;
+        border          : 1px solid @buttonColorActive;
+        color           : @buttonColorActive;
+    }
+}
+
+.MMButton__type_hollow.MMButton__success {
+    border: 1px solid @buttonColor__typeSuccess;
+    color : @buttonColor__typeSuccess;
+
+    &:active {
+        border: 1px solid @buttonColor__typeSuccessActive;
+        color : @buttonColor__typeSuccessActive;
+    }
+}
+
+.MMButton__type_hollow.MMButton__warning {
+    border: 1px solid @buttonColor__typeWarning;
+    color : @buttonColor__typeWarning;
+
+    &:active {
+        border: 1px solid @buttonColor__typeWarningActive;
+        color : @buttonColor__typeWarningActive;
+    }
+}
+
+.MMButton__type_hollow.MMButton__danger {
+    border: 1px solid @buttonColor__typeDanger;
+    color : @buttonColor__typeDanger;
+
+    &:active {
+        border: 1px solid @buttonColor__typeDangerActive;
+        color : @buttonColor__typeDangerActive;
+    }
+}
+
+.MMButton__type_white {
+    background-color: @gray1;
+    color           : @buttonColor;
+    box-shadow      : @boxShadow;
+
+    &:active {
+        background-color: @gray1;
+        box-shadow      : @buttonBoxShadowActive;
+    }
+}
+
+.MMButton__type_white.MMButton__success {
+    background-color: @gray1;
+    color           : @buttonColor__typeSuccess;
+
+    &:active {
+        color: @buttonColor__typeSuccessActive;
+    }
+}
+
+.MMButton__type_white.MMButton__warning {
+    background-color: @gray1;
+    color           : @buttonColor__typeWarning;
+
+    &:active {
+        color: @buttonColor__typeWarningActive;
+    }
+}
+
+.MMButton__type_white.MMButton__danger {
+    background-color: @gray1;
+    color           : @buttonColor__typeDanger;
+
+    &:active {
+        color: @buttonColor__typeDangerActive;
+    }
+}
+
+.MMButton__type_hollow.MMButton__tiny {
+    background-color: @buttonBgColor__sizeTiny__typeDefault;
+}
+
+.MMButton__type_hollow.MMButton__tiny.MMButton__success {
+    background-color: @buttonBgColor__sizeTiny__typeSuccess;
+}
+
+.MMButton__type_hollow.MMButton__tiny.MMButton__warning {
+    background-color: @buttonBgColor__sizeTiny__typeWarning;
+}
+
+.MMButton__type_hollow.MMButton__tiny.MMButton__danger {
+    background-color: @buttonBgColor__sizeTiny__typeDanger;
+}
+
+.MMButton__inline {
+    display: inline-block;
+}
+
+.MMButton__disabled {
+    opacity: .4;
+
+    &:active {
+        background-color: @buttonColor;
+    }
+}
+
+.MMButton__disabled.MMButton__success {
+    &:active {
+        background-color: @buttonColor__typeSuccess;
+    }
+}
+
+.MMButton__disabled.MMButton__warning {
+    &:active {
+        background-color: @buttonColor__typeWarning;
+    }
+}
+
+.MMButton__disabled.MMButton__danger {
+    &:active {
+        background-color: @buttonColor__typeDanger;
+    }
+}

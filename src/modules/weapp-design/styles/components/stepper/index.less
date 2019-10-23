@@ -1,0 +1,25 @@
+@import '../../themes/default.less';
+
+@MMStepper: MMStepper;
+
+.@{MMStepper} {
+    display       : flex;
+    flex-direction: row;
+    align-items   : center;
+
+    &-plues {
+        width        : 32px;
+        height       : 32px;
+        border       : 1px solid @borderColor;
+        border-radius: 5px;
+        text-align   : center;
+        line-height  : 32px;
+    }
+
+    &-text {
+        min-width : 50px;
+        text-align: center;
+        padding   : 0 10px;
+    }
+
+}

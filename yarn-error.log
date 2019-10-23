@@ -1,11 +1,11 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add git.f.wmeimob.com:9922/Frontend/weapp-design.git
+  C:\Program Files\nodejs\node.exe D:\work\frame\weapp-template\node_modules\yarn\bin\yarn.js add @wmeimob/weapp-design --silent --no-progress
 
 PATH: 
-  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Java\jdk1.8.0_211\bin;C:\Users\li\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\nodejs\;C:\Users\li\AppData\Local\Microsoft\WindowsApps;C:\Users\li\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\li\AppData\Local\Yarn\bin;C:\Users\li\AppData\Local\Programs\Fiddler;C:\Users\li\AppData\Roaming\npm
+  C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;D:\work\frame\weapp-template\node_modules\.bin;C:\Users\li\AppData\Local\Temp\yarn--1571795051472-0.0520655995820658;D:\work\frame\weapp-template\node_modules\.bin;C:\Users\li\AppData\Local\Yarn\Data\link\node_modules\.bin;C:\Program Files\libexec\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Java\jdk1.8.0_211\bin;C:\Users\li\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\nodejs\;C:\Users\li\AppData\Local\Microsoft\WindowsApps;C:\Users\li\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\li\AppData\Local\Yarn\bin;C:\Users\li\AppData\Local\Programs\Fiddler;C:\Users\li\AppData\Roaming\npm
 
 Yarn version: 
-  1.16.0
+  1.19.1
 
 Node version: 
   10.16.1
@@ -14,22 +14,13 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: git.f.wmeimob.com:9922%2fFrontend/weapp-design.git: Invalid protocol: git.f.wmeimob.com:
-      at Request.module.exports.Request.init (C:\Program Files (x86)\Yarn\lib\cli.js:129859:31)
-      at new Request (C:\Program Files (x86)\Yarn\lib\cli.js:129532:8)
-      at request (C:\Program Files (x86)\Yarn\lib\cli.js:126438:10)
-      at RequestManager.execute (C:\Program Files (x86)\Yarn\lib\cli.js:65252:15)
-      at RequestManager.shiftQueue (C:\Program Files (x86)\Yarn\lib\cli.js:65290:10)
-      at C:\Program Files (x86)\Yarn\lib\cli.js:64969:13
-      at new Promise (<anonymous>)
-      at new F (C:\Program Files (x86)\Yarn\lib\cli.js:5228:28)
-      at RequestManager.request (C:\Program Files (x86)\Yarn\lib\cli.js:64967:19)
-      at NpmRegistry.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:31614:42)
+  Error: connect ETIMEDOUT 104.16.25.35:443
+      at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1106:14)
 
 npm manifest: 
   {
       "name": "weapp-template",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "private": true,
       "description": "",
       "templateInfo": {
@@ -57,18 +48,18 @@ npm manifest:
       "author": "",
       "license": "MIT",
       "dependencies": {
-          "@tarojs/components": "1.3.19",
-          "@tarojs/mobx": "1.3.19",
-          "@tarojs/mobx-h5": "1.3.19",
-          "@tarojs/mobx-rn": "1.3.19",
-          "@tarojs/rn-runner": "1.3.19",
-          "@tarojs/router": "1.3.19",
-          "@tarojs/taro": "1.3.19",
-          "@tarojs/taro-alipay": "1.3.19",
-          "@tarojs/taro-h5": "1.3.19",
-          "@tarojs/taro-swan": "1.3.19",
-          "@tarojs/taro-tt": "1.3.19",
-          "@tarojs/taro-weapp": "1.3.19",
+          "@tarojs/components": "1.3.20",
+          "@tarojs/mobx": "1.3.20",
+          "@tarojs/mobx-h5": "1.3.20",
+          "@tarojs/mobx-rn": "1.3.20",
+          "@tarojs/rn-runner": "1.3.20",
+          "@tarojs/router": "1.3.20",
+          "@tarojs/taro": "1.3.20",
+          "@tarojs/taro-alipay": "1.3.20",
+          "@tarojs/taro-h5": "1.3.20",
+          "@tarojs/taro-swan": "1.3.20",
+          "@tarojs/taro-tt": "1.3.20",
+          "@tarojs/taro-weapp": "1.3.20",
           "@types/classnames": "^2.2.9",
           "@wmeimob/weapp-design": "ssh://git@git.f.wmeimob.com:9922/Frontend/weapp-design.git",
           "classnames": "^2.2.6",
@@ -79,11 +70,11 @@ npm manifest:
           "url-search-params": "^1.1.0"
       },
       "devDependencies": {
-          "@tarojs/plugin-babel": "1.3.19",
-          "@tarojs/plugin-csso": "1.3.19",
-          "@tarojs/plugin-less": "1.3.19",
-          "@tarojs/plugin-uglifyjs": "1.3.19",
-          "@tarojs/webpack-runner": "1.3.19",
+          "@tarojs/plugin-babel": "1.3.20",
+          "@tarojs/plugin-csso": "1.3.20",
+          "@tarojs/plugin-less": "1.3.20",
+          "@tarojs/plugin-uglifyjs": "1.3.20",
+          "@tarojs/webpack-runner": "1.3.20",
           "@types/react": "16.3.14",
           "@types/webpack-env": "^1.13.6",
           "@wmeimob/node-tools": "ssh://git@git.f.wmeimob.com:9922/Frontend/node-tools.git",
@@ -95,8 +86,8 @@ npm manifest:
           "eslint-config-wmeimob": "ssh://git@git.f.wmeimob.com:9922/Frontend/eslint-config-wmeimob.git",
           "gulp": "^4.0.2",
           "stylelint": "9.3.0",
-          "stylelint-config-taro-rn": "1.3.19",
-          "stylelint-taro-rn": "1.3.19",
+          "stylelint-config-taro-rn": "1.3.20",
+          "stylelint-taro-rn": "1.3.20",
           "typescript": "^3.0.1",
           "yarn": "^1.19.1"
       }
@@ -1074,87 +1065,88 @@ Lockfile:
       component-type "^1.2.1"
       join-component "^1.1.0"
   
-  "@tarojs/async-await@1.3.19":
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/@tarojs/async-await/download/@tarojs/async-await-1.3.19.tgz#1ff6106995256170275ec45cd02ccc0b76a15c87"
-    integrity sha1-H/YQaZUlYXAnXsRc0CzMC3ahXIc=
+  "@tarojs/async-await@1.3.20":
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/@tarojs/async-await/download/@tarojs/async-await-1.3.20.tgz#67ec38f450e7f0c334928a1f31053606ad0002f1"
+    integrity sha1-Z+w49FDn8MM0koofMQU2Bq0AAvE=
     dependencies:
       promise-polyfill "^7.1.2"
       regenerator-runtime "^0.11.1"
   
-  "@tarojs/components@1.3.19":
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/@tarojs/components/download/@tarojs/components-1.3.19.tgz#e222b68c3b1079fd8ee5d93190b1efaedc296303"
-    integrity sha1-4iK2jDsQef2O5dkxkLHvrtwpYwM=
+  "@tarojs/components@1.3.20":
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/@tarojs/components/download/@tarojs/components-1.3.20.tgz#0a50edb9e2828e9123196d1edaff128090f125da"
+    integrity sha1-ClDtueKCjpEjGW0e2v8SgJDxJdo=
     dependencies:
       better-scroll "^1.14.1"
       classnames "^2.2.5"
+      intersection-observer "^0.7.0"
       omit.js "^1.0.0"
       resolve-pathname "^3.0.0"
       swiper "^4.4.2"
       weui "^1.1.2"
   
-  "@tarojs/mobx-common@1.3.19":
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/@tarojs/mobx-common/download/@tarojs/mobx-common-1.3.19.tgz#dd7e195120e28f5aa828bc8a24db2cde318dc518"
-    integrity sha1-3X4ZUSDij1qoKLyKJNss3jGNxRg=
+  "@tarojs/mobx-common@1.3.20":
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/@tarojs/mobx-common/download/@tarojs/mobx-common-1.3.20.tgz#d7d0a2ef53b5ea223c9e8af27327f245342023ca"
+    integrity sha1-19Ci71O16iI8norycyfyRTQgI8o=
   
-  "@tarojs/mobx-h5@1.3.19":
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/@tarojs/mobx-h5/download/@tarojs/mobx-h5-1.3.19.tgz#4c2a11b9dc6e55d2d3773c5b531430c2512344ea"
-    integrity sha1-TCoRudxuVdLTdzxbUxQwwlEjROo=
+  "@tarojs/mobx-h5@1.3.20":
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/@tarojs/mobx-h5/download/@tarojs/mobx-h5-1.3.20.tgz#512aa4d08aca604d50e3ca2fc5076c7e5683aee4"
+    integrity sha1-USqk0IrKYE1Q48ovxQdsflaDruQ=
     dependencies:
-      "@tarojs/mobx-common" "1.3.19"
-      "@tarojs/taro-h5" "1.3.19"
+      "@tarojs/mobx-common" "1.3.20"
+      "@tarojs/taro-h5" "1.3.20"
   
-  "@tarojs/mobx-rn@1.3.19":
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/@tarojs/mobx-rn/download/@tarojs/mobx-rn-1.3.19.tgz#c97cae9eaa2f3c1034d49bfcd2365847fc86b52f"
-    integrity sha1-yXyunqovPBA01Jv80jZYR/yGtS8=
+  "@tarojs/mobx-rn@1.3.20":
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/@tarojs/mobx-rn/download/@tarojs/mobx-rn-1.3.20.tgz#aa08d4e235134bc367fd5a1d9186120354b0c2c7"
+    integrity sha1-qgjU4jUTS8Nn/VodkYYSA1Swwsc=
     dependencies:
-      "@tarojs/mobx-common" "1.3.19"
-      "@tarojs/taro-rn" "1.3.19"
+      "@tarojs/mobx-common" "1.3.20"
+      "@tarojs/taro-rn" "1.3.20"
   
-  "@tarojs/mobx@1.3.19":
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/@tarojs/mobx/download/@tarojs/mobx-1.3.19.tgz#bf344ee251f7a3b9dea36736ebafeb9ea02818f4"
-    integrity sha1-vzRO4lH3o7neo2c266/rnqAoGPQ=
+  "@tarojs/mobx@1.3.20":
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/@tarojs/mobx/download/@tarojs/mobx-1.3.20.tgz#2a324b01c5d02c4b9c7dac611abb3a02d90a476a"
+    integrity sha1-KjJLAcXQLEucfaxhGrs6AtkKR2o=
     dependencies:
-      "@tarojs/mobx-common" "1.3.19"
-      "@tarojs/taro" "1.3.19"
+      "@tarojs/mobx-common" "1.3.20"
+      "@tarojs/taro" "1.3.20"
   
-  "@tarojs/plugin-babel@1.3.19":
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/@tarojs/plugin-babel/download/@tarojs/plugin-babel-1.3.19.tgz#69c23dfcaf762760d2af300e11c7f5cc130b57d5"
-    integrity sha1-acI9/K92J2DSrzAOEcf1zBMLV9U=
+  "@tarojs/plugin-babel@1.3.20":
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/@tarojs/plugin-babel/download/@tarojs/plugin-babel-1.3.20.tgz#f4709f041c5a6501d8289d6f7a67329dd3197a75"
+    integrity sha1-9HCfBBxaZQHYKJ1vemcyndMZenU=
     dependencies:
       babel-core "^6.26.0"
   
-  "@tarojs/plugin-csso@1.3.19":
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/@tarojs/plugin-csso/download/@tarojs/plugin-csso-1.3.19.tgz#469075ce0555baf0a1d37658011803679fec3c9e"
-    integrity sha1-RpB1zgVVuvCh03ZYARgDZ5/sPJ4=
+  "@tarojs/plugin-csso@1.3.20":
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/@tarojs/plugin-csso/download/@tarojs/plugin-csso-1.3.20.tgz#6416c2a390a66b943603c0ddb32487013754dbdc"
+    integrity sha1-ZBbCo5Cma5Q2A8DdsySHATdU29w=
     dependencies:
       csso "^3.5.0"
   
-  "@tarojs/plugin-less@1.3.19":
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/@tarojs/plugin-less/download/@tarojs/plugin-less-1.3.19.tgz#2a2edf9dfb129dfe4655e4053953e791115889fd"
-    integrity sha1-Ki7fnfsSnf5GVeQFOVPnkRFYif0=
+  "@tarojs/plugin-less@1.3.20":
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/@tarojs/plugin-less/download/@tarojs/plugin-less-1.3.20.tgz#bb57501d42aa6758ca782862c02150a79b5ae0d0"
+    integrity sha1-u1dQHUKqZ1jKeChiwCFQp5ta4NA=
     dependencies:
       less "^3.0.4"
   
-  "@tarojs/plugin-uglifyjs@1.3.19":
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/@tarojs/plugin-uglifyjs/download/@tarojs/plugin-uglifyjs-1.3.19.tgz#d21aa73bdf14e8539a54db8d7630b42330cc715d"
-    integrity sha1-0hqnO98U6FOaVNuNdjC0IzDMcV0=
+  "@tarojs/plugin-uglifyjs@1.3.20":
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/@tarojs/plugin-uglifyjs/download/@tarojs/plugin-uglifyjs-1.3.20.tgz#d150157c6d83cb3ff0e5a2b2d99835850fadbd43"
+    integrity sha1-0VAVfG2Dyz/w5aKy2Zg1hQ+tvUM=
     dependencies:
       uglify-js "^3.3.24"
   
-  "@tarojs/rn-runner@1.3.19":
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/@tarojs/rn-runner/download/@tarojs/rn-runner-1.3.19.tgz#5aae2e59e3dbad51b59bc21a68f3e5d7b369fdbc"
-    integrity sha1-Wq4uWePbrVG1m8IaaPPl17Np/bw=
+  "@tarojs/rn-runner@1.3.20":
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/@tarojs/rn-runner/download/@tarojs/rn-runner-1.3.20.tgz#61d516ba765fca08a0d9c31d62296445becd0560"
+    integrity sha1-YdUWunZfygig2cMdYilkRb7NBWA=
     dependencies:
       "@expo/bunyan" "1.8.10"
       babel-runtime "^6.9.2"
@@ -1172,10 +1164,10 @@ Lockfile:
       rimraf "^2.6.1"
       xdl "48.1.4"
   
-  "@tarojs/router@1.3.19":
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/@tarojs/router/download/@tarojs/router-1.3.19.tgz#dbeaa144884752f6f2643bb18244ff4d63901cb1"
-    integrity sha1-2+qhRIhHUvbyZDuxgkT/TWOQHLE=
+  "@tarojs/router@1.3.20":
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/@tarojs/router/download/@tarojs/router-1.3.20.tgz#9edf4fa3eb5ebdb511a2a2be98b6fa27066cd0cb"
+    integrity sha1-nt9Po+tevbURoqK+mLb6JwZs0Ms=
     dependencies:
       invariant "2.2.4"
       lodash "4.17.13"
@@ -1184,20 +1176,20 @@ Lockfile:
       value-equal "0.4.0"
       warning "4.0.2"
   
-  "@tarojs/taro-alipay@1.3.19":
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/@tarojs/taro-alipay/download/@tarojs/taro-alipay-1.3.19.tgz#64ef4b62b01ba8c3d6f2e4f3d68b932b4b43c4e0"
-    integrity sha1-ZO9LYrAbqMPW8uTz1ouTK0tDxOA=
+  "@tarojs/taro-alipay@1.3.20":
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/@tarojs/taro-alipay/download/@tarojs/taro-alipay-1.3.20.tgz#37adb75f0ac7696c210432cff56bf460de20c3d7"
+    integrity sha1-N623XwrHaWwhBDLP9Wv0YN4gw9c=
     dependencies:
-      "@tarojs/taro" "1.3.19"
-      "@tarojs/utils" "1.3.19"
+      "@tarojs/taro" "1.3.20"
+      "@tarojs/utils" "1.3.20"
       lodash "^4.17.10"
       prop-types "^15.6.1"
   
-  "@tarojs/taro-h5@1.3.19":
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/@tarojs/taro-h5/download/@tarojs/taro-h5-1.3.19.tgz#abf4d90e9894f5f44bc892e71d63d8044f8d5cb2"
-    integrity sha1-q/TZDpiU9fRLyJLnHWPYBE+NXLI=
+  "@tarojs/taro-h5@1.3.20":
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/@tarojs/taro-h5/download/@tarojs/taro-h5-1.3.20.tgz#344afdf07336cb2d4a7108206c1e95bc65e402b8"
+    integrity sha1-NEr98HM2yy1KcQggbB6VvGXkArg=
     dependencies:
       base64-js "^1.3.0"
       jsonp-retry "^1.0.3"
@@ -1205,12 +1197,12 @@ Lockfile:
       raf "^3.4.1"
       whatwg-fetch "^2.0.4"
   
-  "@tarojs/taro-rn@1.3.19":
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/@tarojs/taro-rn/download/@tarojs/taro-rn-1.3.19.tgz#c2483f43ce37185852b2269fffeabc43d6c19eec"
-    integrity sha1-wkg/Q843GFhSsiaf/+q8Q9bBnuw=
+  "@tarojs/taro-rn@1.3.20":
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/@tarojs/taro-rn/download/@tarojs/taro-rn-1.3.20.tgz#86e86893c073e047cf6767745533763a3dda3743"
+    integrity sha1-huhok8Bz4EfPZ2d0VTN2Oj3aN0M=
     dependencies:
-      "@tarojs/taro" "1.3.19"
+      "@tarojs/taro" "1.3.20"
       babel-preset-expo "^5.2.0"
       base64-js "^1.3.0"
       expo-av "^5.0.2"
@@ -1228,60 +1220,60 @@ Lockfile:
       react-native-stylekit "^1.0.0"
       react-native-unimodules "^0.5.3"
   
-  "@tarojs/taro-swan@1.3.19":
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/@tarojs/taro-swan/download/@tarojs/taro-swan-1.3.19.tgz#5235dda8871412b985b9185b76aa0a953c8901a4"
-    integrity sha1-UjXdqIcUErmFuRhbdqoKlTyJAaQ=
+  "@tarojs/taro-swan@1.3.20":
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/@tarojs/taro-swan/download/@tarojs/taro-swan-1.3.20.tgz#286f47404da9b4704ce9189f5e8c30a0450802ce"
+    integrity sha1-KG9HQE2ptHBM6RifXowwoEUIAs4=
     dependencies:
-      "@tarojs/taro" "1.3.19"
-      "@tarojs/utils" "1.3.19"
+      "@tarojs/taro" "1.3.20"
+      "@tarojs/utils" "1.3.20"
       lodash "^4.17.10"
       prop-types "^15.6.1"
   
-  "@tarojs/taro-tt@1.3.19":
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/@tarojs/taro-tt/download/@tarojs/taro-tt-1.3.19.tgz#a7df0fc0df621b406cc2a9c01d3128e1a40de9d7"
-    integrity sha1-p98PwN9iG0BswqnAHTEo4aQN6dc=
+  "@tarojs/taro-tt@1.3.20":
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/@tarojs/taro-tt/download/@tarojs/taro-tt-1.3.20.tgz#985afe83cc397ddade2e373c0910518bdb7fb5eb"
+    integrity sha1-mFr+g8w5fdreLjc8CRBRi9t/tes=
     dependencies:
-      "@tarojs/taro" "1.3.19"
-      "@tarojs/utils" "1.3.19"
+      "@tarojs/taro" "1.3.20"
+      "@tarojs/utils" "1.3.20"
       lodash "^4.17.10"
       prop-types "^15.6.1"
   
-  "@tarojs/taro-weapp@1.3.19":
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/@tarojs/taro-weapp/download/@tarojs/taro-weapp-1.3.19.tgz#1194a86e91463817a58e2a2737f1876c3c2f3a16"
-    integrity sha1-EZSobpFGOBeljionN/GHbDwvOhY=
+  "@tarojs/taro-weapp@1.3.20":
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/@tarojs/taro-weapp/download/@tarojs/taro-weapp-1.3.20.tgz#26d43563bb21b04fd4564b2eb654c3426f009c11"
+    integrity sha1-JtQ1Y7shsE/UVksutlTDQm8AnBE=
     dependencies:
-      "@tarojs/taro" "1.3.19"
-      "@tarojs/utils" "1.3.19"
+      "@tarojs/taro" "1.3.20"
+      "@tarojs/utils" "1.3.20"
       lodash "^4.17.10"
       prop-types "^15.6.1"
   
-  "@tarojs/taro@1.3.19":
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/@tarojs/taro/download/@tarojs/taro-1.3.19.tgz#d82adf68553cc52afdc3229be64fcd9cbe4a98db"
-    integrity sha1-2CrfaFU8xSr9wyKb5k/NnL5KmNs=
+  "@tarojs/taro@1.3.20":
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/@tarojs/taro/download/@tarojs/taro-1.3.20.tgz#7db4e697b7c3b1ef18bdc9a5a9df0f057587dd33"
+    integrity sha1-fbTml7fDse8Yvcmlqd8PBXWH3TM=
     dependencies:
-      "@tarojs/utils" "1.3.19"
+      "@tarojs/utils" "1.3.20"
   
-  "@tarojs/utils@1.3.19":
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/@tarojs/utils/download/@tarojs/utils-1.3.19.tgz#7726ec7baca29f6f372c2ad3ee3372e72fe90c7d"
-    integrity sha1-dybse6yin283LCrT7jNy5y/pDH0=
+  "@tarojs/utils@1.3.20":
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/@tarojs/utils/download/@tarojs/utils-1.3.20.tgz#9c8d245818ef10653b78687e412641c855e6b7f0"
+    integrity sha1-nI0kWBjvEGU7eGh+QSZByFXmt/A=
   
-  "@tarojs/webpack-runner@1.3.19":
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/@tarojs/webpack-runner/download/@tarojs/webpack-runner-1.3.19.tgz#852c0d4477d5fd8a437e54e87c38a7aa34ccf601"
-    integrity sha1-hSwNRHfV/YpDflTofDinqjTM9gE=
+  "@tarojs/webpack-runner@1.3.20":
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/@tarojs/webpack-runner/download/@tarojs/webpack-runner-1.3.20.tgz#27bdf41de171b3166afc6f135c31d33ddc51672e"
+    integrity sha1-J730HeFxsxZq/G8TXDHTPdxRZy4=
     dependencies:
-      "@tarojs/taro-h5" "1.3.19"
+      "@tarojs/taro-h5" "1.3.20"
       autoprefixer "8.6.4"
       babel-core "6.26.0"
       babel-loader "7.1.4"
       babel-plugin-syntax-dynamic-import "6.18.0"
       babel-plugin-transform-react-jsx "6.24.1"
-      babel-plugin-transform-taroapi "1.3.19"
+      babel-plugin-transform-taroapi "1.3.20"
       babel-types "6.26.0"
       chalk "2.4.2"
       copy-webpack-plugin "^5.0.3"
@@ -1299,8 +1291,8 @@ Lockfile:
       opn "5.3.0"
       ora "2.1.0"
       postcss-loader "2.1.6"
-      postcss-plugin-constparse "1.3.19"
-      postcss-pxtransform "1.3.19"
+      postcss-plugin-constparse "1.3.20"
+      postcss-pxtransform "1.3.20"
       resolve "1.8.1"
       resolve-url-loader "2.3.0"
       sass-loader "7.1.0"
@@ -1603,21 +1595,8 @@ Lockfile:
     dependencies:
       core-decorators "^0.20.0"
   
-  "@wmeimob/node-tools@git+ssh://git@git.f.wmeimob.com:9922/Frontend/node-tools.git":
-    version "1.0.0"
-    resolved "git+ssh://git@git.f.wmeimob.com:9922/Frontend/node-tools.git#41f08c7adae821b8c2e5d4aedaa94dc0f7ed8f58"
-    dependencies:
-      "@types/node" "^12.7.12"
-      body-parser "^1.19.0"
-      colors "^1.4.0"
-      express "^4.17.1"
-      fs-extra "^8.1.0"
-      global "^4.4.0"
-      typescript "^3.6.4"
-  
   "@wmeimob/node-tools@ssh://git@git.f.wmeimob.com:9922/Frontend/node-tools.git":
     version "1.0.0"
-    uid "41f08c7adae821b8c2e5d4aedaa94dc0f7ed8f58"
     resolved "ssh://git@git.f.wmeimob.com:9922/Frontend/node-tools.git#41f08c7adae821b8c2e5d4aedaa94dc0f7ed8f58"
     dependencies:
       "@types/node" "^12.7.12"
@@ -1630,19 +1609,19 @@ Lockfile:
   
   "@wmeimob/weapp-design@ssh://git@git.f.wmeimob.com:9922/Frontend/weapp-design.git":
     version "1.0.0"
-    resolved "ssh://git@git.f.wmeimob.com:9922/Frontend/weapp-design.git#9e10778ea89e0bc4287053c7b1ffd66eba5453af"
+    resolved "ssh://git@git.f.wmeimob.com:9922/Frontend/weapp-design.git#67251e19199653bc6eaa8d48ddf8f1c4a4712336"
     dependencies:
-      "@tarojs/async-await" "1.3.19"
-      "@tarojs/components" "1.3.19"
-      "@tarojs/router" "1.3.19"
-      "@tarojs/taro" "1.3.19"
-      "@tarojs/taro-alipay" "1.3.19"
-      "@tarojs/taro-h5" "1.3.19"
-      "@tarojs/taro-swan" "1.3.19"
-      "@tarojs/taro-tt" "1.3.19"
-      "@tarojs/taro-weapp" "1.3.19"
+      "@tarojs/async-await" "1.3.20"
+      "@tarojs/components" "1.3.20"
+      "@tarojs/router" "1.3.20"
+      "@tarojs/taro" "1.3.20"
+      "@tarojs/taro-alipay" "1.3.20"
+      "@tarojs/taro-h5" "1.3.20"
+      "@tarojs/taro-swan" "1.3.20"
+      "@tarojs/taro-tt" "1.3.20"
+      "@tarojs/taro-weapp" "1.3.20"
       "@wmeimob/decorator" "ssh://git@git.f.wmeimob.com:9922/Frontend/decorator.git"
-      "@wmeimob/node-tools" "git+ssh://git@git.f.wmeimob.com:9922/Frontend/node-tools.git"
+      "@wmeimob/node-tools" "ssh://git@git.f.wmeimob.com:9922/Frontend/node-tools.git"
       classnames "^2.2.6"
       core-decorators "^0.20.0"
       nerv-devtools "^1.4.0"
@@ -2731,10 +2710,10 @@ Lockfile:
       babel-runtime "^6.22.0"
       babel-types "^6.24.1"
   
-  babel-plugin-transform-taroapi@1.3.19:
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/babel-plugin-transform-taroapi/download/babel-plugin-transform-taroapi-1.3.19.tgz?cache=0&sync_timestamp=1571064034933&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fbabel-plugin-transform-taroapi%2Fdownload%2Fbabel-plugin-transform-taroapi-1.3.19.tgz#7b0c886b95417513a4e7f3e879aa7ef2e79b413e"
-    integrity sha1-ewyIa5VBdROk5/Poeap+8uebQT4=
+  babel-plugin-transform-taroapi@1.3.20:
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/babel-plugin-transform-taroapi/download/babel-plugin-transform-taroapi-1.3.20.tgz#e8e8816214fa2526c6f3385471b64260bd41728d"
+    integrity sha1-6OiBYhT6JSbG8zhUcbZCYL1Bco0=
   
   babel-polyfill@^6.23.0:
     version "6.26.0"
@@ -6519,6 +6498,11 @@ Lockfile:
     resolved "https://registry.npm.taobao.org/interpret/download/interpret-1.2.0.tgz#d5061a6224be58e8083985f5014d844359576296"
     integrity sha1-1QYaYiS+WOgIOYX1AU2EQ1lXYpY=
   
+  intersection-observer@^0.7.0:
+    version "0.7.0"
+    resolved "https://registry.npm.taobao.org/intersection-observer/download/intersection-observer-0.7.0.tgz#ee16bee978db53516ead2f0a8154b09b400bbdc9"
+    integrity sha1-7ha+6XjbU1FurS8KgVSwm0ALvck=
+  
   invariant@2.2.4, invariant@^2.2.2, invariant@^2.2.4:
     version "2.2.4"
     resolved "https://registry.npm.taobao.org/invariant/download/invariant-2.2.4.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Finvariant%2Fdownload%2Finvariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
@@ -9208,10 +9192,10 @@ Lockfile:
       icss-replace-symbols "^1.1.0"
       postcss "^6.0.1"
   
-  postcss-plugin-constparse@1.3.19:
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/postcss-plugin-constparse/download/postcss-plugin-constparse-1.3.19.tgz#2d59090378081673cc909d6b816d52211c38f5fa"
-    integrity sha1-LVkJA3gIFnPMkJ1rgW1SIRw49fo=
+  postcss-plugin-constparse@1.3.20:
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/postcss-plugin-constparse/download/postcss-plugin-constparse-1.3.20.tgz#e6a874f8b6f6842ce9080ff75f1a5d74bb060e64"
+    integrity sha1-5qh0+Lb2hCzpCA/3XxpddLsGDmQ=
     dependencies:
       postcss "^6.0.22"
   
@@ -9223,10 +9207,10 @@ Lockfile:
       object-assign "^4.1.0"
       postcss "^5.2.10"
   
-  postcss-pxtransform@1.3.19:
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/postcss-pxtransform/download/postcss-pxtransform-1.3.19.tgz?cache=0&sync_timestamp=1571064034193&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fpostcss-pxtransform%2Fdownload%2Fpostcss-pxtransform-1.3.19.tgz#6318c107b7d34793eb81f204e5b894a481d22c76"
-    integrity sha1-YxjBB7fTR5PrgfIE5biUpIHSLHY=
+  postcss-pxtransform@1.3.20:
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/postcss-pxtransform/download/postcss-pxtransform-1.3.20.tgz#3bfd5aaef20e74ccc1f9ba9dbeece090e3d163be"
+    integrity sha1-O/1arvIOdMzB+bqdvuzgkOPRY74=
     dependencies:
       postcss "^6.0.16"
       postcss-pxtorem "^4.0.1"
@@ -11179,15 +11163,15 @@ Lockfile:
     resolved "https://registry.npm.taobao.org/style-search/download/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
     integrity sha1-eVjHk+R+MuB9K1yv5cC/jhLneQI=
   
-  stylelint-config-taro-rn@1.3.19:
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/stylelint-config-taro-rn/download/stylelint-config-taro-rn-1.3.19.tgz?cache=0&sync_timestamp=1571064034964&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fstylelint-config-taro-rn%2Fdownload%2Fstylelint-config-taro-rn-1.3.19.tgz#82b02e455c333f7d425fe01daa61bf52dbe1617b"
-    integrity sha1-grAuRVwzP31CX+AdqmG/UtvhYXs=
+  stylelint-config-taro-rn@1.3.20:
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/stylelint-config-taro-rn/download/stylelint-config-taro-rn-1.3.20.tgz#face867331c026beb0fd767ebe57e395c9a5ee03"
+    integrity sha1-+s6GczHAJr6w/XZ+vlfjlcml7gM=
   
-  stylelint-taro-rn@1.3.19:
-    version "1.3.19"
-    resolved "https://registry.npm.taobao.org/stylelint-taro-rn/download/stylelint-taro-rn-1.3.19.tgz?cache=0&sync_timestamp=1571064040690&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fstylelint-taro-rn%2Fdownload%2Fstylelint-taro-rn-1.3.19.tgz#d0a4a2dc0f9a49e922c629333757a45915a17c82"
-    integrity sha1-0KSi3A+aSekixikzN1ekWRWhfII=
+  stylelint-taro-rn@1.3.20:
+    version "1.3.20"
+    resolved "https://registry.npm.taobao.org/stylelint-taro-rn/download/stylelint-taro-rn-1.3.20.tgz#6ef7e5d6feda91f8d38a3d345a10ad5b41c9ad57"
+    integrity sha1-bvfl1v7akfjTij00WhCtW0HJrVc=
     dependencies:
       react-native-known-styling-properties "^1.0.4"
   

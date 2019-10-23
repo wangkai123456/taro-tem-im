@@ -1,6 +1,6 @@
 const path = require('path');
 const config = {
-    projectName: 'weapp-design',
+    projectName: 'weapp-template',
     date: '2019-7-31',
     designWidth: 750,
     deviceRatio: {

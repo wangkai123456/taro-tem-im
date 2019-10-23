@@ -1,0 +1,59 @@
+@import '../styles/themes/default.less';
+
+
+.MMSwitch {
+    position     : relative;
+    width        : 51px;
+    height       : 31px;
+    border-radius: 31px;
+    background   : #e5e5e5;
+
+    &::before {
+        display      : block;
+        content      : " ";
+        position     : absolute;
+        left         : 1.5px;
+        top          : 1.5px;
+        width        : 48px;
+        height       : 28px;
+        border-radius: 28px;
+        background   : #fff;
+        transition   : all .2s;
+        box-sizing   : border-box;
+        z-index      : 1;
+        transform    : scale(1);
+    }
+
+    &::after {
+        display      : block;
+        content      : " ";
+        position     : absolute;
+        left         : 1.5px;
+        top          : 1.5px;
+        width        : 28px;
+        height       : 28px;
+        border-radius: 28px;
+        background   : #fff;
+        transition   : all .2s;
+        box-shadow   : 2px 2px 4px rgba(0, 0, 0, .21);
+        z-index      : 2;
+    }
+
+}
+
+
+.MMSwitch__disabled {
+    opacity: .3;
+}
+
+.MMSwitch__checked {
+    background: @green;
+
+    &::before {
+        transform: scale(0);
+    }
+
+    &::after {
+        left: 21.5px;
+    }
+}

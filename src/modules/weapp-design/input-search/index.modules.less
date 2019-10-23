@@ -1,0 +1,92 @@
+@import '../styles/themes/default.less';
+
+:export {
+    gray4: @gray4;
+}
+
+.MMInputSearch {
+    display         : flex;
+    flex-direction  : row;
+    padding         : 8px;
+    background-color: @gray1;
+    box-shadow      : @boxShadow;
+}
+
+.MMInputSearch__focus {
+    .content {
+        padding        : 0 @spacingSize;
+        justify-content: start;
+    }
+
+    .placeholder {
+        display: none;
+    }
+
+    .text {
+        display: flex;
+    }
+
+    .input_box {
+        position   : relative;
+        width      : auto;
+        height     : auto;
+        display    : block;
+        margin-left: @spacingSize;
+        opacity    : 1;
+    }
+}
+
+.MMInputSearch__primary {
+    background-color: @primaryColor;
+
+    .content {
+        background-color: @gray1;
+    }
+
+    .text {
+        color: @gray1;
+    }
+}
+
+.content {
+    position        : relative;
+    display         : flex;
+    flex            : 1;
+    border-radius   : @borderRadiusSize;
+    height          : 32px;
+    flex-direction  : row;
+    align-items     : center;
+    justify-content : center;
+    background-color: @gray2;
+    color           : @gray4;
+}
+
+.input_box {
+    position: absolute;
+    left    : 0;
+    top     : 0;
+    width   : 100%;
+    height  : 100%;
+    opacity : 0;
+
+    flex: 1;
+
+    input {
+        width : 100%;
+        height: 100%;
+        color : @gray7;
+    }
+}
+
+.placeholder {
+    margin-left: @spacingSize;
+}
+
+.text {
+    display        : none;
+    padding        : 0 @spacingSize * 3;
+    align-items    : center;
+    justify-content: center;
+    color          : @primaryColor;
+    border-radius  : @borderRadiusSize;
+}

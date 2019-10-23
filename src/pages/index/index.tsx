@@ -6,10 +6,14 @@ import { ComponentType } from 'react';
 import global from '~/globalStore';
 import imageSrc from './images/image.jpeg';
 import * as styles from './index.module.less';
-import { H2, H3, MMNavigation, MMPopup, MMButton } from '@wmeimob/weapp-design';
 import classNames from 'classnames';
-import TabBar from '~/components/tab-bar';
-import { MMButtonType } from '@wmeimob/weapp-design/src/components/const';
+import MMNavigation from '~/modules/weapp-design/navigation';
+import MMPopup from '~/modules/weapp-design/modal/popup';
+import H2 from '~/modules/weapp-design/head/h2';
+import H3 from '~/modules/weapp-design/head/h3';
+import MMButton from '~/modules/weapp-design/button';
+import { MMButtonState } from '~/modules/weapp-design/button/const';
+import MMTabBar from '~/modules/weapp-design/tab-bar';
 
 @observer
 class Index extends Component {
@@ -139,7 +143,7 @@ class Index extends Component {
                     <View className='spacing'></View>
                     <H2>参数</H2>
                     <View>
-                        <MMButton type={MMButtonType.Warning}>slot</MMButton>
+                        <MMButton state={MMButtonState.Warning}>slot</MMButton>
                     </View>
 
                     <View className='spacing'></View>
@@ -153,7 +157,7 @@ class Index extends Component {
                     <Image src={imageSrc} />
 
                 </View>
-                <TabBar></TabBar>
+                <MMTabBar></MMTabBar>
             </View>
         );
     }
