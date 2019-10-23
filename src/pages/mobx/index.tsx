@@ -42,26 +42,28 @@ class Index extends Component {
         return (
             <View className="content">
                 <MMNavigation title="mobx和自定义组件"></MMNavigation>
-                {
-                    /*
-                     * 先建构再赋值
-                     */
-                }
-                <View onClick={this.onClickCouter}>
-                    {counter}
+                <View className="container">
+                    <View className="spacing"></View>
+                    {
+                        /*
+                         * 先建构再赋值
+                         */
+                    }
+                    <View onClick={this.onClickCouter}>
+                        {counter}
+                    </View>
+
+                    {
+                        /*
+                         * 改变别的值用来做刷新
+                         */
+                    }
+                    {global.list.map((value, index) => <View key={value.text + index} onClick={() => this.onItemClick(value.id)}>
+                        <Text>item:{value.text}</Text>
+                    </View>)}
+                    <Text className="hide">{listUpdate}</Text>
+                    <DiyComponent></DiyComponent>
                 </View>
-
-                {
-                    /*
-                     * 改变别的值用来做刷新
-                     */
-                }
-                {global.list.map((value, index) => <View key={value.text + index} onClick={() => this.onItemClick(value.id)}>
-                    <Text>item:{value.text}</Text>
-                </View>)}
-                <Text className="hide">{listUpdate}</Text>
-
-                <DiyComponent></DiyComponent>
             </View>
         );
     }
