@@ -1510,7 +1510,7 @@
 
 "@wmeimob/weapp-design@ssh://git@git.f.wmeimob.com:9922/Frontend/weapp-design.git":
   version "1.0.0"
-  resolved "ssh://git@git.f.wmeimob.com:9922/Frontend/weapp-design.git#67251e19199653bc6eaa8d48ddf8f1c4a4712336"
+  resolved "ssh://git@git.f.wmeimob.com:9922/Frontend/weapp-design.git#52ffa15bc973868154ec666b9b27ac1eaca36693"
   dependencies:
     "@tarojs/async-await" "1.3.20"
     "@tarojs/components" "1.3.20"

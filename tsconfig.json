@@ -28,8 +28,8 @@
             "~/*": [
                 "src/*"
             ],
-            "@wmeimob/weapp-design/src/components": [
-                "node_modules/@wmeimob/weapp-design/src/components/*"
+            "@wmeimob/weapp-design": [
+                "src/modules/weapp-design/*"
             ]
         }
     },
