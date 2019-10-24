@@ -2,8 +2,8 @@ import { View } from '@tarojs/components';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { autobind, debounce, lock, throttle } from '@wmeimob/decorator';
 import { ComponentType } from 'react';
-import MMButton from '~/modules/weapp-design/button';
-import MMNavigation from '~/modules/weapp-design/navigation';
+import MMButton from '@wmeimob/weapp-design/src/components/button';
+import MMNavigation from '@wmeimob/weapp-design/src/components/navigation';
 import './index.less';
 
 @autobind

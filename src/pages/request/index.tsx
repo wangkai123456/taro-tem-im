@@ -4,8 +4,8 @@ import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
 import { autobind } from '@wmeimob/decorator';
 import { get, post } from '~/components/request';
-import MMNavigation from '~/modules/weapp-design/navigation';
-import MMTabBar from '~/modules/weapp-design/tab-bar';
+import MMNavigation from '@wmeimob/weapp-design/src/components/navigation';
+import MMTabBar from '@wmeimob/weapp-design/src/components/tab-bar';
 import * as styles from './index.module.less';
 
 @autobind

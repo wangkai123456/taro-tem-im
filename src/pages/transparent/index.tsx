@@ -4,8 +4,8 @@ import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
 import imageSrc from './images/image.jpeg';
 import * as styles from './index.module.less';
-import MMNavigation from '~/modules/weapp-design/navigation';
-import { MMNavigationType } from '~/modules/weapp-design/navigation/const';
+import MMNavigation from '@wmeimob/weapp-design/src/components/navigation';
+import { MMNavigationType } from '@wmeimob/weapp-design/src/components/navigation/const';
 
 @observer
 class Index extends Component {

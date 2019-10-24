@@ -1492,7 +1492,7 @@
 
 "@wmeimob/decorator@ssh://git@git.f.wmeimob.com:9922/Frontend/decorator.git":
   version "1.0.0"
-  resolved "ssh://git@git.f.wmeimob.com:9922/Frontend/decorator.git#5995181104e9c1cda930ba5145b02267f089c6aa"
+  resolved "ssh://git@git.f.wmeimob.com:9922/Frontend/decorator.git#68f78fb915c1242187ed622afebf7f23bd9af0e0"
   dependencies:
     core-decorators "^0.20.0"
 

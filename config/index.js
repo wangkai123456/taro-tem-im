@@ -35,7 +35,7 @@ const config = {
     },
     alias: {
         '~': path.resolve(__dirname, '../', 'src'),
-        '@wmeimob/weapp-design/src/components': path.resolve(__dirname, '../node_modules/@wmeimob/weapp-design/src/components'),
+        '@wmeimob/weapp-design': path.resolve(__dirname, '../src/modules/weapp-design'),
     },
     weapp: {
         module: {

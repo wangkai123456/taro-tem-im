@@ -3,10 +3,10 @@ import { View } from '@tarojs/components';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
 import { autobind } from '@wmeimob/decorator';
-import H2 from '~/modules/weapp-design/head/h2';
-import MMItem from '~/modules/weapp-design/item';
-import MMNavigation from '~/modules/weapp-design/navigation';
-import MMTabBar from '~/modules/weapp-design/tab-bar';
+import H2 from '@wmeimob/weapp-design/src/components/head/h2';
+import MMItem from '@wmeimob/weapp-design/src/components/item';
+import MMNavigation from '@wmeimob/weapp-design/src/components/navigation';
+import MMTabBar from '@wmeimob/weapp-design/src/components/tab-bar';
 import * as styles from './index.module.less';
 
 @autobind

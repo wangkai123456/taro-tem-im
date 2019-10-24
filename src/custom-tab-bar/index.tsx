@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro';
-import IconFontName from '~/modules/weapp-design/iconfont/name';
-import MMTabBar from '~/modules/weapp-design/tab-bar';
+import IconFontName from '@wmeimob/weapp-design/src/components/iconfont/name';
+import MMTabBar from '@wmeimob/weapp-design/src/components/tab-bar';
 
 export default class Index extends Component {
     static data = [
