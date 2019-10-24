@@ -21,15 +21,6 @@ class Index extends Component {
         console.log('this.$router', this.$router.params);
     }
 
-    onClick() {
-        Taro.redirectTo({
-            url: '/pages/test/index',
-            params: {
-                test: '????'
-            }
-        });
-    }
-
     async onLogin() {
         const data = await Taro.login();
 
@@ -43,7 +34,6 @@ class Index extends Component {
     render() {
         return (<View className={styles.page}>
             <MMNavigation title="登录"></MMNavigation>
-            <Button onClick={this.onClick}>跳转到test页面</Button>
             <Button onClick={this.onLogin}>获取微信授权</Button>
         </View>);
     }

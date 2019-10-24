@@ -3,11 +3,13 @@ import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
 import * as styles from './index.module.less';
 import { autobind } from '@wmeimob/decorator';
+import MMNavigation from '~/modules/weapp-design/navigation';
 
 @autobind
 class Index extends Component {
     config: Config = {
-        navigationBarTitleText: 'test'
+        navigationBarTitleText: '',
+        navigationStyle: 'custom'
     };
 
     state = {
@@ -22,7 +24,7 @@ class Index extends Component {
 
     render() {
         return (<View className={styles.page}>
-
+            <MMNavigation title='测试'></MMNavigation>
         </View>);
     }
 }
