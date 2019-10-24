@@ -31,6 +31,7 @@ class App extends Component {
             'pages/index/index',
             'pages/other/index',
             'pages/mobx/index',
+            'pages/login/index',
             'pages/test/index',
             'pages/decorator/index',
             'pages/transparent/index',

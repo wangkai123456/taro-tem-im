@@ -1,4 +1,5 @@
 import Taro from '@tarojs/taro';
+import URLSearchParams from 'url-search-params';
 
 export function extendTaroNavigate() {
     function getExtendFuntion(oldFunction) {

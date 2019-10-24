@@ -1,13 +1,15 @@
 import { View, Button } from '@tarojs/components';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
-import { autobind } from '~/components/decorator';
+import { autobind } from '@wmeimob/decorator';
 import * as styles from './index.module.less';
+import MMNavigation from '~/modules/weapp-design/navigation';
 
 @autobind
 class Index extends Component {
     config: Config = {
-        navigationBarTitleText: '登录'
+        navigationBarTitleText: '',
+        navigationStyle: 'custom'
     };
 
     state = {
@@ -40,6 +42,7 @@ class Index extends Component {
 
     render() {
         return (<View className={styles.page}>
+            <MMNavigation title="登录"></MMNavigation>
             <Button onClick={this.onClick}>跳转到test页面</Button>
             <Button onClick={this.onLogin}>获取微信授权</Button>
         </View>);

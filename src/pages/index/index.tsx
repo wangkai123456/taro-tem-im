@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Image, Text, View } from '@tarojs/components';
 import { observer } from '@tarojs/mobx';
 import Taro, { Component, Config } from '@tarojs/taro';
@@ -51,6 +50,7 @@ class Index extends Component {
      * @memberof Index
      */
     componentWillUnmount() {
+        // eslint-disable-next-line no-console
         console.log('componentWillUnmount');
     }
 
@@ -60,6 +60,7 @@ class Index extends Component {
      * @memberof Index
      */
     componentDidHide() {
+        // eslint-disable-next-line no-console
         console.log('componentDidHide');
     }
 
@@ -69,6 +70,7 @@ class Index extends Component {
      * @memberof Index
      */
     componentDidShow() {
+        // eslint-disable-next-line no-console
         console.log('componentDidShow');
     }
 
@@ -78,39 +80,12 @@ class Index extends Component {
      * @memberof Index
      */
     componentWillReact() {
+        // eslint-disable-next-line no-console
         console.log('componentWillReact');
     }
 
-    renderItem(item: { object: string } | number) {
-        const type = typeof item;
-        if (type === 'object') {
-            return <View>
-                <Text>{(item as { object: string }).object}</Text>
-            </View>;
-        } else if (type === 'number') {
-            return <View>
-                <Text>{item}</Text>
-            </View>;
-        }
-    }
-
-    onClickNavigateTo() {
-        Taro.navigateTo({
-            url: '/pages/request/index',
-            params: {
-                xxx: 1
-            }
-        });
-    }
-
-    onClickImageTo() {
-        Taro.navigateTo({
-            url: '/pages/image/index'
-        });
-    }
-
     render() {
-        const { list, text } = this.state;
+        const { text } = this.state;
         const { user: { userName } } = global;
         return (
             <View>
@@ -149,7 +124,7 @@ class Index extends Component {
                     <View className='spacing'></View>
                     <H2>数组渲染</H2>
                     <View>
-                        {list.map(value => this.renderItem(value))}
+                        {this.renderList()}
                     </View>
 
                     <View className='spacing'></View>
@@ -160,6 +135,21 @@ class Index extends Component {
                 <MMTabBar></MMTabBar>
             </View>
         );
+    }
+
+    private renderList() {
+        const { list } = this.state;
+        return list.map((item, index) => {
+            const type = typeof item;
+            if (type === 'object') {
+                return <View>
+                    <Text>{(item as { object: string }).object}</Text>
+                </View>;
+            }
+            return <View key={item.toString() + index}>
+                <Text>{item}</Text>
+            </View>;
+        })
     }
 
     private onClick() {

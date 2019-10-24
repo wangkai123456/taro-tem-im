@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe D:\work\frame\weapp-template\node_modules\yarn\bin\yarn.js add @wmeimob/weapp-design --silent --no-progress
+  C:\Program Files\nodejs\node.exe D:\work\frame\weapp-template\node_modules\yarn\bin\yarn.js add ; --silent --no-progress
 
 PATH: 
-  C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;D:\work\frame\weapp-template\node_modules\.bin;C:\Users\li\AppData\Local\Temp\yarn--1571795051472-0.0520655995820658;D:\work\frame\weapp-template\node_modules\.bin;C:\Users\li\AppData\Local\Yarn\Data\link\node_modules\.bin;C:\Program Files\libexec\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Java\jdk1.8.0_211\bin;C:\Users\li\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\nodejs\;C:\Users\li\AppData\Local\Microsoft\WindowsApps;C:\Users\li\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\li\AppData\Local\Yarn\bin;C:\Users\li\AppData\Local\Programs\Fiddler;C:\Users\li\AppData\Roaming\npm
+  C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;D:\work\frame\weapp-template\node_modules\.bin;C:\Users\li\AppData\Local\Temp\yarn--1571883070436-0.2923384965152134;D:\work\frame\weapp-template\node_modules\.bin;C:\Users\li\AppData\Local\Yarn\Data\link\node_modules\.bin;C:\Program Files\libexec\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Java\jdk1.8.0_211\bin;C:\Users\li\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\nodejs\;C:\Users\li\AppData\Local\Microsoft\WindowsApps;C:\Users\li\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\li\AppData\Local\Yarn\bin;C:\Users\li\AppData\Local\Programs\Fiddler;C:\Users\li\AppData\Roaming\npm
 
 Yarn version: 
   1.19.1
@@ -14,8 +14,17 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: connect ETIMEDOUT 104.16.25.35:443
-      at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1106:14)
+  Error: https://registry.yarnpkg.com/;: Not found
+      at Request.params.callback [as _callback] (D:\work\frame\weapp-template\node_modules\yarn\lib\cli.js:66926:18)
+      at Request.self.callback (D:\work\frame\weapp-template\node_modules\yarn\lib\cli.js:140564:22)
+      at Request.emit (events.js:198:13)
+      at Request.<anonymous> (D:\work\frame\weapp-template\node_modules\yarn\lib\cli.js:141536:10)
+      at Request.emit (events.js:198:13)
+      at IncomingMessage.<anonymous> (D:\work\frame\weapp-template\node_modules\yarn\lib\cli.js:141458:12)
+      at Object.onceWrapper (events.js:286:20)
+      at IncomingMessage.emit (events.js:203:15)
+      at endReadableNT (_stream_readable.js:1145:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
 
 npm manifest: 
   {

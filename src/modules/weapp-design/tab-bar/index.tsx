@@ -99,7 +99,6 @@ export default class MMTabBar extends Component<IMMTabBarProps, IMMTabBarState> 
     }
 
     componentDidMount() {
-        // eslint-disable-next-line prefer-destructuring
         if (!recordData) {
             recordData = this.props.defaultData as any;
         }

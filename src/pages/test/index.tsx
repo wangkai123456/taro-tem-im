@@ -1,8 +1,8 @@
 import { View } from '@tarojs/components';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
-import { autobind } from '~/components/decorator';
 import * as styles from './index.module.less';
+import { autobind } from '@wmeimob/decorator';
 
 @autobind
 class Index extends Component {

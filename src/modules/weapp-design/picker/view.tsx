@@ -1,8 +1,7 @@
 import { View, ScrollView } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
 import { autobind, throttle } from '@wmeimob/decorator';
-
-import styles from '../styles/components/picker/index.modules.less';
+import styles from './index.modules.less';
 
 interface MMPickerViewProps {
     data: { value: string; text: string }[];
@@ -24,7 +23,8 @@ export default class MMPickerView extends Component<MMPickerViewProps> {
 
     state = {
         index: 0,
-        scrollTop: 0
+        scrollTop: this.getScrollTop(this.props.value),
+        scrollViewScrollTop: this.getScrollTop(this.props.value)
     };
 
     private scrollTop = 0;
@@ -34,11 +34,9 @@ export default class MMPickerView extends Component<MMPickerViewProps> {
     private touching = false;
 
     render() {
-        const { scrollTop } = this.state;
-
-        // console.log(scrollTop);
         return <View className={styles.MMPicker}>
-            <ScrollView className={styles.scrollview} scrollTop={this.getScrollTop()} throttle={false} scrollY scrollWithAnimation
+            <ScrollView className={styles.scrollview} scrollTop={this.state.scrollViewScrollTop}
+                throttle={false} scrollY scrollWithAnimation
                 onScroll={this.onScroll} onTouchStart={this.onTouchStart} onTouchEnd={this.onTouchEnd}>
                 <View className={styles.placeholder}></View>
                 {this.props.data.map((item, index) => <View key={item.value} className={styles.item}
@@ -60,16 +58,13 @@ export default class MMPickerView extends Component<MMPickerViewProps> {
         }
 
         const proportion = (end - start - result) / (end - start);
-        // const scale = (MMPickerView.itemHeight * 6 - start - result) / (MMPickerView.itemHeight * 6 - start);
-        // const translateY = result / MMPickerView.itemHeight * -10;
         return {
             opacity: 0.8 * proportion
-            // transform: `scale(${scale}) translate(0, ${translateY}px)`
         }
     }
 
-    private getScrollTop() {
-        return MMPickerView.itemHeight * this.props.data.findIndex(value => value.value === this.props.value);
+    private getScrollTop(dataValue) {
+        return MMPickerView.itemHeight * this.props.data.findIndex(value => value.value === dataValue);
     }
 
     @throttle(20)
@@ -78,12 +73,10 @@ export default class MMPickerView extends Component<MMPickerViewProps> {
         this.setState({
             scrollTop: event.target.scrollTop
         })
-        this.onChange();
     }
 
     private onTouchStart() {
         this.touching = true;
-        this.onChange();
     }
 
     private onTouchEnd() {
@@ -94,7 +87,17 @@ export default class MMPickerView extends Component<MMPickerViewProps> {
     private onChange() {
         if (!this.touching) {
             clearTimeout(this.changeST);
-            this.changeST = setTimeout(() => this.props.onChange(this.props.data[Math.round(this.scrollTop / MMPickerView.itemHeight)].value), 100);
+            const { value } = this.props.data[Math.round(this.scrollTop / MMPickerView.itemHeight)];
+
+            const scrollViewScrollTop = this.getScrollTop(value);
+            this.setState({
+                scrollViewScrollTop: this.state.scrollViewScrollTop + 1
+            }, () => {
+                this.setState({
+                    scrollViewScrollTop
+                })
+            })
+            this.props.onChange(value);
         }
     }
 }

@@ -2,7 +2,7 @@
 import { View } from '@tarojs/components';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
-import { autobind } from '~/components/decorator';
+import { autobind } from '@wmeimob/decorator';
 import H2 from '~/modules/weapp-design/head/h2';
 import MMItem from '~/modules/weapp-design/item';
 import MMNavigation from '~/modules/weapp-design/navigation';
@@ -40,6 +40,11 @@ class Index extends Component {
                     <MMItem onClick={() => Taro.navigateTo({
                         url: '/pages/mobx/index'
                     })}>mobx和自定义组件</MMItem>
+
+                    <View className='spacing'></View>
+                    <MMItem onClick={() => Taro.navigateTo({
+                        url: '/pages/login/index'
+                    })}>跳转登录页</MMItem>
                 </View>
 
                 <MMTabBar></MMTabBar>

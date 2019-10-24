@@ -2,7 +2,7 @@
 import { Button, View } from '@tarojs/components';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
-import { autobind } from '~/components/decorator';
+import { autobind } from '@wmeimob/decorator';
 import { get, post } from '~/components/request';
 import MMNavigation from '~/modules/weapp-design/navigation';
 import MMTabBar from '~/modules/weapp-design/tab-bar';

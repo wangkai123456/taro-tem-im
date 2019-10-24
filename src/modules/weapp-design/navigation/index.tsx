@@ -4,7 +4,7 @@ import { autobind } from '@wmeimob/decorator';
 import classnames from 'classnames';
 import MMIconfont from '../iconfont';
 import { MMNavigationType } from './const';
-import styles from '../styles/components/navigation/index.modules.less';
+import styles from './index.modules.less';
 
 interface INavigationProps {
     /**
