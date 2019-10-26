@@ -42,6 +42,7 @@
         "@tarojs/taro-weapp": "1.3.20",
         "@types/classnames": "^2.2.9",
         "@wmeimob/decorator": "ssh://git@git.f.wmeimob.com:9922/Frontend/decorator.git",
+        "@wmeimob/weapp-component-product": "ssh://git@git.f.wmeimob.com:9922/Frontend/weapp-component-product.git",
         "@wmeimob/weapp-design": "ssh://git@git.f.wmeimob.com:9922/Frontend/weapp-design.git",
         "classnames": "^2.2.6",
         "eslint": "^6.5.1",

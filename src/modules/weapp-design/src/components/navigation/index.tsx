@@ -2,9 +2,10 @@ import { View } from '@tarojs/components';
 import { Component, getCurrentPages, getMenuButtonBoundingClientRect, navigateBack, getSystemInfoSync } from '@tarojs/taro';
 import { autobind } from '@wmeimob/decorator';
 import classnames from 'classnames';
-import MMIconfont from '../iconfont';
+import MMIconFont from '../icon-font';
 import { MMNavigationType } from './const';
 import styles from './index.modules.less';
+import { MMIconFontName } from '../const';
 
 interface INavigationProps {
     /**
@@ -103,8 +104,8 @@ export default class MMNavigation extends Component<INavigationProps, INavigatio
         const { length } = getCurrentPages();
         const { type } = this.props;
         return length > 1 && <View className={styles.goback} onClick={this.onGoBack} >
-            <MMIconfont color={type === MMNavigationType.default ? undefined : 'white'}
-                value="arrowLeft"></MMIconfont>
+            <MMIconFont color={type === MMNavigationType.default ? undefined : 'white'}
+                value={MMIconFontName.ArrowLeft}></MMIconFont>
         </View>;
     }
 }

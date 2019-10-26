@@ -5,9 +5,6 @@ import { autobind } from '@wmeimob/decorator';
 import classnames from 'classnames';
 import styles from './index.modules.less';
 
-
-const name = 'MMIconfont';
-
 interface IIconfontProps extends StandardProps {
     value: string;
     color?: string;
@@ -19,7 +16,7 @@ interface IIconfontState {
 }
 
 @autobind
-export default class MMIconfont extends Component<IIconfontProps, IIconfontState> {
+export default class MMIconFont extends Component<IIconfontProps, IIconfontState> {
     static defaultProps = {
         color: '#000',
         size: 20
@@ -30,7 +27,7 @@ export default class MMIconfont extends Component<IIconfontProps, IIconfontState
     };
 
     render() {
-        return <View className={classnames(styles.MMIconfont, styles[`icon${this.props.value}`])}
+        return <View className={classnames(styles.MMIconFont, styles[`icon${this.props.value}`])}
             style={{ fontSize: this.props.size + 'px', color: this.props.color }}></View>;
     }
 }

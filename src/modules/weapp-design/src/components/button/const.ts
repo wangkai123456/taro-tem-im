@@ -9,7 +9,8 @@ export enum MMButtonState {
     Default,
     Success,
     Warning,
-    Danger
+    Danger,
+    Cool
 }
 
 export enum MMButtonSize {

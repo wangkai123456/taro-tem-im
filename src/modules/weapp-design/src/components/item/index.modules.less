@@ -2,11 +2,47 @@
 
 
 .MMItem {
+    display    : flex;
+    align-items: center;
+}
+
+.divider {
+    border-bottom: 0.5px solid @dividerColor;
+}
+
+.left {
+    flex       : 1;
+    display    : flex;
+    height     : 100%;
+    align-items: center;
+}
+
+.leftIconfont {
+    margin-right: @spacingSize * 3;
+}
+
+.right {
+    display    : flex;
+    height     : 100%;
+    align-items: center;
+}
+
+.content {
     display        : flex;
-    padding        : @spacingSize;
-    height         : 40px;
-    flex-direction : row;
+    flex           : 1;
+    height         : 50px;
     justify-content: space-between;
     align-items    : center;
-    border-bottom  : 0.5px solid @dividerColor;
+}
+
+.leftText {
+    margin-right: @spacingSize * 3;
+    font-size   : 15px;
+    color       : @gray7;
+}
+
+.rightText {
+    margin-left: @spacingSize * 3;
+    font-size  : 15px;
+    color      : @gray5;
 }

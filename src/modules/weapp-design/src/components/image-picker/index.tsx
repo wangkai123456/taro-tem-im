@@ -2,7 +2,7 @@ import { View, Image } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
 import { autobind } from '@wmeimob/decorator';
 import classname from 'classnames';
-import MMIconfont from '../iconfont';
+import MMIconFont from '../icon-font';
 import styles from './index.modules.less';
 
 interface IMMImagePickerProps {
@@ -43,7 +43,7 @@ export default class MMImagePicker extends Component<IMMImagePickerProps> {
 
     private renderIconfont(index) {
         return <View className={styles.delete} onClick={() => this.onDelete(index)}>
-            <MMIconfont size={20} value="delete"></MMIconfont>
+            <MMIconFont size={20} value="delete"></MMIconFont>
         </View>;
     }
 

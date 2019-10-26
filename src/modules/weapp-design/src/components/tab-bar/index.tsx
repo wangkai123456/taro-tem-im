@@ -1,7 +1,7 @@
 import { View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
 import { autobind } from '@wmeimob/decorator';
-import MMIconfont from '../iconfont';
+import MMIconFont from '../icon-font';
 import styles from './index.modules.less';
 import classNames from 'classnames';
 import { isNewIphone } from '../utils';
@@ -86,8 +86,8 @@ export default class MMTabBar extends Component<IMMTabBarProps, IMMTabBarState> 
                             key={value.text}
                             className={this.getClassName(index)}
                             onClick={() => this.onClick(value, index)}>
-                            <MMIconfont value={value.iconfont} size={20} color={currPageIndex === index ?
-                                styles.primaryColor : styles.tabBarFontColor} ></MMIconfont>
+                            <MMIconFont value={value.iconfont} size={20} color={currPageIndex === index ?
+                                styles.primaryColor : styles.tabBarFontColor} ></MMIconFont>
                             {value.text}
                             {value.redHot && <View className={styles.redDot}></View>}
                             {value.count && <View className={styles.count}>{value.count}</View>}

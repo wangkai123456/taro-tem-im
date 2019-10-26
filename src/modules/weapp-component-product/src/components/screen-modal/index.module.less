@@ -1,0 +1,35 @@
+@import '../../../node_modules/@wmeimob/weapp-design/src/components/styles/themes/default.less';
+
+
+.modal_content {
+    position        : fixed;
+    left            : 100px;
+    top             : 0;
+    width           : calc(100% - 100px);
+    background-color: white;
+    height          : 100%;
+    display         : flex;
+    flex-direction  : column;
+}
+
+.modal_title {
+    background-color: @gray5;
+    height          : 80px;
+    line-height     : 100px;
+}
+
+
+.modal_button {
+    display       : flex;
+    flex-direction: row;
+    padding       : @containerSize;
+}
+
+.modal_button_item {
+    flex: 1;
+}
+
+.modal_scroll {
+    flex    : 1;
+    overflow: hidden;
+}

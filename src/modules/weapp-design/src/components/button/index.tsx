@@ -98,6 +98,8 @@ export default class MMButton extends Component<IButtonProps> {
                 return styles.MMButton__warning;
             case MMButtonState.Danger:
                 return styles.MMButton__danger;
+            case MMButtonState.Cool:
+                return styles.MMButton__cool;
             default:
                 return '';
         }

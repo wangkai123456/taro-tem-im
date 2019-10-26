@@ -28,23 +28,28 @@ class Index extends Component {
                 <View className='container'>
                     <H2>其他</H2>
                     <View className='spacing'></View>
-                    <MMItem onClick={() => Taro.navigateTo({
+                    <MMItem leftText="装饰器" onClick={() => Taro.navigateTo({
                         url: '/pages/decorator/index'
-                    })}>装饰器</MMItem>
+                    })}></MMItem>
                     <View className='spacing'></View>
-                    <MMItem onClick={() => Taro.navigateTo({
+                    <MMItem leftText="透明MMNavigation" onClick={() => Taro.navigateTo({
                         url: '/pages/transparent/index'
-                    })}>透明MMNavigation</MMItem>
+                    })}></MMItem>
 
                     <View className='spacing'></View>
-                    <MMItem onClick={() => Taro.navigateTo({
+                    <MMItem leftText="mobx和自定义组件" onClick={() => Taro.navigateTo({
                         url: '/pages/mobx/index'
-                    })}>mobx和自定义组件</MMItem>
+                    })}></MMItem>
 
                     <View className='spacing'></View>
-                    <MMItem onClick={() => Taro.navigateTo({
+                    <MMItem leftText="跳转登录页" onClick={() => Taro.navigateTo({
                         url: '/pages/login/index'
-                    })}>跳转登录页</MMItem>
+                    })}></MMItem>
+
+                    <View className='spacing'></View>
+                    <MMItem leftText="商品组件" onClick={() => Taro.navigateTo({
+                        url: '/pages/product/index'
+                    })}></MMItem>
                 </View>
 
                 <MMTabBar></MMTabBar>

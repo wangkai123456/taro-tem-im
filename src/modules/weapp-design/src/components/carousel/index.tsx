@@ -102,12 +102,12 @@ export default class MMCarousel extends Component<IMMCarouselProps, IMMCarouselS
 
     private autoAnimationStart() {
         clearInterval(this.autoAnimationSI);
-        this.autoAnimationSI = setTimeout(() => {
-            if (this.props.autoTime) {
+        if (this.props.autoAnimation) {
+            this.autoAnimationSI = setTimeout(() => {
                 this.autoAnimation();
-            }
-            this.autoAnimationStart();
-        }, this.props.autoTime);
+                this.autoAnimationStart();
+            }, this.props.autoTime);
+        }
     }
 
     private autoAnimation() {

@@ -49,6 +49,14 @@
     }
 }
 
+.MMButton__cool {
+    background-color: @buttonColor__typeCool;
+
+    &:active {
+        background-color: @buttonColor__typeCoolActive;
+    }
+}
+
 .MMButton__radius_none {
     border-radius: 0;
 }
@@ -115,6 +123,18 @@
         color : @buttonColor__typeDangerActive;
     }
 }
+
+
+.MMButton__type_hollow.MMButton__cool {
+    border: 1px solid @buttonColor__typeCool;
+    color : @buttonColor__typeCool;
+
+    &:active {
+        border: 1px solid @buttonColor__typeCoolActive;
+        color : @buttonColor__typeCoolActive;
+    }
+}
+
 
 .MMButton__type_white {
     background-color: @gray1;
@@ -197,5 +217,13 @@
 .MMButton__disabled.MMButton__danger {
     &:active {
         background-color: @buttonColor__typeDanger;
+    }
+}
+
+.MMButton__disabled.MMButton__cool {
+    opacity: 1;
+
+    &:active {
+        background-color: @buttonColor__typeCool;
     }
 }

@@ -29,6 +29,9 @@
                 "src/*"
             ],
             "@wmeimob/weapp-design": [
+                "src/modules/weapp-design/src/components/index.ts"
+            ],
+            "@wmeimob/weapp-design/*": [
                 "src/modules/weapp-design/*"
             ]
         }

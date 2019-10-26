@@ -2,7 +2,7 @@ import { Input, View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
 import { autobind } from '@wmeimob/decorator';
 import classNames from 'classnames';
-import MMIconfont from '../iconfont';
+import MMIconFont from '../icon-font';
 
 import { MMInputSearchType } from './const';
 import styles from './index.modules.less';
@@ -71,7 +71,7 @@ export default class MMInputSearch extends Component<IMMInputSearchProps> {
     render() {
         return <View className={classNames(...this.className)}>
             <View className={styles.content} >
-                <MMIconfont value="magnifier" color={styles.gray4}></MMIconfont>
+                <MMIconFont value="magnifier" color={styles.gray4}></MMIconFont>
                 <View className={styles.placeholder}>
                     {this.props.placeholder}
                 </View>

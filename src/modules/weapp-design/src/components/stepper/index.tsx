@@ -3,6 +3,9 @@ import Taro, { Component } from '@tarojs/taro';
 import { minus, plus } from 'number-precision';
 import { autobind } from '@wmeimob/decorator';
 import styles from './index.modules.less';
+import themesStyles from '../styles/themes/default.modules.less';
+import MMIconFont from '../icon-font';
+import { MMIconFontName } from '../const';
 
 interface IStepperProps {
     /**
@@ -106,9 +109,13 @@ export default class MMStepper extends Component<IStepperProps, IStepperState> {
 
     render() {
         return <View className={styles.MMStepper}>
-            <View className={styles.MMStepper_plues} onClick={this.minus}>-</View>
+            <View className={styles.MMStepper_plues} onClick={this.minus}>
+                <MMIconFont size={11} color={themesStyles.gray6} value={MMIconFontName.Minus}></MMIconFont>
+            </View>
             <View className={styles.MMStepper_text}>{this.value}</View>
-            <View className={styles.MMStepper_plues} onClick={this.plus}>+</View>
+            <View className={styles.MMStepper_plues} onClick={this.plus}>
+                <MMIconFont size={11} color={themesStyles.gray6} value={MMIconFontName.Add}></MMIconFont>
+            </View>
         </View>;
     }
 }

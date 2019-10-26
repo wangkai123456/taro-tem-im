@@ -4,8 +4,6 @@ import { autobind } from '@wmeimob/decorator';
 import classname from 'classnames';
 import styles from './index.modules.less';
 
-const name = 'MMSkuList';
-
 interface IList {
     title: string;
     items: IItem[];
@@ -78,7 +76,9 @@ export default class MMSkuList extends Component<IMMSkuListProps> {
         }
         const { value } = this.props;
         if (value.includes(item.id)) {
-            this.props.onClick(value.filter(value => value !== item.id));
+            const values = [...this.props.value];
+            delete values[index];
+            this.props.onClick(values);
         } else {
             const values = [...this.props.value];
             values[index] = item.id;
@@ -106,7 +106,7 @@ export default class MMSkuList extends Component<IMMSkuListProps> {
 
     private arrayInclude(array: string[], includeArray: string[]) {
         if (includeArray.length > 0) {
-            return includeArray.every(value => array.includes(value));
+            return includeArray.every(value => value === undefined ? true : array.includes(value));
         }
         return true;
     }

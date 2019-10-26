@@ -4,7 +4,7 @@ import { autobind } from '@wmeimob/decorator';
 import { StandardProps } from '@tarojs/components/types/common';
 import styles from './index.modules.less';
 import themesStyles from '../styles/themes/default.modules.less';
-import MMIconfont from '../iconfont/index';
+import MMIconFont from '../icon-font/index';
 import CheckBoxList from './list';
 
 interface ICheckboxProps extends StandardProps {
@@ -130,10 +130,10 @@ export default class MMCheckbox extends Component<ICheckboxProps, ICheckboxState
     }
 
     renderRadio() {
-        return <MMIconfont size={25} color={themesStyles.primaryColor} value={this.checked ? "checkboxSelected" : "checkbox"} ></MMIconfont>;
+        return <MMIconFont size={25} color={themesStyles.primaryColor} value={this.checked ? "checkboxSelected" : "checkbox"} ></MMIconFont>;
     }
 
     renderCheckbox() {
-        return <MMIconfont size={25} color={themesStyles.primaryColor} value={this.checked ? "roundCheck" : "round"} ></MMIconfont>;
+        return <MMIconFont size={25} color={themesStyles.primaryColor} value={this.checked ? "roundCheck" : "round"} ></MMIconFont>;
     }
 }
