@@ -36,5 +36,6 @@ props.list.map((value, index) => <View key={value.title + index}>
         return item.items.map(value => this.renderItem(value));
     }
 
-
 ## 小程序的富文本插件不是官方的那个，必须放在render函数里面不然渲染不出来。
+
+## key 为 state 在taro里面会解构不出来
