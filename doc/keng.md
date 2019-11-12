@@ -39,3 +39,40 @@ props.list.map((value, index) => <View key={value.title + index}>
 ## 小程序的富文本插件不是官方的那个，必须放在render函数里面不然渲染不出来。
 
 ## key 为 state 在taro里面会解构不出来
+
+## map 里面的 value 的引用会发生改变 需要使用 bind才固定 onClick={this.onItemClick.bind(this, data)}
+
+    renderData() {
+        const { data } = this.props;
+        return data.map(value => <View key={value.id}>
+            {this.renderItem(value)}
+        </View>
+        )
+    }
+
+    renderItem(data: ICollection) {
+        const { selectedIds: selectedId } = this.state;
+        switch (data.type) {
+            case CollectionType.Commodity: {
+                return <View key={data.id} className={styles.item} onClick={this.onItemClick.bind(this, data)}>
+                    <View className="flex-a-c">
+                        <MMCheckbox checked={selectedId.includes(data.id)}></MMCheckbox>
+                        <View className="spacing"></View>
+                    </View>
+                    <Image className={styles.image} src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1572942939152&di=cc0cc2a94baa86d36f26b2ebea2d2787&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1212%2F10%2Fc1%2F16491245_1355126013759.jpg"></Image>
+                    <View className={styles.content}>
+                        <View className={styles.title}>{data.title}</View>
+                        <View className={styles.intro}>
+                            <View className={styles.collection}>{data.count}收藏</View>
+                            {
+                                data.state === CollectionCommodityState.Default ?
+                                    <View className={styles.price}>¥{data.price}</View> :
+                                    <View className={styles.collection}>失效</View>
+                            }
+                        </View>
+                    </View>
+                </View>;
+            }
+        }
+    }
+
