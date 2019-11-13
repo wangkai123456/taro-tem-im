@@ -1,0 +1,65 @@
+@import '../../../node_modules/@wmeimob/weapp-design/src/components/styles/themes/default.less';
+
+.search {
+    display       : flex;
+    padding       : @spacingSize @spacingSize *2;
+    box-shadow    : 0px 2px 2px 0px rgba(152, 147, 147, 0.15);
+    flex-direction: row;
+}
+
+.searchInput {
+    flex: 1;
+}
+
+.searchInputScreen {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    margin-left    : @spacingSize;
+}
+
+
+.productList {
+    display  : flex;
+    flex-wrap: wrap;
+}
+
+.productItem {
+    margin-top: @containerSize;
+    width     : calc((100% - @containerSize) / 2);
+    box-shadow: 0px 0px 3px 0px rgba(234, 230, 231, 1);
+
+    &:nth-of-type(2n + 1) {
+        margin-right: @containerSize;
+    }
+}
+
+.productImage {
+    position   : relative;
+    width      : 100%;
+    padding-top: 100%;
+
+    Image {
+        position: absolute;
+        left    : 0;
+        top     : 0;
+        width   : 100%;
+        height  : 100%;
+    }
+}
+
+.productContent {
+    padding: @spacingSize;
+}
+
+.productTitle {
+    font-size: 14px;
+    height   : 40px;
+    overflow : hidden;
+}
+
+.productPrice {
+    margin-top: @spacingSize / 2;
+    font-size : 14px;
+    color     : @pink;
+}

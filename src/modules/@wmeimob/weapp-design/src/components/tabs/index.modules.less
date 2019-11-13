@@ -1,0 +1,38 @@
+@import '../styles/themes/default.less';
+
+:export {
+    tabBarFontColor: @tabBarFontColor;
+    primaryColor   : @primaryColor;
+}
+
+.MMTabs {
+    position        : relative;
+    border-bottom   : 0.5px solid @dividerColor;
+    background-color: @gray1;
+}
+
+.content {
+    height     : 39px;
+    line-height: 39px;
+    display    : flex;
+}
+
+.item {
+    flex      : 1;
+    text-align: center;
+}
+
+.selected {
+    color: @primaryColor;
+}
+
+.line {
+    position        : absolute;
+    left            : 0;
+    bottom          : 0;
+    margin-left     : -13px;
+    width           : 26px;
+    height          : 3px;
+    background-color: @primaryColor;
+    transition      : all 0.4s;
+}

@@ -1,0 +1,61 @@
+@import '../../../node_modules/@wmeimob/weapp-design/src/components/styles/themes/default.less';
+
+:export {
+    primaryColor: @primaryColor;
+}
+
+.screen {
+    position      : relative;
+    display       : flex;
+    padding       : @spacingSize @spacingSize *2;
+    flex-direction: row;
+}
+
+.screent_item {
+    flex           : 1;
+    display        : flex;
+    justify-content: center;
+
+}
+
+.screent_item_text {
+    display       : flex;
+    flex-direction: row;
+    align-items   : center;
+    box-sizing    : border-box;
+    padding       : 4px 0;
+    height        : 26px;
+    color         : @fontColor;
+}
+
+.screen_item__select {
+    color         : @primaryColor;
+    padding-bottom: 2px;
+    border-bottom : 2px solid @primaryColor;
+}
+
+
+.mask {
+    position        : absolute;
+    left            : 0;
+    top             : 100%;
+    width           : 100%;
+    height          : 2000px;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index         : 1;
+}
+
+
+.select_list {
+    background-color: white;
+    padding-bottom  : @spacingSize;
+}
+
+.select_item {
+    border-bottom: 0.5px solid @dividerColor;
+    line-height  : 45px;
+}
+
+.select_item__selected {
+    color: @primaryColor;
+}

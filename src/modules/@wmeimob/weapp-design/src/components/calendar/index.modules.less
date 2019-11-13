@@ -1,0 +1,94 @@
+@import '../styles/themes/default.less';
+
+.MMCalendar {
+    position        : relative;
+    background-color: white;
+}
+
+.title {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    height         : 40px;
+}
+
+.date {
+    display  : flex;
+    flex-wrap: wrap;
+}
+
+.item {
+    display       : flex;
+    width         : calc(100vw / 7);
+    height        : calc(100vw / 7);
+    flex-direction: column;
+    align-items   : center;
+    border        : 1px solid #333;
+}
+
+.itemText {
+    width        : calc(100vw / 7 / 2);
+    height       : calc(100vw / 7 / 2);
+    line-height  : calc(100vw / 7 / 2);
+    text-align   : center;
+    border-radius: 50%;
+}
+
+.itemStart {
+    font-size: 10px;
+    color    : @primaryColor;
+}
+
+.selected {
+    background-color: @primaryColor;
+    color           : @gray1;
+}
+
+.disable {
+    background-color: @gray3;
+    color           : @gray4;
+}
+
+.month {
+    line-height: 30px;
+}
+
+.delete {
+    position: absolute;
+    top     : 10px;
+    right   : 10px;
+}
+
+
+.weekTitle {
+    display: flex;
+
+    >View {
+        width        : calc(100vw / 7);
+        height       : 30px;
+        line-height  : 30px;
+        text-align   : center;
+        border-bottom: 1px solid #333;
+    }
+}
+
+.tools {
+    height: 80px;
+}
+
+.toolsContent {
+    display         : flex;
+    position        : fixed;
+    left            : 0;
+    bottom          : 0;
+    padding         : 0 @spacingSize * 2;
+    box-shadow      : @boxShadowTop;
+    width           : 100%;
+    height          : 80px;
+    align-items     : center;
+    background-color: @gray1;
+}
+
+.timeBox {
+    flex: 1;
+}

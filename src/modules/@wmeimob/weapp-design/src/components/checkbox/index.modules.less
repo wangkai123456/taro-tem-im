@@ -1,0 +1,39 @@
+@import '../styles/themes/default.less';
+
+.MMCheckbox {
+    display        : flex;
+    width          : 15px;
+    height         : 15px;
+    border         : 1px solid @borderColor;
+    border-radius  : 3px;
+    align-items    : center;
+    justify-content: center;
+
+    &.selected {
+        border          : 1px solid @primaryColor;
+        background-color: @primaryColor;
+    }
+}
+
+
+
+.radio {
+    display        : flex;
+    width        : 17px;
+    height       : 17px;
+    border-radius: 9px;
+    border       : 1px solid @borderColor;
+    align-items    : center;
+    justify-content: center;
+
+    &.selected {
+        border: 1px solid @primaryColor;
+
+        View {
+            width           : 7px;
+            height          : 7px;
+            border-radius   : 4px;
+            background-color: @primaryColor;
+        }
+    }
+}

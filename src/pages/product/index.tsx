@@ -2,7 +2,7 @@
 import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
 import { autobind } from '@wmeimob/decorator';
-import { MMCProductDetails } from '~/modules/weapp-component-product/src/components';
+import { MMCProductDetails } from '~/modules/@wmeimob/weapp-component-product/src/components';
 
 @autobind
 class Index extends Component {

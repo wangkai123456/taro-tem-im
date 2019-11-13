@@ -1,7 +1,5 @@
 const tools = require('@wmeimob/node-tools');
 
-exports.dts = dts;
-
 function express() {
     return tools.express.run();
 }
@@ -35,3 +33,14 @@ async function iconfont() {
     })
 }
 exports.iconfont = iconfont;
+
+
+function add() {
+    return tools.addComponent.add();
+}
+exports.add = add;
+
+function copy() {
+    return tools.addComponent.copy();
+}
+exports.copy = copy;

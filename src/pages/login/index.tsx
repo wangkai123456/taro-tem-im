@@ -3,7 +3,7 @@ import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
 import { autobind } from '@wmeimob/decorator';
 import * as styles from './index.module.less';
-import MMNavigation from '~/modules/weapp-design/src/components/navigation';
+import MMNavigation from '@wmeimob/weapp-design/src/components/navigation';
 
 @autobind
 class Index extends Component {
