@@ -5,17 +5,17 @@ import MMTabBar from '@wmeimob/weapp-design/src/components/tab-bar';
 export default class Index extends Component {
     static data = [
         {
-            iconfont: IconFontName.Home,
+            iconfont: IconFontName.Folder,
             text: '基础',
             url: '/pages/index/index'
         },
         {
-            iconfont: IconFontName.Home,
+            iconfont: IconFontName.Send,
             text: '请求',
             url: '/pages/request/index'
         },
         {
-            iconfont: IconFontName.Components,
+            iconfont: IconFontName.Class,
             text: '其他',
             url: '/pages/other/index'
         }
