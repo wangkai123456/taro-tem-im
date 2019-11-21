@@ -531,20 +531,6 @@
       "unicode_decimal": 59164
     },
     {
-      "icon_id": "11518373",
-      "name": "更多",
-      "font_class": "More",
-      "unicode": "e72b",
-      "unicode_decimal": 59179
-    },
-    {
-      "icon_id": "11518515",
-      "name": "减少",
-      "font_class": "Lessen",
-      "unicode": "e72d",
-      "unicode_decimal": 59181
-    },
-    {
       "icon_id": "11518538",
       "name": "加号",
       "font_class": "Addition",
@@ -564,6 +550,20 @@
       "font_class": "Check",
       "unicode": "e730",
       "unicode_decimal": 59184
+    },
+    {
+      "icon_id": "11785906",
+      "name": "更多",
+      "font_class": "More",
+      "unicode": "e78a",
+      "unicode_decimal": 59274
+    },
+    {
+      "icon_id": "11786001",
+      "name": "减号",
+      "font_class": "Lessen",
+      "unicode": "e78d",
+      "unicode_decimal": 59277
     }
   ]
 }

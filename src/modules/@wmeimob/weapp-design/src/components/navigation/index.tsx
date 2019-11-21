@@ -7,7 +7,7 @@ import { MMNavigationType } from './const';
 import styles from './index.modules.less';
 import { MMIconFontName } from '../const';
 
-interface INavigationProps {
+interface IMMNavigationProps {
     /**
      * 中间显示的标题
      *
@@ -38,8 +38,7 @@ interface INavigationProps {
     type?: MMNavigationType;
 }
 
-interface INavigationState {
-    statusBarHeight: number;
+interface IMMNavigationState {
     height: number;
 }
 
@@ -48,7 +47,7 @@ export const { statusBarHeight } = getSystemInfoSync();
 const menuButtonBoundingClientRect = getMenuButtonBoundingClientRect();
 
 @autobind
-export default class MMNavigation extends Component<INavigationProps, INavigationState> {
+export default class MMNavigation extends Component<IMMNavigationProps, IMMNavigationState> {
     static options = {
         addGlobalClass: true
     };
@@ -59,8 +58,7 @@ export default class MMNavigation extends Component<INavigationProps, INavigatio
         type: MMNavigationType.default
     };
 
-    state: INavigationState = {
-        statusBarHeight,
+    state: IMMNavigationState = {
         height: (menuButtonBoundingClientRect.top - statusBarHeight) * 2 + menuButtonBoundingClientRect.height
     };
 

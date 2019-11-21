@@ -1,14 +1,14 @@
 enum IconFontName {
+    // 减号
+    Lessen = 'Lessen',
+    // 更多
+    More = 'More',
     // 勾选
     Check = 'Check',
     // 关闭
     Close = 'Close',
     // 加号
     Addition = 'Addition',
-    // 减少
-    Lessen = 'Lessen',
-    // 更多
-    More = 'More',
     // 向上
     Up = 'Up',
     // 向下

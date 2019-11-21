@@ -28,7 +28,7 @@ interface ICheckboxProps {
      * @type {MMIconFontName}
      * @memberof ICheckboxProps
      */
-    leftIconfontValue?: MMIconFontName;
+    leftIconfontValue?: MMIconFontName | string;
     /**
      * 左侧图标颜色
      *
@@ -89,8 +89,8 @@ export default class MMItem extends Component<ICheckboxProps> {
     };
 
     static defaultProps = {
-        rightIconfontName: MMIconFontName.Next,
-        rightIconfontNameColor: themes.gray5,
+        rightIconfontValue: MMIconFontName.Next,
+        rightIconfontColor: themes.gray5,
         divider: true,
         onClick: () => null
     };
@@ -106,7 +106,9 @@ export default class MMItem extends Component<ICheckboxProps> {
     }
 
     render() {
-        const { renderRight, onClick, renderLeft, leftText, leftIconfontColor: leftIconfontNameColor, rightIconfontColor: rightIconfontNameColor, rightText, leftIconfontValue: leftIconfontName, rightIconfontValue: rightIconfontName } = this.props;
+        const { renderRight, onClick, renderLeft, leftText, leftIconfontColor: leftIconfontNameColor,
+            rightIconfontColor: rightIconfontNameColor, rightText, leftIconfontValue: leftIconfontName, rightIconfontValue: rightIconfontName } = this.props;
+
         return <View onClick={onClick} className={styles.MMItem}>
             {leftIconfontName && <View className={styles.leftIconfont}>
                 <MMIconFont color={leftIconfontNameColor} value={leftIconfontName}></MMIconFont>

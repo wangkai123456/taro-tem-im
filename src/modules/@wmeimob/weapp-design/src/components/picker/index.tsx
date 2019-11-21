@@ -1,11 +1,10 @@
-import { View, PickerView, PickerViewColumn } from '@tarojs/components';
+import { View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
 import { autobind } from '@wmeimob/decorator';
-
-import MMPickerView from './view';
-import MMModal from '../modal/modal';
 import { MMModalAnimationType, MMModalJustifyContent } from '../modal/const';
+import MMModal from '../modal/modal';
 import styles from './index.modules.less';
+import MMPickerView from './view';
 
 const name = 'MMPicker';
 
@@ -16,7 +15,7 @@ interface MMPickerProps {
      * @type {string}
      * @memberof MMPickerProps
      */
-    title: string;
+    title?: string;
 
     /**
      * 数据
@@ -71,6 +70,7 @@ export default class MMPicker extends Component<MMPickerProps> {
     };
 
     static defaultProps = {
+        title: '',
         value: [],
         data: []
     };

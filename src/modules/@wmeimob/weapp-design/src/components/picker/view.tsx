@@ -1,7 +1,9 @@
-import { View, ScrollView } from '@tarojs/components';
+import { Swiper, SwiperItem, View } from '@tarojs/components';
+import { BaseEventOrig } from '@tarojs/components/types/common';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind, throttle } from '@wmeimob/decorator';
+import { autobind } from '@wmeimob/decorator';
 import styles from './index.modules.less';
+import themesStyles from '../styles/themes/default.modules.less';
 
 interface MMPickerViewProps {
     data: { id: string; text: string }[];
@@ -19,93 +21,45 @@ export default class MMPickerView extends Component<MMPickerViewProps> {
         data: []
     };
 
-    static itemHeight = styles.itemHeight;
-
-    static getScrollTop(dataValue, data) {
-        return MMPickerView.itemHeight * data.findIndex(value => value.id === dataValue);
-    }
-
-    state = {
-        index: 0,
-        scrollTop: MMPickerView.getScrollTop(this.props.value, this.props.data),
-        scrollViewScrollTop: MMPickerView.getScrollTop(this.props.value, this.props.data)
-    };
-
-    private changeST;
-    private canChange;
-
     render() {
+        const current = this.props.data.findIndex(value => value.id === this.props.value);
         return <View className={styles.MMPicker}>
-            <ScrollView className={styles.scrollview} scrollTop={this.state.scrollViewScrollTop}
-                throttle={false} scrollY
-                onScroll={this.onScroll} onTouchStart={this.onTouchStart} onTouchEnd={this.onTouchEnd}>
-                <View className={styles.placeholder}></View>
-                {this.props.data.map((item, index) => <View key={item.id} className={styles.item}
-                    style={this.getStyle(index)}>{item.text}</View>)}
-                <View className={styles.placeholder}></View>
-            </ScrollView>
+            <Swiper className={styles.swiper} display-multiple-items={5} vertical={true} current={current} onChange={this.onChange}>
+                <SwiperItem><View className={styles.item}></View></SwiperItem>
+                <SwiperItem><View className={styles.item}></View></SwiperItem>
+                {this.props.data.map((item, index) => <SwiperItem key={item.id}>
+                    <View style={this.getStyle(index)} className={styles.item}>{item.text}</View>
+                </SwiperItem>)}
+                <SwiperItem><View className={styles.item}></View></SwiperItem>
+                <SwiperItem><View className={styles.item}></View></SwiperItem>
+            </Swiper>
             <View className={styles.select}></View>
         </View>;
     }
 
-    componentDidUpdate(prevProps: MMPickerViewProps) {
-        if (prevProps.data !== this.props.data) {
-            const scrollTop = MMPickerView.getScrollTop(this.props.value, this.props.data);
-            // eslint-disable-next-line react/no-did-update-set-state
-            this.setState({
-                scrollViewScrollTop: scrollTop,
-                scrollTop
-            })
-        }
+    private onChange(event: BaseEventOrig<{ current: number }>) {
+        this.props.onChange(this.props.data[event.detail.current].id)
     }
 
-    private getStyle(index) {
-        const result = Math.abs(index * MMPickerView.itemHeight - this.state.scrollTop);
-        const start = MMPickerView.itemHeight / 2;
-        const end = MMPickerView.itemHeight * 3.8;
-        if (result < start) {
+    private getStyle(currentIndex) {
+        const index = this.props.data.findIndex(value => value.id === this.props.value);
+
+        const abs = Math.abs(currentIndex - index);
+
+        if (abs === 1) {
             return {
-                opacity: 1
+                color: themesStyles.gray5,
+                fontSize: '14px'
+            }
+        } else if (abs > 1) {
+            return {
+                color: themesStyles.gray4,
+                fontSize: '12px'
             }
         }
 
-        const proportion = (end - start - result) / (end - start);
         return {
-            opacity: 0.8 * proportion
         }
-    }
-
-    @throttle(20)
-    private onScroll(event) {
-        // 用于更新透明度
-        this.setState({
-            scrollTop: event.target.scrollTop
-        });
-        this.onChange();
-    }
-
-    private onTouchStart() {
-        this.canChange = false;
-    }
-
-    private onTouchEnd() {
-        this.canChange = true;
-        this.onChange();
-    }
-
-    private onChange() {
-        clearTimeout(this.changeST);
-        this.changeST = setTimeout(() => {
-            if (this.canChange) {
-                this.canChange = false;
-                const { id: value } = this.props.data[Math.round(this.state.scrollTop / MMPickerView.itemHeight)];
-                const scrollViewScrollTop = MMPickerView.getScrollTop(value, this.props.data);
-                this.setState({
-                    scrollViewScrollTop
-                })
-                this.props.onChange(value);
-            }
-        }, 100);
     }
 }
 

@@ -41,12 +41,13 @@ export default class MMCalendar extends Component<IMMCalendarProps, IMMCalendarS
         initalMonths: 2
     }
 
+    calendarView: MMCalendarView
+
     state: IMMCalendarState = {
         monthsNumber: this.props.initalMonths || MMCalendar.defaultProps.initalMonths
     }
 
     render() {
-        const { value } = this.props;
         return <MMModal visible={this.props.visible} animationType={MMModalAnimationType.down}
             justifyContent={MMModalJustifyContent.flexEnd} onClose={this.props.onClose}>
             <View className={styles.MMCalendar}>
@@ -56,8 +57,8 @@ export default class MMCalendar extends Component<IMMCalendarProps, IMMCalendarS
                 <View className={styles.delete} onClick={this.props.onClose}>
                     <MMIconFont value={MMIconFontName.Close}></MMIconFont>
                 </View>
-                <View style={{ height: '500px' }}>
-                    <MMCalendarView {...this.props}></MMCalendarView>
+                <View>
+                    <MMCalendarView ref={ref => this.calendarView = ref as MMCalendarView} scrollViewHeight={450} {...this.props}></MMCalendarView>
                 </View>
             </View>
         </MMModal >;

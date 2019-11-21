@@ -6,6 +6,7 @@ import dayjs from 'dayjs';
 import styles from './index.modules.less';
 import { MMButton } from '..';
 import MMPopup from '../modal/popup';
+import { ITouchEvent } from '@tarojs/components/types/common';
 
 export interface IMMCalendarViewProps {
     /**
@@ -15,6 +16,22 @@ export interface IMMCalendarViewProps {
      * @memberof IMMCalendarProps
      */
     value: [Date, Date] | [Date] | []
+
+    /**
+     * 禁止日期
+     *
+     * @type {[Date, Date][]}
+     * @memberof IMMCalendarViewProps
+     */
+    disableDate?: [Date, Date][]
+
+    /**
+     * 选择区间包含禁止日期
+     *
+     * @memberof IMMCalendarViewProps
+     */
+    onSelectHasDisableDate?: (value: [Date, Date] | [Date] | []) => void
+
     /**
      * 选择区间最小值
      *
@@ -42,17 +59,33 @@ export interface IMMCalendarViewProps {
      * @memberof IMMCalendarProps
      */
     onSelect: (value: [Date, Date] | [Date] | []) => void
+
     /**
      * 点击确定
      *
      * @memberof IMMCalendarProps
      */
     onClick: () => void
+
+    /**
+     * 滚动条高度
+     *
+     * @type {number}
+     * @memberof IMMCalendarViewProps
+     */
+    scrollViewHeight?: number
 }
 interface IMMCalendarViewState {
     scrollViewHeight: number
     monthsNumber: number
 }
+/**
+ * 日历插件 [性能优化] 日历状态的缓存
+ *
+ * @export
+ * @class MMCalendarView
+ * @extends {Component<IMMCalendarViewProps, IMMCalendarViewState>}
+ */
 @autobind
 export class MMCalendarView extends Component<IMMCalendarViewProps, IMMCalendarViewState> {
     static options = {
@@ -60,7 +93,9 @@ export class MMCalendarView extends Component<IMMCalendarViewProps, IMMCalendarV
     };
 
     static defaultProps = {
+        disableDate: [],
         minDate: new Date(),
+        // maxDate: new Date('2019-11-22'),
         maxDate: dayjs(new Date()).add(12, 'month').toDate(),
         initalMonths: 4
     }
@@ -71,7 +106,7 @@ export class MMCalendarView extends Component<IMMCalendarViewProps, IMMCalendarV
     }
 
     popup: MMPopup
- 
+
     render() {
         const { scrollViewHeight } = this.state;
         const [startTime, endTime] = this.props.value || [];
@@ -79,7 +114,7 @@ export class MMCalendarView extends Component<IMMCalendarViewProps, IMMCalendarV
         const endTimeString = endTime ? dayjs(endTime).format('YYYY年MM月DD日') : '';
         return <View className={styles.MMCalendar}>
             <MMPopup ref={ref => this.popup = ref as MMPopup}></MMPopup>
-            <View className={styles.weekTitle}>
+            <View className={styles.weekTitle} onTouchMove={this.onTouchMove}>
                 <View>日</View>
                 <View>一</View>
                 <View>二</View>
@@ -107,18 +142,16 @@ export class MMCalendarView extends Component<IMMCalendarViewProps, IMMCalendarV
     }
 
     componentDidMount() {
-        this.calculateScrollViewHeight();
-    }
-
-    private onConfirm() {
-        if (this.props.value.length !== 2) {
-            this.popup.toast('请选择');
-            return;
+        if (this.props.scrollViewHeight) {
+            this.setState({
+                scrollViewHeight: this.props.scrollViewHeight
+            })
+        } else {
+            this.calculateScrollViewHeight();
         }
-        this.props.onClick();
     }
 
-    private async calculateScrollViewHeight() {
+    async calculateScrollViewHeight() {
         const topViewRes = await this.getViewRes('#MMCalendarViewTop');
         Taro.getSystemInfo({
             success: res => {
@@ -127,6 +160,18 @@ export class MMCalendarView extends Component<IMMCalendarViewProps, IMMCalendarV
                 });
             }
         });
+    }
+
+    private onTouchMove(event: ITouchEvent) {
+        event.stopPropagation();
+    }
+
+    private onConfirm() {
+        if (this.props.value.length !== 2) {
+            this.popup.toast('请选择');
+            return;
+        }
+        this.props.onClick();
     }
 
     private getViewRes(name: string) {
@@ -154,6 +199,10 @@ export class MMCalendarView extends Component<IMMCalendarViewProps, IMMCalendarV
     private onClick(date: string) {
         const day = dayjs(date).toDate();
 
+        if (this.isDisable(dayjs(date))) {
+            return;
+        }
+
         if (this.props.value.length === 0 || this.props.value.length === 2) {
             this.props.onSelect([day])
             return;
@@ -163,23 +212,30 @@ export class MMCalendarView extends Component<IMMCalendarViewProps, IMMCalendarV
         if (this.props.value[0].getTime() > day.getTime()) {
             days = [days[1], days[0]];
         }
+
+        if (days.length === 2 && this.haveDisable(days)) {
+            this.props.onSelectHasDisableDate && this.props.onSelectHasDisableDate(days);
+            this.props.onSelect([]);
+            return;
+        }
+
         this.props.onSelect(days)
     }
 
     private renderDate() {
-        const { minDate, maxDate } = this.props;
+        const { minDate, maxDate, value: PropsValue } = this.props;
         const { monthsNumber } = this.state;
         const diffNumber = dayjs(maxDate).diff(dayjs(minDate), 'month');
         const monthsNu = monthsNumber > diffNumber + 1 ? diffNumber + 1 : monthsNumber;
         const monthhsArray = new Array(monthsNu).fill(1);
-        return monthhsArray.map((value, index) => {
+        return PropsValue && monthhsArray.map((value, index) => {
             const day = dayjs(minDate).add(index, 'month').startOf('month');
             const dayArrayEmpty = new Array(day.day()).fill('1');
             const dayArrayLength = day.endOf('month').date();
-            return <View key={value + index}  >
-                <View className={styles.month}>{day.format('YYYY年MM')}</View>
+            return <View key={value + index} className={styles.monthBox} >
+                <View className={styles.month}>{day.format('YYYY年MM月')}</View>
                 <View className={styles.date}>
-                    {dayArrayEmpty.map((dayArray, index) => <View key={dayArray + index} className={styles.item}>空</View>)}
+                    {dayArrayEmpty.map((dayArray, index) => <View key={dayArray + index} className={styles.item}></View>)}
                     {this.renderDateItem(dayArrayLength, day)}
                 </View>
             </View>
@@ -203,30 +259,54 @@ export class MMCalendarView extends Component<IMMCalendarViewProps, IMMCalendarV
 
             // 这里必须要用bind 和 字符串类型配合 不然传不进去 taro bug
             const dayDate = day.format();
-            return <View key={date + index} className={styles.item} onClick={this.onClick.bind(this, dayDate)}>
-                <View className={this.getItemClassName(day)}>{index + 1}</View>
-                <View className={styles.itemStart}>{text}</View>
+            return <View key={date + index}
+                className={this.getItemClassName([styles.item, isStart ? styles.isStart : '', isEnd ? styles.isEnd : ''], day)}
+                onClick={this.onClick.bind(this, dayDate)}>
+                < View className={classNames(styles.itemContent, (isStart || isEnd) ? styles.isStart : '')}>
+                    <View className={styles.itemText}>{index + 1}</View>
+                    <View className={styles.itemStart}>{text}</View>
+                </View>
             </View >
         })
     }
 
-    private getItemClassName(day: dayjs.Dayjs) {
-        const classnames = [styles.itemText];
-
+    private getItemClassName(classnames: string[], day: dayjs.Dayjs) {
         if (this.isDisable(day)) {
             classnames.push(styles.disable);
-        } else {
-            if (this.isSelected(day)) {
-                classnames.push(styles.selected);
+        } else if (this.props.value.length === 2 && this.isSelected(day)) {
+            if (day.day() === 6 || day.date() === day.endOf('month').date()) {
+                classnames.push(styles.isEnd);
             }
+            if (day.day() === 0 || day.date() === 1) {
+                classnames.push(styles.isStart);
+            }
+            classnames.push(styles.selected);
         }
 
         return classNames(...classnames)
     }
 
-    private isDisable(dayjs: dayjs.Dayjs) {
-        const day = dayjs.add(1, 'day');
-        if (day.isBefore(this.props.minDate as Date) || day.isAfter(this.props.maxDate as Date)) {
+    private isDisable(day: dayjs.Dayjs) {
+        const { disableDate } = this.props;
+        if (day.isBefore(this.props.minDate as Date, 'day') || day.isAfter(this.props.maxDate as Date, 'day')) {
+            return true;
+        }
+
+        if (disableDate && disableDate.find(([min, max]) => {
+            return day.isAfter(dayjs(min).add(-1, 'day'), 'day') && day.isBefore(dayjs(max).add(1, 'day'), 'day');
+        })) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private haveDisable([min, max]: [Date, Date]) {
+        const { disableDate } = this.props;
+        const minDay = dayjs(min);
+        const maxDay = dayjs(max);
+
+        if (disableDate && disableDate.find(([min, max]) => minDay.isBefore(dayjs(min), 'day') && maxDay.isAfter(dayjs(max), 'day'))) {
             return true;
         }
 
