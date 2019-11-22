@@ -1,7 +1,7 @@
 import { RichText, View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
 import { autobind } from '@wmeimob/decorator';
-import { MMButton, MMCarousel, MMCarouselItem, MMIconFont, MMItem, MMModal, MMNavigation, MMSkuList, H3, MMDivider, MMStepper } from '~/modules/@wmeimob/weapp-design';
+import { MMButton, MMCarousel, MMCarouselItem, MMIconFont, MMItem, MMModal, MMNavigation, MMSkuList, H3, MMDivider, MMStepper } from '~/modules/@wmeimob/weapp-design/src/components';
 import { MMButtonRadius, MMButtonState, MMModalAnimationType, MMIconFontName, MMModalJustifyContent, MMNavigationType } from '~/modules/@wmeimob/weapp-design/src/components/const';
 import styles from './index.module.less';
 
