@@ -39,8 +39,3 @@ function add() {
     return tools.addComponent.add();
 }
 exports.add = add;
-
-function copy() {
-    return tools.addComponent.copy();
-}
-exports.copy = copy;

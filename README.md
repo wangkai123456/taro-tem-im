@@ -88,7 +88,7 @@ gulp cover
 gulp iconfont
 ```
 
-覆盖
+覆盖node_modules
 
 ```sh
 gulp cover
@@ -98,6 +98,12 @@ gulp cover
 
 ```sh
 gulp iconfont
+```
+
+添加前端框架@wmeimob/weapp-design，到src/modules 文件夹下
+
+```sh
+gulp add --name=weapp-design
 ```
 
 ## 其他
