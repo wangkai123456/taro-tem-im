@@ -6,13 +6,13 @@ import global from '~/globalStore';
 import imageSrc from './images/image.jpeg';
 import * as styles from './index.module.less';
 import classNames from 'classnames';
-import MMNavigation from '@wmeimob/weapp-design/src/components/navigation';
-import MMPopup from '@wmeimob/weapp-design/src/components/modal/popup';
-import H2 from '@wmeimob/weapp-design/src/components/head/h2';
-import H3 from '@wmeimob/weapp-design/src/components/head/h3';
-import MMButton from '@wmeimob/weapp-design/src/components/button';
-import { MMButtonState } from '@wmeimob/weapp-design/src/components/button/const';
-import MMTabBar from '@wmeimob/weapp-design/src/components/tab-bar';
+import MMNavigation from '~/modules/@wmeimob/weapp-design/src/components/navigation';
+import MMPopup from '~/modules/@wmeimob/weapp-design/src/components/modal/popup';
+import H2 from '~/modules/@wmeimob/weapp-design/src/components/head/h2';
+import H3 from '~/modules/@wmeimob/weapp-design/src/components/head/h3';
+import MMButton from '~/modules/@wmeimob/weapp-design/src/components/button';
+import { MMButtonState } from '~/modules/@wmeimob/weapp-design/src/components/button/const';
+import MMTabBar from '~/modules/@wmeimob/weapp-design/src/components/tab-bar';
 
 @observer
 class Index extends Component {

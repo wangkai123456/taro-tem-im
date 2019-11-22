@@ -1,11 +1,11 @@
 import { View, Image } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
 import { autobind } from '@wmeimob/decorator';
-import { MMInputSearch, MMNavigation, MMPopup, MMIconFont, MMPullToRefresh } from '@wmeimob/weapp-design';
+import { MMInputSearch, MMNavigation, MMPopup, MMIconFont, MMPullToRefresh } from '~/modules/@wmeimob/weapp-design';
 import { key } from '../constant';
 import styles from './index.module.less';
 import classNames from 'classnames';
-import { MMPullToRefreshState } from '@wmeimob/weapp-design/src/components/const';
+import { MMPullToRefreshState } from '~/modules/@wmeimob/weapp-design/src/components/const';
 import MMCProductScreen from '../screen';
 import { IScreenItem } from '../screen/types';
 import MMCProductScreenModal from '../screen-modal';

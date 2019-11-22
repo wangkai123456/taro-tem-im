@@ -1,8 +1,8 @@
 import { View, ScrollView } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
 import { autobind } from '@wmeimob/decorator';
-import { MMIconFont, MMModal, MMButton } from '@wmeimob/weapp-design';
-import { MMModalJustifyContent, MMButtonType } from '@wmeimob/weapp-design/src/components/const';
+import { MMIconFont, MMModal, MMButton } from '~/modules/@wmeimob/weapp-design';
+import { MMModalJustifyContent, MMButtonType } from '~/modules/@wmeimob/weapp-design/src/components/const';
 import styles from './index.module.less';
 import { IScreenItem, IScreenItemSingleElection } from '../screen/types';
 

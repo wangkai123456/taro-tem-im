@@ -4,7 +4,7 @@ import { autobind } from '@wmeimob/decorator';
 import classNames from 'classnames';
 import styles from './index.module.less';
 import { IScreenItem, IScreenItemSingleElection, IScreenSingleElectionData, IScreenType } from './types';
-import { MMIconFont } from '@wmeimob/weapp-design';
+import { MMIconFont } from '~/modules/@wmeimob/weapp-design';
 
 interface MMCProductScreenProps {
     value: string

@@ -5,7 +5,7 @@ import './index.less';
 import global from '../../globalStore';
 import { observer } from '@tarojs/mobx';
 import { DiyComponent } from './components/diyCompont';
-import MMNavigation from '@wmeimob/weapp-design/src/components/navigation';
+import MMNavigation from '~/modules/@wmeimob/weapp-design/src/components/navigation';
 
 interface PageStateProps {
     global: {
