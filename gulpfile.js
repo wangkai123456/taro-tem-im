@@ -11,26 +11,12 @@ function cover() {
 exports.cover = cover;
 
 async function iconfont() {
-    let cookie = 'cna=Iu+MFb+/snkCAbSdmykhAwSV; EGG_SESS_ICONFONT=U8AXvqwdm-42-umGXGwgKq_Emj2wuVCkA87TjZ3dn6xm2T4whio3sIKoy4kjkuBSusLMQ-0MhcjWBE1FwhfGmDRN3OrPfvQuMkinXa81udg5Ynagat7eKcjy_wzhdhIqQ4e_9QagxxYHpsYSCeInDHtAyPzQg70WZleRdFSvwNQyxbty1vTM-UxEATHQEC0w3Yp7FbnEHwNt5Sp702Mxlu_3KJgeZ3ThfLEijghNxCej2wRkle7SpXAzIlwddltC1iGbw9JJkngE9ZMu59nMwR0HI-YK8vvFhNIWwmalnHaxQ1qTw1B9kwK_9uBeUR7p1uKxnOW1VNcdqOOoY6lg8MUmbnxoIn422364jdulYhQCuWMqiqnUPk-LwXs4r36N-PCYD_lIrF-zYXoTEAA7KkMQiRHuiYbYt32N2YULoB0RGBma_vLCxMbvBxB7ozDGKDnPs0NX7ehSwFl-yu3FxAxXP0HDKwHF06LZSQf4RPPqjhcZClAkHdd4YE53s2we5vcxwv3Cjphe6dinjtQV0mvKp4GLkCVPwBM5xbCgt9hc2guisOt04WVy9lRN-4UTeePhlKQr1JfWadOVysB1g1sIppJBVu0EbCTRHYc6W3TiXXKutzFDDt-FAISsrwThlKa4-eLvIFcHaFvthtgyHdQMI7M-_pY2T2NIFmJJGOX5ff-Vrk7v3Y-crRE63xpNE1lhVDbpIL_8fX_3hHWyryjHoWloRgs1zU_lGqHMRPJAgD39YwOc5V3wZXiGS1VGvwUhKgb4NU8zeSesaMTMcyNiC-2e2iDWVPuP3IEG_9uFHv7BDMTmX933kn10RK_gEZKCwhc4lfvvvbdSuv8eqRSRdJnAY-gYIlcBLOtF02p2iOhTcMtQLTVHtZGbqZ8X; UM_distinctid=16c3b6326752a0-0f2f5099b17153-c343162-1fa400-16c3b6326765bc; CNZZDATA1253813504=885919117-1564359442-https%253A%252F%252Fwww.iconfont.cn%252F%7C1564359442; hasViewVideo=true; trace=AQAAAAq84QBPXAcABalOfKkFCYXLnkB3; ctoken=i0fM7lUyltgNTJ8jMSDw3gPX; u=6044439; u.sig=_NF63_tmKUF7iTEx731K7BoBN6_eIok0L-KLRjPrwg4; isg=BMXFM0qDNOFlrhClbHIvoaU-1AFTkEMqLYeB_Mcp8vwLXu3Qjt-z5ywoasINHpHM';
-    let url = 'https://www.iconfont.cn/api/project/detail.json?pid=1370954&t=1571116616432&ctoken=i0fM7lUyltgNTJ8jMSDw3gPX';
-    console.log('会导致taro编译报错，重新编译就好');
-
-    tools.iconfont.replace({
-        url,
-        cookie,
-        path: 'src/components/styles/components/iconfont/index.less'
+    return tools.iconfont.run({
+        path: 'src/modules/@wmeimob/weapp-design/src/components/icon-font',
+        ctoken:'5U-_r7qXi-8qdCJX6-JGY9LX',
+        pid:'1481689',
+        cookie: 'isg=BDU14ODThD6vKOA5n0slUjE6RrfvsunEgASiW7dZ2KyvjlaAegWslcUc3tK41QF8; u=4160790; u.sig=QkhXg0vX7C6fcWiz8VcHs2RYlGTtgfJxw9r0Jwh1ot0; ctoken=5U-_r7qXi-8qdCJX6-JGY9LX; trace=AQAAAMZNihC0FwcA6pngZdj9R3qPfT4W; cna=tItGFlygzBYCAWVXb+AAjXFr; EGG_SESS_ICONFONT=U8AXvqwdm-42-umGXGwgKq_Emj2wuVCkA87TjZ3dn6xm2T4whio3sIKoy4kjkuBSusLMQ-0MhcjWBE1FwhfGmDRN3OrPfvQuMkinXa81udhDMZTMCYwUCcAvdLDKgxnAhGNjf395_yrlFH0eivkWKVo_B00cfEfnw36SOT79ayGnA3ziI4moGzePcZYvOin26SMI80f6j04GoXb43BhUq31IJDgDNlAEWET0FIySSlWk86ILdrl22M5ii3aL_QtB6N2E-nI-z9NwYudwJFuS00s0E08S9P8AXAjEh4-FzbZMwUpqc-ekLVpv8VLHKn1UJYBIdmgBH3qz7htJ3vh4ajSpObPQjrRHFTTpyhu6ht8BpoHPClW_loidowZXU1mAP1RMK_dpMvxCqHQ-4GohYrxCD_MWbimRLakBX_VOsHvKKdpoZ1uyIhMzKQwcZ78VUIv3Ie9J7ytgvraEqFketIUGzscDD0O7GViwn9xiSMf1pcVgGIhRXLGo4wRtYAuTljh0x1yq4937pffhb1EDkNzI8eYh9Ch2uHiom4w6lGmXOWiQYMBkA_5dBwokrEYHySP9jqyZkxhyvEy0EBvbOqumedy2HBjcuJFVKbECTOukdIjzLfK1-hry39Jd1N3VtMhY_U9raAPpXCK-iyl6qBDtSe8wtxflRix7xYpW0tAQCBzG8JsTwpR82RfpzRwoL6E5_Elj5aE5g-PIJXY3AUF9-kxJOHLIBOOJZEmgRqSAMW1kGlnh33obW_zO_smXgrRJtey3_O7UKgLprt48YJgioznmtaWW_7pGta2MG4dUcft4oEm0zHgjaaMmNOYr4rT6rD1zW7NIbpW9nfr3sk8seIiG2Y1Gef7YALL2nAKOISYC59jJrLXCWMJzoaQahC8jU7N0yaNqrVLpWmhykucxT-yOCn7O4YgZ40oYxRcBhwCIbAvnYnUL2NbYIgJ3Dnij6l3d92ORns8JwlKSFtQI1mbQF2kcsi3UO4ApwxqVkBHM5a-xrw-A2zjjFndPxJFQauuP-wW5Xcx9914hnKpfUyHZAt0SS7WgVq5z38iajMr3jNKbyUudpQqigH399arAROUyJQ_sN23uZCtzb24t1KKvh9-W-XfjClllp2QCLdsE68Xod4_N3cyL78Ww_LvMfBL5JMsqpOeR4-Z7uQ=='
     });
-
-    await tools.iconfont.downFile({
-        outDirs: ['src/components/styles/components/iconfont'],
-        cookie
-    })
-
-    return tools.iconfont.generateIconFontName({
-        url: 'https://www.iconfont.cn/api/project/detail.json?pid=1370954&t=1571116616432&ctoken=i0fM7lUyltgNTJ8jMSDw3gPX',
-        path: 'src/components/styles/components/iconfont/name.ts',
-        cookie
-    })
 }
 exports.iconfont = iconfont;
 

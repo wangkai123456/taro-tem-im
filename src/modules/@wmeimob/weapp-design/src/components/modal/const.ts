@@ -7,6 +7,7 @@ export enum MMModalJustifyContent {
 
 export enum MMModalAnimationType {
     fade,
-    down
+    down,
+    none
 }
 

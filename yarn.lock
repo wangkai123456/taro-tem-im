@@ -1544,8 +1544,8 @@
     core-decorators "^0.20.0"
 
 "@wmeimob/node-tools@ssh://git@git.f.wmeimob.com:9922/Frontend/node-tools.git":
-  version "1.0.0"
-  resolved "ssh://git@git.f.wmeimob.com:9922/Frontend/node-tools.git#010fb06934f0a11c6a74c8f284f282e83ea23777"
+  version "1.0.1"
+  resolved "ssh://git@git.f.wmeimob.com:9922/Frontend/node-tools.git#2618c7beb769845f1e3be6c3d3849413c27cf52c"
   dependencies:
     "@types/colors" "^1.2.1"
     "@types/fs-extra" "^8.0.1"
@@ -1557,6 +1557,7 @@
     fs-extra "^8.1.0"
     fstream "^1.0.12"
     global "^4.4.0"
+    gulp "^4.0.2"
     readable-stream "^3.4.0"
     request "^2.88.0"
     typescript "^3.6.4"

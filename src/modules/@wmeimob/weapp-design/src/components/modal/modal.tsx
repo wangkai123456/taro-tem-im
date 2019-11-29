@@ -95,6 +95,9 @@ export default class MMModal extends Component<IMMModalProps> {
                 case MMModalAnimationType.fade:
                     classNameArray.push(styles.MMModal__hide_fade);
                     break;
+                case MMModalAnimationType.none:
+                    classNameArray.push(styles.MMModal__hide_none);
+                    break;
                 default:
                     break;
             }

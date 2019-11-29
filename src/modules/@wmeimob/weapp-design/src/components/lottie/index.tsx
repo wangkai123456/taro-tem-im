@@ -1,4 +1,4 @@
-import { Canvas } from '@tarojs/components';
+import { Canvas, View } from '@tarojs/components';
 import Taro, { Component, execObject } from '@tarojs/taro';
 import { autobind } from '@wmeimob/decorator';
 import lottie from 'lottie-miniprogram';
@@ -99,7 +99,12 @@ export default class MMLottie extends Component<ICheckboxProps> {
 
     render() {
         const { width, height, data } = this.props;
-        return data && <Canvas canvasId={this.canvasId} style={{ width: width + 'px', height: height + 'px' }} type="2d" id={this.canvasId} />;
+        const info = Taro.getSystemInfoSync();
+
+        return data && (info.brand === 'devtools' ? <View
+            style={{ width: width + 'px', height: height + 'px', overflow: 'hidden', backgroundColor: 'black', color: 'white' }}>
+            开发工具不支持lottie
+        </View> : <Canvas canvasId={this.canvasId} style={{ width: width + 'px', height: height + 'px' }} type="2d" id={this.canvasId} />);
     }
 
     private init(res: execObject[]) {

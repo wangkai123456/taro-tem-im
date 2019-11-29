@@ -1,5 +1,11 @@
 @import '../styles/themes/default.less';
 
+@monthHeight: 280 + @containerSize * 2;
+
+:export {
+    monthHeight: @monthHeight;
+}
+
 .MMCalendar {
     position        : relative;
     background-color: @gray1;
@@ -71,8 +77,8 @@
 }
 
 .monthBox {
-    margin          : @containerSize;
-    padding         : @spacingSize * 2 @containerSize;
+    padding         : @containerSize + @spacingSize * 2 @containerSize * 2;
+    height          : @monthHeight;
     background-color: white;
     border-radius   : @borderRadiusSize;
 }
@@ -129,4 +135,10 @@
 
 .timeBox {
     flex: 1;
+}
+
+.loading {
+    line-height: 100px;
+    color      : @primaryColor;
+    text-align : center;
 }

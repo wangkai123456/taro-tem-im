@@ -101,6 +101,7 @@ gulp iconfont
 ```
 
 添加前端框架@wmeimob/weapp-design，到src/modules 文件夹下
+需要配置git私钥
 
 ```sh
 gulp add --name=weapp-design
