@@ -4,6 +4,7 @@ import Taro, { Component } from '@tarojs/taro';
 import { autobind } from '@wmeimob/decorator';
 import styles from './index.modules.less';
 import themesStyles from '../styles/themes/default.modules.less';
+import MMDivider from '../divider';
 
 interface MMPickerViewProps {
     data: { id: string; text: string }[];
@@ -33,7 +34,8 @@ export default class MMPickerView extends Component<MMPickerViewProps> {
                 <SwiperItem><View className={styles.item}></View></SwiperItem>
                 <SwiperItem><View className={styles.item}></View></SwiperItem>
             </Swiper>
-            <View className={styles.select}></View>
+            <View className={styles.select}>
+            </View>
         </View>;
     }
 

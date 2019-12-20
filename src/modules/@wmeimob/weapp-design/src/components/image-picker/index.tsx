@@ -1,9 +1,10 @@
-import { View, Image } from '@tarojs/components';
+import { View, Image, Text } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
 import { autobind } from '@wmeimob/decorator';
 import classname from 'classnames';
 import MMIconFont from '../icon-font';
 import styles from './index.modules.less';
+import themesStyles from '../styles/themes/default.modules.less';
 import { MMIconFontName } from '../const';
 
 interface IMMImagePickerProps {
@@ -49,18 +50,23 @@ export default class MMImagePicker extends Component<IMMImagePickerProps> {
                 </View>
                 {this.renderIconfont(index)}
             </View>)}
-            {(count === undefined || value.length < count) && <View onClick={this.onClick} className={classname(styles.item, styles.add)}>
+            {(count === undefined || value.length < count) && <View onClick={this.onClick}
+                className={classname(styles.item, styles.add)}>
                 <View className={styles.itemContent}>
                 </View>
-                <View className={styles.line}></View>
-                <View className={classname(styles.line, styles.lineVertical)}></View>
+                <View className={styles.addContent}>
+                    <View>
+                        <MMIconFont size={32} color={themesStyles.gray3} value={MMIconFontName.PhotoUpload}></MMIconFont>
+                    </View>
+                    <Text className={styles.addText}>添加图片</Text>
+                </View>
             </View>}
         </View>;
     }
 
     private renderIconfont(index) {
         return <View className={styles.delete} onClick={() => this.onDelete(index)}>
-            <MMIconFont size={20} value={MMIconFontName.Delete}></MMIconFont>
+            <MMIconFont size={10} color={themesStyles.gray1} value={MMIconFontName.Close}></MMIconFont>
         </View>;
     }
 

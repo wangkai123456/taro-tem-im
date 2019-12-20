@@ -564,6 +564,41 @@
       "font_class": "Lessen",
       "unicode": "e78d",
       "unicode_decimal": 59277
+    },
+    {
+      "icon_id": "12108271",
+      "name": "photo",
+      "font_class": "PhotoUpload",
+      "unicode": "e78e",
+      "unicode_decimal": 59278
+    },
+    {
+      "icon_id": "12108496",
+      "name": "Video",
+      "font_class": "VideoUpload",
+      "unicode": "e78f",
+      "unicode_decimal": 59279
+    },
+    {
+      "icon_id": "12126230",
+      "name": "评星",
+      "font_class": "Rating",
+      "unicode": "e794",
+      "unicode_decimal": 59284
+    },
+    {
+      "icon_id": "12154765",
+      "name": "右上角关闭",
+      "font_class": "CloseRightTop",
+      "unicode": "e795",
+      "unicode_decimal": 59285
+    },
+    {
+      "icon_id": "12154813",
+      "name": "右下角关闭",
+      "font_class": "CloseRightBottom",
+      "unicode": "e796",
+      "unicode_decimal": 59286
     }
   ]
 }

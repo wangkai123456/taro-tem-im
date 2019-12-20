@@ -36,7 +36,6 @@ interface IIconfontState {
 @autobind
 export default class MMIconFont extends Component<IIconfontProps, IIconfontState> {
     static defaultProps = {
-        color: '#000',
         size: 20
     };
 
@@ -45,8 +44,18 @@ export default class MMIconFont extends Component<IIconfontProps, IIconfontState
     };
 
     render() {
+        const { size, color } = this.props;
+        const style: any = {};
+        if (size !== undefined) {
+            style.fontSize = size + 'px';
+        }
+
+        if (color !== undefined) {
+            style.color = color;
+        }
+
         return <View className={classnames(styles.MMIconFont, styles[`icon${this.props.value}`])}
-            style={{ fontSize: this.props.size + 'px', color: this.props.color }}></View>;
+            style={style}></View>;
     }
 }
 

@@ -1,0 +1,47 @@
+@import '../styles/themes/default.less';
+
+
+.MMMenu {
+    display    : flex;
+    font-size  : 13px;
+    line-height: 18px;
+    color      : @gray6;
+    height     : 500px;
+}
+
+
+
+.item {
+    display    : flex;
+    align-items: center;
+    padding    : 15px;
+}
+
+.list {
+    width           : 100px;
+    background-color: @gray2;
+
+    .item {
+        color: #666666;
+    }
+
+    .selected {
+        background-color: @gray1;
+        color           : @gray7;
+        font-weight     : bold;
+    }
+}
+
+.listChildren {
+    flex            : 1;
+    background-color: @gray1;
+
+    .item {
+        padding-left: 50px;
+    }
+
+    .selected {
+        color      : @gray7;
+        font-weight: bold;
+    }
+}

@@ -5,12 +5,9 @@ export enum MMButtonType {
     White
 }
 
-export enum MMButtonState {
+export enum MMButtonColor {
     Default,
-    Success,
-    Warning,
-    Danger,
-    Cool
+    Red
 }
 
 export enum MMButtonSize {

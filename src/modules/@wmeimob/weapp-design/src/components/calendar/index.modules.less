@@ -1,9 +1,9 @@
 @import '../styles/themes/default.less';
 
-@monthHeight: 280 + @containerSize * 2;
+@itemHeight: 50;
 
 :export {
-    monthHeight: @monthHeight;
+    itemHeight: @itemHeight;
 }
 
 .MMCalendar {
@@ -24,72 +24,97 @@
 }
 
 .item {
-    width            : calc(100% / 7);
-    margin-bottom    : 2px;
-    height           : 42px;
-    font-size        : 17px;
-    color            : @gray7;
-    font-weight      : bold;
-    // border        : 1px solid #333;
-
-    &.isStart {
-        border-radius: @borderRadiusSize 0 0 @borderRadiusSize;
-    }
-
-    &.isEnd {
-        border-radius: 0 @borderRadiusSize @borderRadiusSize 0;
-    }
+    position   : relative;
+    width      : calc(100% / 7);
+    height     : @itemHeight + 0px;
+    font-size  : 15px;
+    color      : @gray7;
+    font-weight: bold;
 }
 
 .itemText {
-    margin-top   : 5px;
-    width        : calc(100% - 20px);
-    line-height  : 18px;
+    width        : 30px;
+    height       : 30px;
+    line-height  : 30px;
+    border-radius: 15px;
     text-align   : center;
-    border-radius: 50%;
-}
-
-.itemStart {
-    font-size: 10px;
-    color    : @gray1;
-}
-
-.itemContent {
-    display       : flex;
-    width         : 100%;
-    height        : 100%;
-    flex-direction: column;
-    align-items   : center;
 
     &.isStart {
         background-color: @primaryColor;
         color           : @gray1;
-        border-radius   : @borderRadiusSize;
+        box-shadow      : 0px 2px 6px 0px fade(@primaryColor, 30%);
     }
 }
 
-.selected {
+.itemStart {
+    margin-top : 2px;
+    font-size  : 8px;
+    line-height: 8px;
+    color      : @primaryColor;
+}
+
+.itemStartBg {
+    position        : absolute;
+    top             : 0;
+    left            : 50%;
+    width           : 50%;
+    height          : 30px;
     background-color: @calendarSelectedColor;
 }
 
-.disable {
-    color: @gray4;
+.itemEndBg {
+    position        : absolute;
+    top             : 0;
+    left            : 0;
+    width           : 50%;
+    height          : 30px;
+    background-color: @calendarSelectedColor;
+}
+
+
+.itemContent {
+    position      : relative;
+    display       : flex;
+    width         : 100%;
+    height        : 30px;
+    flex-direction: column;
+    align-items   : center;
+
+    &.selected {
+        background-color: @calendarSelectedColor;
+    }
+
+    &.weekStart {
+        border-radius: 15px 0 0 15px;
+    }
+
+    &.weekEnd {
+        border-radius: 0 15px 15px 0;
+    }
+
+    &.disable {
+        color: @gray5;
+
+        .itemText {
+            background-color: @gray3;
+        }
+    }
 }
 
 .monthBox {
-    padding         : @containerSize + @spacingSize * 2 @containerSize * 2;
-    height          : @monthHeight;
+    padding         : 0 @spacingSize * 4;
     background-color: white;
     border-radius   : @borderRadiusSize;
 }
 
 .month {
-    margin-bottom: @containerSize;
-    text-align   : center;
-    line-height  : 24px;
-    font-size    : 17px;
-    font-weight  : bold;
-    color        : @primaryColor;
+    padding-left  : 11px;
+    padding-bottom: @containerSize;
+    height        : @itemHeight + 0px;
+    line-height   : 50px - @containerSize;
+    font-size     : 16px;
+    font-weight   : bold;
+    color         : @gray7;
 }
 
 .delete {
@@ -100,7 +125,7 @@
 
 
 .weekTitle {
-    padding         : 0 @containerSize * 2;
+    padding         : 0 @spacingSize * 4;
     display         : flex;
     background-color: @gray1;
     box-shadow      : @boxShadow;
@@ -110,32 +135,32 @@
         height          : 42px;
         line-height     : 42px;
         text-align      : center;
-        font-size       : 17px;
-        font-weight     : bold;
+        font-size       : 14px;
+        color           : @gray5;
         // border-bottom: 1px solid #333;
     }
 }
 
-.tools {
-    height: 80px;
-}
+// .tools {
+//     height: 80px;
+// }
 
-.toolsContent {
-    display         : flex;
-    position        : fixed;
-    left            : 0;
-    bottom          : 0;
-    padding         : 0 @spacingSize * 2;
-    box-shadow      : @boxShadowTop;
-    width           : 100%;
-    height          : 80px;
-    align-items     : center;
-    background-color: @gray1;
-}
+// .toolsContent {
+//     display         : flex;
+//     position        : fixed;
+//     left            : 0;
+//     bottom          : 0;
+//     padding         : 0 @spacingSize * 2;
+//     box-shadow      : @boxShadowTop;
+//     width           : 100%;
+//     height          : 80px;
+//     align-items     : center;
+//     background-color: @gray1;
+// }
 
-.timeBox {
-    flex: 1;
-}
+// .timeBox {
+//     flex: 1;
+// }
 
 .loading {
     line-height: 100px;

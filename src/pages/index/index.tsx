@@ -118,7 +118,7 @@ class Index extends Component {
                     <View className='spacing'></View>
                     <H2>参数</H2>
                     <View>
-                        <MMButton state={MMButtonState.Warning}>slot</MMButton>
+                        <MMButton >slot</MMButton>
                     </View>
 
                     <View className='spacing'></View>

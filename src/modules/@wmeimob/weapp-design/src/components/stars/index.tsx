@@ -39,6 +39,14 @@ interface IStarsProps {
      * @memberof IStarsProps
      */
     onChange?: (value: number) => void
+
+    /**
+     * 字体图标名称
+     *
+     * @type {IconFontName}
+     * @memberof IStarsProps
+     */
+    iconfontName?: IconFontName
 }
 
 @autobind
@@ -48,6 +56,7 @@ export default class MMStars extends Component<IStarsProps> {
     };
 
     static defaultProps = {
+        iconfontName: IconFontName.Collect,
         size: MMStarsSize.Default,
         count: 5
     };
@@ -76,11 +85,11 @@ export default class MMStars extends Component<IStarsProps> {
 
     render() {
         const countArray = new Array(this.props.count).fill(1);
-        const { onChange, value } = this.props;
+        const { onChange, value, iconfontName } = this.props;
         return <View className={styles.MMStars}>
             {countArray.map((val, index) => <View className={styles.item} style={this.style} key={val + index} onClick={() => onChange && onChange(index + 1)}>
                 <MMIconFont size={this.size} color={index < value ? themesStyles.yellow : themesStyles.gray4}
-                    value={IconFontName.Collect}></MMIconFont></View>)}
+                    value={iconfontName as IconFontName}></MMIconFont></View>)}
         </View>;
     }
 }

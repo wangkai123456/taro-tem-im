@@ -1,9 +1,10 @@
-import { Canvas, View } from '@tarojs/components';
+import { Canvas, Image, View } from '@tarojs/components';
 import Taro, { Component, execObject } from '@tarojs/taro';
 import { autobind } from '@wmeimob/decorator';
-import lottie from 'lottie-miniprogram';
-import { guid } from '../utils';
+// 修改了 动画卡主的问题 https://developers.weixin.qq.com/community/develop/doc/0004a2139ecbe82ed3991f58756400
+import lottie from './lottie-miniprogram';
 import { AnimationItem } from './types';
+import { guid } from '../utils';
 
 interface ICheckboxProps {
 
@@ -56,7 +57,6 @@ export default class MMLottie extends Component<ICheckboxProps> {
     };
 
     static defaultProps = {
-
     };
 
     private canvasId = 'lottie' + guid();
@@ -100,22 +100,29 @@ export default class MMLottie extends Component<ICheckboxProps> {
     render() {
         const { width, height, data } = this.props;
         const info = Taro.getSystemInfoSync();
+        return data && (info.brand === 'devtools' ? <View>
+            <Image style={{ width: width + 'px', height: height + 'px' }} src={require('./loading.png')}></Image>
+        </View>
+            : <Canvas canvasId={this.canvasId} style={{ width: width + 'px', height: height + 'px' }} type="2d" id={this.canvasId} />);
+    }
 
-        return data && (info.brand === 'devtools' ? <View
-            style={{ width: width + 'px', height: height + 'px', overflow: 'hidden', backgroundColor: 'black', color: 'white' }}>
-            开发工具不支持lottie
-        </View> : <Canvas canvasId={this.canvasId} style={{ width: width + 'px', height: height + 'px' }} type="2d" id={this.canvasId} />);
+    componentWillUnmount() {
+        const info = Taro.getSystemInfoSync();
+        if (info.brand !== 'devtools') {
+            this.animationItem.destroy();
+        }
     }
 
     private init(res: execObject[]) {
         const { width, height, loop, autoplay } = this.props;
         const { data } = this.props;
         const canvas = res[0].node;
-        canvas.width = width;
-        canvas.height = height;
+        canvas.width = width * 2;
+        canvas.height = height * 2;
 
         lottie.setup(canvas);
         this.animationItem = lottie.loadAnimation({
+            name: this.canvasId,
             loop,
             autoplay,
             rendererSettings: {

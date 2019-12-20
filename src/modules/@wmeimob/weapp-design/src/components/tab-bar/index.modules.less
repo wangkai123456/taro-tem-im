@@ -1,6 +1,6 @@
 @import '../styles/themes/default.less';
 
-@iconSize: 20;
+@iconSize: 22;
 
 :export {
     tabBarFontColor: @tabBarFontColor;
@@ -28,17 +28,16 @@
     height         : 50px;
     flex-direction : row;
     justify-content: space-around;
-    align-items    : center;
 }
 
 .item {
-    position       : relative;
-    display        : flex;
-    flex-direction : column;
-    align-items    : center;
-    justify-content: center;
-    font-size      : 12px;
-    color          : @tabBarFontColor;
+    margin-top    : 5px;
+    position      : relative;
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+    font-size     : 11px;
+    color         : @tabBarFontColor;
 }
 
 .image {
@@ -63,14 +62,18 @@
 
 
 .count {
-    position        : absolute;
-    top             : 0;
-    right           : -8px;
-    border-radius   : 8px;
-    padding         : 0 5px;
-    height          : 16px;
-    line-height     : 16px;
-    background-color: @red;
-    font-size       : 10px;
-    color           : @gray1;
+    position: absolute;
+    top     : 3px;
+    right   : 0;
+}
+
+.iconfont {
+    height: 22px;
+}
+
+.text {
+    margin-top : 2px;
+    font-size  : 11px;
+    line-height: 16px;
+    height     : 16px;
 }

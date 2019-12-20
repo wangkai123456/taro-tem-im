@@ -5,6 +5,7 @@ import { MMModalAnimationType, MMModalJustifyContent } from '../modal/const';
 import MMModal from '../modal/modal';
 import styles from './index.modules.less';
 import MMPickerView from './view';
+import MMModalPopupTitle from '../modal/title';
 
 const name = 'MMPicker';
 
@@ -70,26 +71,23 @@ export default class MMPicker extends Component<MMPickerProps> {
     };
 
     static defaultProps = {
-        title: '',
+        title: '请选择',
         value: [],
         data: []
     };
 
     render() {
-        const { visible, data, value } = this.props;
+        const { visible, data, value, onCancel, onOk } = this.props;
         return <View className={name}>
             <MMModal visible={visible} animationType={MMModalAnimationType.down}
                 justifyContent={MMModalJustifyContent.flexEnd}
                 onClose={this.props.onCancel} >
                 <View className={styles.modal}>
-                    <View className={styles.title}>
-                        <View className={styles.title_button} onClick={this.props.onCancel}>取消</View>
-                        <View className={styles.title_content}>{this.props.title}</View>
-                        <View className={styles.title_button} onClick={() => this.props.onOk([...this.props.value])}>确定</View>
-                    </View>
+                    <MMModalPopupTitle onCancel={onCancel}
+                        onOk={() => onOk([...this.props.value])} title={this.props.title} ></MMModalPopupTitle>
                     <View className={styles.content}>
                         {data.map((dataValue, index) => <View className={styles.modal_picker} key={index + '1'}>
-                            <MMPickerView data={dataValue} value={value[index]} onChange={(value) => this.onChange(index, value)}></MMPickerView>
+                            <MMPickerView data={dataValue} value={value[index]} onChange={value => this.onChange(index, value)}></MMPickerView>
                         </View>)}
                     </View>
                 </View>

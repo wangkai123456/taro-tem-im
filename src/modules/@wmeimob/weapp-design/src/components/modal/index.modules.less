@@ -12,7 +12,7 @@
     opacity       : 1;
     transition    : all @transitionTiming;
     pointer-events: none;
-    z-index       : 10000;
+    z-index       : 1000;
 }
 
 .MMModal__center {
@@ -75,8 +75,7 @@
     top             : 0;
     width           : 100%;
     height          : 100%;
-    background-color: black;
-    opacity         : 0.3;
+    background-color: @maskColor;
 
     .MMModal_mask__transparent {
         opacity: 0;
@@ -161,20 +160,38 @@
 }
 
 .MMToast_message {
-    margin-top      : 5px;
-    padding         : 12px 20px;
-    position        : relative;
-    top             : 200px;
-    max-width       : 240px;
-    font-size       : 17px;
-    line-height     : 24px;
-    color           : white;
-    background-color: @gray7;
-    transition      : all @transitionTiming;
-    opacity         : 0;
-    pointer-events  : none;
-    border-radius   : 5px;
+    margin-top            : 5px;
+    padding               : 12px 20px;
+    position              : relative;
+    top                   : 200px;
+    max-width             : 240px;
+    font-size             : 17px;
+    line-height           : 24px;
+    color                 : white;
+    background-color      : @gray7;
+    transition            : all @transitionTiming;
+    // opacity            : 0;
+    border-radius         : 5px;
 }
+
+
+.MMToast_message_iconfont {
+    font-size    : 36px;
+    text-align   : center;
+    margin-top   : 9px;
+    margin-bottom: 9px;
+}
+
+.MMToast_message_animation {
+    display        : flex;
+    margin-top     : 9px;
+    margin-bottom  : 9px;
+    justify-content: center;
+    align-items    : center;
+    height         : 36px;
+}
+
+
 
 .MMToast_message__showing {
     top    : 0px;
@@ -184,4 +201,32 @@
 .MMToast_message__hideing {
     top    : -100px;
     opacity: 0;
+}
+
+
+.title {
+    display         : flex;
+    flex-direction  : column;
+    height          : 52px;
+    flex-direction  : row;
+    align-items     : center;
+    border-bottom   : 0.5px solid @dividerColor;
+    font-size       : 16px;
+    font-weight     : bold;
+    color           : @gray7;
+    border-radius   : @borderRadiusSize * 2 @borderRadiusSize * 2 0 0;
+    background-color: @gray1;
+}
+
+.title_button {
+    font-size  : 15px;
+    font-weight: bold;
+    padding    : 0 @spacingSize * 4;
+    color      : @blue;
+}
+
+.title_content {
+    flex      : 1;
+    color     : @gray7;
+    text-align: center;
 }

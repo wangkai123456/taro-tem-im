@@ -1,4 +1,14 @@
-enum IconFontName {
+enum MMIconFontName {
+    // 右下角关闭
+    CloseRightBottom = 'CloseRightBottom',
+    // 右上角关闭
+    CloseRightTop = 'CloseRightTop',
+    // 评星
+    Rating = 'Rating',
+    // Video
+    VideoUpload = 'VideoUpload',
+    // photo
+    PhotoUpload = 'PhotoUpload',
     // 减号
     Lessen = 'Lessen',
     // 更多
@@ -86,7 +96,7 @@ enum IconFontName {
     // 哭脸
     Crying = 'Crying',
     // 警告
-    warning = 'warning',
+    Warning = 'warning',
     // 帮助
     Help = 'Help',
     // 错误
@@ -160,4 +170,4 @@ enum IconFontName {
     // 首页
     Index = 'Index'
 }
-export default IconFontName;
+export default MMIconFontName;

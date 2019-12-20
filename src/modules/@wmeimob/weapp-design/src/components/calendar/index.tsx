@@ -2,11 +2,12 @@ import { View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
 import { autobind } from '@wmeimob/decorator';
 import dayjs from 'dayjs';
-import { H2, MMIconFont, MMModal } from '..';
-import { MMIconFontName, MMModalJustifyContent } from '../const';
+import { MMModalJustifyContent } from '../const';
 import { MMModalAnimationType } from '../modal/const';
+import MMModal from '../modal/modal';
+import MMModalPopupTitle from '../modal/title';
 import styles from './index.modules.less';
-import { MMCalendarView, IMMCalendarViewProps } from './view';
+import { IMMCalendarViewProps, MMCalendarView } from './view';
 
 interface IMMCalendarProps extends IMMCalendarViewProps {
     /**
@@ -50,16 +51,10 @@ export default class MMCalendar extends Component<IMMCalendarProps, IMMCalendarS
     render() {
         return <MMModal visible={this.props.visible} animationType={MMModalAnimationType.down}
             justifyContent={MMModalJustifyContent.flexEnd} onClose={this.props.onClose}>
+            <MMModalPopupTitle title="日期选择" onCancel={this.props.onClose} onOk={this.props.onClick}></MMModalPopupTitle>
             <View className={styles.MMCalendar}>
-                <View className={styles.title}>
-                    <H2>日期选择</H2>
-                </View>
-                <View className={styles.delete} onClick={this.props.onClose}>
-                    <MMIconFont value={MMIconFontName.Close}></MMIconFont>
-                </View>
-                <View>
-                    <MMCalendarView ref={ref => this.calendarView = ref as MMCalendarView} scrollViewHeight={450} {...this.props}></MMCalendarView>
-                </View>
+                <MMCalendarView ref={ref => this.calendarView = ref as MMCalendarView}
+                    scrollViewHeight={450} {...this.props}></MMCalendarView>
             </View>
         </MMModal >;
     }

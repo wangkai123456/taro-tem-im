@@ -82,7 +82,7 @@ export default class MMNavigation extends Component<IMMNavigationProps, IMMNavig
         return <View {...this.props} className={styles.MMNavigation} style={{ height: viewHeight }} >
             <View className={this.className} style={{ paddingTop: statusBarHeight + 'px' }} >
                 <View className={styles.content} style={{ height: this.state.height + 'px' }}>
-                    <View className={styles.goback}>
+                    <View className={styles.leftBox}>
                         {this.props.renderLeftContent}
                     </View>
                     {this.props.backVisible ? this.renderGoBack() : ''}

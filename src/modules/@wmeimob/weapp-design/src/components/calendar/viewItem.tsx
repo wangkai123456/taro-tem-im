@@ -43,7 +43,7 @@ interface IMMCalendarItemProps {
      * @type {Date}
      * @memberof IMMCalendarItemProps
      */
-    day: Date
+    date: Date
 
     /**
      * 禁止日期
@@ -113,7 +113,7 @@ export default class MMCalendarItem extends Component<IMMCalendarItemProps> {
     }
 
     render() {
-        const { day: dayDate } = this.props;
+        const { date: dayDate } = this.props;
         const day = dayjs(dayDate);
         const dayArrayEmpty = new Array(day.day()).fill('1');
         const dayArrayLength = day.endOf('month').date();
@@ -133,28 +133,52 @@ export default class MMCalendarItem extends Component<IMMCalendarItemProps> {
         const { value } = this.props;
         return new Array(data).fill('2').map((date, index) => {
             const day = dayMonth.add(index, 'day');
-            const isStart = value && value[0] && day.format("YYYYMMDD") === dayjs(value[0]).format("YYYYMMDD");
-            const isEnd = value && value[1] && day.format("YYYYMMDD") === dayjs(value[1]).format("YYYYMMDD");
+            const isStartValue = this.isStart(day);
+            const isEndValue = this.isEnd(day);
+            const isWeekStartValue = this.isWeekStart(day);
+            const isWeekEndValue = this.isWeekEnd(day);
             let text = '';
-            if (isStart && isEnd) {
+            if (isStartValue && isEndValue) {
                 text = '起/止';
-            } else if (isStart) {
+            } else if (isStartValue) {
                 text = '起';
-            } else if (isEnd) {
+            } else if (isEndValue) {
                 text = '止';
             }
 
             // 这里必须要用bind 和 字符串类型配合 不然传不进去 taro bug
             const dayDate = day.format();
             return <View key={date + index}
-                className={this.getItemClassName([styles.item, isStart ? styles.isStart : '', isEnd ? styles.isEnd : ''], day)}
+                className={classNames(styles.item)}
                 onClick={this.onClick.bind(this, dayDate)}>
-                < View className={classNames(styles.itemContent, (isStart || isEnd) ? styles.isStart : '')}>
-                    <View className={styles.itemText}>{index + 1}</View>
+                {value.length === 2 && isStartValue && !isEndValue && !isWeekEndValue
+                    && <View className={styles.itemStartBg}></View>}
+                {value.length === 2 && isEndValue && !isStartValue && !isWeekStartValue
+                    && <View className={styles.itemEndBg}></View>}
+                <View className={this.getItemClassName([styles.itemContent], day)}>
+                    <View className={classNames((isStartValue || isEndValue) ? styles.isStart : '', styles.itemText)}>{index + 1}</View>
                     <View className={styles.itemStart}>{text}</View>
                 </View>
             </View >
         })
+    }
+
+    private isWeekStart(day: dayjs.Dayjs) {
+        return day.day() === 0 || day.date() === 1;
+    }
+
+    private isWeekEnd(day: dayjs.Dayjs) {
+        return day.day() === 6 || day.date() === day.endOf('month').date();
+    }
+
+    private isStart(day: dayjs.Dayjs) {
+        const { value } = this.props;
+        return value && value[0] && day.format("YYYYMMDD") === dayjs(value[0]).format("YYYYMMDD");
+    }
+
+    private isEnd(day: dayjs.Dayjs) {
+        const { value } = this.props;
+        return value && value[1] && day.format("YYYYMMDD") === dayjs(value[1]).format("YYYYMMDD");
     }
 
     private onClick(date: string) {
@@ -188,6 +212,10 @@ export default class MMCalendarItem extends Component<IMMCalendarItemProps> {
         const minDay = dayjs(min);
         const maxDay = dayjs(max);
 
+        if (minDay.isBefore(dayjs(this.props.minDate), 'day') || maxDay.isAfter(dayjs(this.props.maxDate), 'day')) {
+            return true;
+        }
+
         if (disableDate && disableDate.find(([min, max]) => minDay.isBefore(dayjs(min), 'day') && maxDay.isAfter(dayjs(max), 'day'))) {
             return true;
         }
@@ -200,10 +228,10 @@ export default class MMCalendarItem extends Component<IMMCalendarItemProps> {
             classnames.push(styles.disable);
         } else if (this.props.value.length === 2 && this.isSelected(day)) {
             if (day.day() === 6 || day.date() === day.endOf('month').date()) {
-                classnames.push(styles.isEnd);
+                classnames.push(styles.weekEnd);
             }
             if (day.day() === 0 || day.date() === 1) {
-                classnames.push(styles.isStart);
+                classnames.push(styles.weekStart);
             }
             classnames.push(styles.selected);
         }
@@ -241,12 +269,8 @@ export default class MMCalendarItem extends Component<IMMCalendarItemProps> {
             return false;
         }
 
-        if (dayjs.isSame(this.props.value[0], 'date')) {
-            return true;
-        }
-
-        if (this.props.value.length === 2 && (dayjs.isSame(this.props.value[1], 'date') ||
-            dayjs.isAfter(this.props.value[0]) && dayjs.isBefore(this.props.value[1]))) {
+        if (this.props.value.length === 2 &&
+            dayjs.isAfter(this.props.value[0]) && dayjs.isBefore(this.props.value[1])) {
             return true
         }
 

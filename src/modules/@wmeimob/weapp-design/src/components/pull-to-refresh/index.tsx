@@ -6,6 +6,8 @@ import classname from 'classnames';
 import { autobind } from '@wmeimob/decorator';
 import { MMPullToRefreshState } from './const';
 import styles from './index.modules.less';
+import MMLoading from '../loading';
+import { MMLoadingType } from '../loading/types';
 
 interface IMMPullToRefreshProps {
     /**
@@ -144,7 +146,8 @@ export default class MMPullToRefresh extends Component<IMMPullToRefreshProps, IM
             <ScrollView scrollY={true} throttle={false} style={style} onScroll={this.onScroll} lowerThreshold={100} onScrollToLower={this.onScrollToLower}>
                 <View className={this.classNameContent} style={{ top: this.state.top + 'px' }} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd} >
                     <View className={styles.loading} style={{ marginTop: -height + 'px', height: height + 'px' }}>
-                        {this.getRefresh()}
+                        {/* {this.getRefresh()} */}
+                        <MMLoading width={20} type={MMLoadingType.Black} height={20}></MMLoading>
                     </View>
                     {this.props.children}
                     {state !== nu && this.renderPull()}
@@ -157,16 +160,18 @@ export default class MMPullToRefresh extends Component<IMMPullToRefreshProps, IM
     private renderPull() {
         const { noMore } = this.props;
         return <View className={styles.more}>
-            {noMore ? '没有更多了' : '加载中'}
+            {
+                noMore ? '没有更多了' : <MMLoading width={20} type={MMLoadingType.Black} height={20}></MMLoading>
+            }
         </View>
     }
 
-    private getRefresh() {
-        if (this.state.top === MMPullToRefresh.loadingHeight) {
-            return this.props.state === MMPullToRefreshState.refreshing ? '刷新中' : '松开刷新';
-        }
-        return '下拉刷新';
-    }
+    // private getRefresh() {
+    //     if (this.state.top === MMPullToRefresh.loadingHeight) {
+    //         return this.props.state === MMPullToRefreshState.refreshing ? '刷新中' : '松开刷新';
+    //     }
+    //     return '下拉刷新';
+    // }
 
     private onScrollToLower() {
         if (this.props.state !== MMPullToRefreshState.pushing && !this.props.noMore) {

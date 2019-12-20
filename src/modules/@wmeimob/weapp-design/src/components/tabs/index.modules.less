@@ -1,4 +1,5 @@
 @import '../styles/themes/default.less';
+@import '../styles/utils/index.less';
 
 :export {
     tabBarFontColor: @tabBarFontColor;
@@ -6,24 +7,28 @@
 }
 
 .MMTabs {
+    .divider();
     position        : relative;
-    border-bottom   : 0.5px solid @dividerColor;
     background-color: @gray1;
 }
 
 .content {
-    height     : 39px;
-    line-height: 39px;
     display    : flex;
+    align-items: center;
 }
 
 .item {
-    flex      : 1;
-    text-align: center;
+    margin     : 10px 0;
+    height     : 30px;
+    line-height: 30px;
+    flex       : 1;
+    text-align : center;
+    font-size  : 13px;
 }
 
 .selected {
-    color: @primaryColor;
+    font-size: 16px;
+    color    : @primaryColor;
 }
 
 .line {
@@ -35,4 +40,72 @@
     height          : 3px;
     background-color: @primaryColor;
     transition      : all 0.4s;
+}
+
+
+.MMTabs__circle {
+
+    .content {
+        justify-content: space-around;
+    }
+
+    .item {
+        flex         : initial;
+        padding      : 0 15px;
+        height       : 30px;
+        line-height  : 30px;
+        border-radius: 15px;
+    }
+
+    .selected {
+        font-size       : 16px;
+        color           : @gray1;
+        background-color: @primaryColor;
+    }
+
+    .line {
+        display: none;
+    }
+}
+
+.MMTabs__button {
+    background-color: initial;
+
+    .item {
+        height     : 30px;
+        line-height: 28px;
+    }
+
+    .selected {
+        font-size: 13px;
+    }
+
+
+    &::after {
+        display: none;
+    }
+
+    .line {
+        display: none;
+    }
+
+    .item {
+        color       : @primaryColor;
+        border      : 1px solid @primaryColor;
+        border-right: none;
+
+        &:first-of-type {
+            border-radius: @borderRadiusSize 0 0 @borderRadiusSize;
+        }
+
+        &:last-of-type {
+            border-right : 1px solid @primaryColor;
+            border-radius: 0 @borderRadiusSize @borderRadiusSize 0;
+        }
+    }
+
+    .selected {
+        color           : @gray1;
+        background-color: @primaryColor;
+    }
 }

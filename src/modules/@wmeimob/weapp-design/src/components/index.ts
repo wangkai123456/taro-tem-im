@@ -22,6 +22,7 @@ import MMSwitch from './switch';
 import MMTabBar from './tab-bar';
 import MMTabs from './tabs';
 import MMCarouselItem from './carousel/item';
+import MMStars from './stars';
 
 export {
     MMActionSheet,
@@ -37,6 +38,8 @@ export {
     MMSwitch,
     MMDivider,
     MMEmpty,
+
+    MMStars,
 
     H2,
     H3,

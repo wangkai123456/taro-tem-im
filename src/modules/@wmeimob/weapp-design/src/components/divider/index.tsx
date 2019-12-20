@@ -15,22 +15,6 @@ interface IMMDividerProps {
     size?: number;
 
     /**
-     * 是否是粗细
-     *
-     * @type {boolean}
-     * @memberof IMMDividerProps
-     */
-    bold?: boolean
-
-    /**
-     * 分割线类型
-     *
-     * @type {DividerStyle}
-     * @memberof IMMDividerProps
-     */
-    type?: MMDividerStyle;
-
-    /**
      * 是否是垂直线
      *
      * @type {boolean}
@@ -48,21 +32,8 @@ export default class MMDivider extends Component<IMMDividerProps> {
     private get className() {
         const classnames = [styles.MMDivider];
 
-        switch (this.props.type) {
-            case MMDividerStyle.dotted:
-                classnames.push(styles.MMDivider__dotted);
-                break;
-            case MMDividerStyle.dashed:
-                classnames.push(styles.MMDivider__dashed);
-                break;
-        }
-
         if (this.props.vertical) {
             classnames.push(styles.MMDivider__vertical);
-        }
-
-        if (this.props.bold) {
-            classnames.push(styles.MMDivider__bold);
         }
 
         return classNames(...classnames);

@@ -1,5 +1,5 @@
 
-import { MMButtonSize, MMButtonType, MMButtonRadius, MMButtonState } from './button/const';
+import { MMButtonSize, MMButtonType, MMButtonRadius } from './button/const';
 import { MMNavigationType } from './navigation/const';
 import { MMDividerStyle } from './divider/const';
 import MMIconFontName from './icon-font/name';
@@ -20,7 +20,6 @@ export {
     MMModalAnimationType,
 
     MMButtonType,
-    MMButtonState,
     MMButtonSize,
     MMButtonRadius,
 

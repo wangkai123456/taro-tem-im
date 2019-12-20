@@ -135,7 +135,7 @@ export class MMCalendarView extends Component<IMMCalendarViewProps, IMMCalendarV
                 <View className={styles.loading}>
                     {noMore ? '' : '加载中'}
                 </View>
-                <View className={styles.tools}>
+                {/* <View className={styles.tools}>
                     <View className={styles.toolsContent}>
                         <View className={styles.timeBox}>
                             {startTimeString && <View>开始:{startTimeString}</View>}
@@ -145,7 +145,7 @@ export class MMCalendarView extends Component<IMMCalendarViewProps, IMMCalendarV
                             <MMButton onClick={this.onConfirm}>确定</MMButton>
                         </View>
                     </View>
-                </View>
+                </View> */}
             </ScrollView>
         </View>
     }
@@ -223,12 +223,16 @@ export class MMCalendarView extends Component<IMMCalendarViewProps, IMMCalendarV
         const diffNumber = dayjs(maxDate).diff(dayjs(minDate), 'month');
         const monthsNu = monthsNumber > diffNumber + 1 ? diffNumber + 1 : monthsNumber;
         const monthhsArray = new Array(monthsNu).fill(1);
-        return PropsValue && monthhsArray.map((_value, index) => {
-            const day = dayjs(minDate).add(index, 'month').startOf('month').toDate();
-            const isScreen = Math.abs(310 * index - scrollTop) < 1000 && Math.abs(scrollTop - 310 * index) < 1000;
 
-            return <View key={day.toString()} >
-                <MMCalendarItem inScreen={isScreen} day={day} {...this.props}></MMCalendarItem>
+        let top = 0;
+        return PropsValue && monthhsArray.map((_value, index) => {
+            const day = dayjs(minDate).add(index, 'month').startOf('month');
+            const dayRowNumber = day.day() + day.endOf('month').date() > 35 ? 6 : 5;
+            const date = day.toDate();
+            const isScreen = Math.abs(top - scrollTop) < 1000 && Math.abs(scrollTop - top) < 1000;
+            top += (dayRowNumber + 1) * styles.itemHeight;
+            return <View key={date.toString()} >
+                <MMCalendarItem inScreen={isScreen} date={date} {...this.props}></MMCalendarItem>
             </View>
         });
     }

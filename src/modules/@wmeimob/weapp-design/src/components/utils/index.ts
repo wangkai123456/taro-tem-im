@@ -1,44 +1,5 @@
 import Taro from '@tarojs/taro';
 
-function getStyleObject(style: string | React.CSSProperties | undefined) {
-    if (typeof style === 'string') {
-        const styleArray = style.split(';')
-            .map(value => value.split(':'))
-            .map(value => [value[0].split('-').map((value, index) => {
-                let newValue = value;
-                if (index !== 0) {
-                    newValue = newValue.replace(/^./, value[0].toUpperCase());
-                }
-                return newValue;
-            }).join(''), value[1]]);
-
-        const stylesObj: { [key: string]: string } = {};
-        for (const iterator of styleArray) {
-            const [key, value] = iterator;
-            stylesObj[key] = value;
-        }
-        return stylesObj;
-    } else if (style !== undefined) {
-        return style;
-    }
-    return {};
-}
-
-/**
- * 合并styles
- *
- * @export
- * @param {(...(string | React.CSSProperties | undefined)[])} styleArray
- * @returns {React.CSSProperties[]}
- */
-export function styles(...styleArray: (string | React.CSSProperties | undefined)[]): React.CSSProperties {
-    return Object.assign({}, ...styleArray.map(getStyleObject));
-}
-
-export function uuid() {
-
-}
-
 /**
  * 生成唯一标识符
  *

@@ -5,6 +5,7 @@ import MMIconFont from '../icon-font';
 import styles from './index.modules.less';
 import classNames from 'classnames';
 import { isNewIphone } from '../utils';
+import MMBadge from '../badge';
 
 interface IMMTabBarData {
     /**
@@ -129,15 +130,19 @@ export default class MMTabBar extends Component<IMMTabBarProps, IMMTabBarState> 
                             key={value.text}
                             className={this.getClassName(index)}
                             onClick={() => this.onClick(value, index)}>
-                            {
-                                value.image ?
-                                    <Image className={styles.image} src={currPageIndex === index ? value.imageSelected : value.image}></Image> :
-                                    <MMIconFont value={value.iconfont as string} size={styles.iconSize} color={currPageIndex === index ?
-                                        styles.primaryColor : styles.tabBarFontColor} ></MMIconFont>
-                            }
-                            {value.text}
-                            {value.redHot && <View className={styles.redDot}></View>}
-                            {value.count && <View className={styles.count}>{value.count}</View>}
+                            <View className={styles.iconfont}>
+                                {
+                                    value.image ?
+                                        <Image className={styles.image} src={currPageIndex === index ? value.imageSelected : value.image}></Image> :
+                                        <MMIconFont value={value.iconfont as string} size={styles.iconSize} color={currPageIndex === index ?
+                                            styles.primaryColor : styles.tabBarFontColor} ></MMIconFont>
+                                }
+                            </View>
+                            <View className={styles.text}>
+                                {value.text}
+                            </View>
+                            {value.redHot && <MMBadge absolute></MMBadge>}
+                            {value.count && <View className={styles.count}><MMBadge value={value.count} digit={2} absolute></MMBadge></View>}
                         </View>)}
                 </View>
                 {isNewIphone && <View className="spacing-iphone"></View>}

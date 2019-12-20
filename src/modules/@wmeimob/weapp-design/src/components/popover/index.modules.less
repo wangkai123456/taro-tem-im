@@ -1,0 +1,83 @@
+@import '../styles/themes/default.less';
+
+
+.MMPopover {
+    position        : absolute;
+    left            : 0;
+    top             : 100%;
+    margin-top      : 14px;
+    background-color: @gray1;
+    border-radius   : @borderRadiusSize;
+    box-shadow      : @boxShadow;
+    color           : @gray7;
+    transition      : all @transitionTiming;
+    opacity         : 0;
+    pointer-events  : none;
+    z-index         : 1000;
+}
+
+.visible {
+    opacity       : 1;
+    pointer-events: auto;
+}
+
+.queryView {
+    position           : absolute;
+    right              : 0;
+    top                : 0;
+    // width           : 10px;
+    // height          : 10px;
+    // background-color: red;
+}
+
+.item {
+    display    : flex;
+    padding    : 0 @spacingSize * 3 0 @containerSize;
+    height     : 40px;
+    white-space: nowrap;
+    align-items: center;
+
+    &:active {
+        background-color: @gray2;
+    }
+}
+
+.iconfontView {
+    margin-right: @spacingSize;
+    color       : @gray3;
+}
+
+.arrow {
+    position    : absolute;
+    left        : 14px;
+    top         : -14px;
+    width       : 0;
+    height      : 0;
+    border      : 7px solid @gray7;
+    border-color: transparent transparent @gray1 transparent;
+}
+
+.MMPopoverRight {
+    left : auto;
+    right: 0;
+
+    .arrow {
+        left : auto;
+        right: 14px;
+    }
+}
+
+.MMPopoverBlack {
+    background-color: @gray7;
+    color           : @gray1;
+
+    .item {
+        &:active {
+            background-color: @gray8;
+        }
+    }
+
+    .arrow {
+        border-color: transparent transparent @gray7 transparent;
+    }
+}

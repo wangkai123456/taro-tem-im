@@ -190,7 +190,7 @@ export default class MMCProductDetails extends Component<MMCProductDetailsProps,
                     </View>
                     <View className={styles.pageBottom_buttonBox}>
                         <View>
-                            <MMButton state={MMButtonState.Warning} radius={MMButtonRadius.None}>加入购物车</MMButton>
+                            {/* <MMButton state={MMButtonState.Warning} radius={MMButtonRadius.None}>加入购物车</MMButton> */}
                         </View>
                         <View>
                             <MMButton radius={MMButtonRadius.None}>立即购买</MMButton>

@@ -1,15 +1,45 @@
 @import '../styles/themes/default.less';
+@import '../styles/utils/index.less';
 
+:export {
+    buttonColorOdd : @red;
+    buttonColorEven: @gray3;
+}
 
 .MMItem {
-    display         : flex;
-    align-items     : center;
-    background-color: @gray1;
-    padding         : 0 @containerSize;
+    flex-shrink        : 0;
+    // width           : 100vw;
+    display            : flex;
+    align-items        : center;
+    background-color   : @gray1;
+    padding            : 0 @containerSize;
+}
+
+.scrollViewContent {
+    display: flex;
+}
+
+.scrollView {
+    ::-webkit-scrollbar {
+        width : 0;
+        height: 0;
+        color : transparent;
+    }
 }
 
 .divider {
-    border-bottom: 0.5px solid @dividerColor;
+    .divider();
+}
+
+.sliderButton {
+    padding         : 0 @spacingSize * 3;
+    flex-shrink     : 0;
+    height          : 50px;
+    line-height     : 50px;
+    color           : white;
+    background-color: @red;
+    font-size       : 15px;
+    text-align      : center;
 }
 
 .left {

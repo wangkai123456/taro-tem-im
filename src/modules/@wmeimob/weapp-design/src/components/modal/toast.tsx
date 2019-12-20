@@ -1,11 +1,14 @@
 import { View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
-import classname from 'classnames';
 import { autobind } from '@wmeimob/decorator';
+import classname from 'classnames';
+import { MMIconFont } from '..';
 import MMModal from '../modal/modal';
 import { guid } from '../utils';
 import modal from './index';
 import styles from './index.modules.less';
+import MMIconFontName from '../icon-font/name';
+import MMLoading from '../loading';
 
 interface IMMToastProps {
     mask?: boolean;
@@ -20,7 +23,13 @@ enum ToastState {
 
 interface IMMToastState {
     visible: boolean;
-    messages: { id: string; message: string; state: ToastState }[];
+    messages: {
+        id: string;
+        message: string;
+        iconfont?: string;
+        animation?: boolean
+        state: ToastState
+    }[];
 }
 
 @autobind
@@ -41,12 +50,12 @@ export default class MMToast extends Component<IMMToastProps, IMMToastState> {
 
     clearSetTimeout;
 
-    componentDidMount() {
-        (modal as any)['toast'] = this.message;
-    }
-
     componentDidShow() {
         (modal as any)['toast'] = this.message;
+        (modal as any)['success'] = (msg: string) => this.message(msg, MMIconFontName.Right);
+        (modal as any)['fail'] = (msg: string) => this.message(msg, MMIconFontName.Error);
+        (modal as any)['warning'] = (msg: string) => this.message(msg, MMIconFontName.Warning);
+        (modal as any)['loading'] = (msg: string) => this.message(msg, undefined, true);
     }
 
     /**
@@ -55,12 +64,14 @@ export default class MMToast extends Component<IMMToastProps, IMMToastState> {
      * @param {string} msg
      * @memberof MMToast
      */
-    message(msg: string) {
+    message(msg: string, iconfont?: MMIconFontName, animation?: boolean) {
         const id = guid();
         this.setState({
             messages: [...this.state.messages, {
                 id,
                 message: msg,
+                iconfont,
+                animation,
                 state: ToastState.new
             }]
         });
@@ -99,6 +110,12 @@ export default class MMToast extends Component<IMMToastProps, IMMToastState> {
         return <MMModal visible={this.state.visible} mask={this.props.mask}>
             <View className={styles.MMToast}>
                 {this.state.messages.map(value => <View key={value.id} className={this.getMessageClassName(value)}>
+                    {value.animation && <View className={styles.MMToast_message_animation}>
+                        <MMLoading width={36} height={36} ></MMLoading>
+                    </View>}
+                    {value.iconfont && <View className={styles.MMToast_message_iconfont}>
+                        <MMIconFont size={36} value={value.iconfont}></MMIconFont>
+                    </View>}
                     {value.message}
                 </View>)}
             </View>

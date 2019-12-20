@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import MMIconFont from '../icon-font';
 import { MMInputSearchType } from './const';
 import styles from './index.modules.less';
+import MMIconFontName from '../icon-font/name';
 
 interface eventValue {
     /** 输入值 */
@@ -87,7 +88,7 @@ export default class MMInputSearch extends Component<IMMInputSearchProps> {
     render() {
         return <View className={classNames(...this.className)}>
             <View className={styles.content} >
-                <MMIconFont value="magnifier" color={styles.gray4}></MMIconFont>
+                <MMIconFont value={MMIconFontName.Search} size={16} color={styles.gray4}></MMIconFont>
                 <View className={styles.placeholder}>
                     {this.props.placeholder}
                 </View>

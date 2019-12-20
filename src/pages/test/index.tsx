@@ -1,32 +1,40 @@
 import { View } from '@tarojs/components';
 import Taro, { Component, Config } from '@tarojs/taro';
-import { ComponentType } from 'react';
-import * as styles from './index.module.less';
 import { autobind } from '@wmeimob/decorator';
-import MMNavigation from '~/modules/@wmeimob/weapp-design/src/components/navigation';
+import { ComponentType } from 'react';
+import { BaseEventOrig } from '@tarojs/components/types/common';
 
 @autobind
 class Index extends Component {
     config: Config = {
-        navigationBarTitleText: '',
         navigationStyle: 'custom'
     };
 
     state = {
-
+        value: '',
+        starsValue: 0,
+        imagesValue: []
     };
 
-    // eslint-disable-next-line @typescript-eslint/explicit-member-accessibility
-    componentDidMount() {
-        // eslint-disable-next-line no-console
-        console.log('this.$router', this.$router.params);
+    render() {
+        return (<View></View>);
     }
 
-    render() {
-        return (<View className={styles.page}>
-            <MMNavigation title='测试'></MMNavigation>
-        </View>);
+    private onStarsChange(starsValue) {
+        this.setState({
+            starsValue
+        })
     }
+
+    private onClick() {
+        return new Promise(() => null);
+    }
+
+    private onInput(event: BaseEventOrig<{ value: string; cursor: number; keyCode: number; }>) {
+        this.setState({
+            value: event.detail.value
+        })
+    };
 }
 
 export default Index as ComponentType;

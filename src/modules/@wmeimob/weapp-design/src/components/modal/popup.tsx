@@ -43,6 +43,22 @@ export default class MMPopup extends Component {
         modal.confirm = this.confirmFunction;
     }
 
+    success(message: string) {
+        modal.success(message);
+    }
+
+    fail(message: string) {
+        modal.fail(message);
+    }
+
+    warning(message: string) {
+        modal.warning(message);
+    }
+
+    loading(message: string) {
+        modal.loading(message);
+    }
+
     render() {
         return <View>
             <MMToast></MMToast>

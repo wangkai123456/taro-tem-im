@@ -1,20 +1,37 @@
 import { View } from '@tarojs/components';
 import { ITouchEvent } from '@tarojs/components/types/common';
 import Taro, { Component } from '@tarojs/taro';
-import classnames from 'classnames';
-import { MMButtonSize, MMButtonType, MMButtonRadius, MMButtonState } from './const';
 import { autobind, lock } from '@wmeimob/decorator';
-import styles from './index.modules.less'
+import classnames from 'classnames';
+import MMLoading from '../loading';
+import { MMButtonColor, MMButtonRadius, MMButtonSize, MMButtonType } from './const';
+import styles from './index.modules.less';
 
 interface IButtonProps {
 
+    // /**
+    //  * 按钮状态
+    //  *
+    //  * @type {MMButtonState}
+    //  * @memberof IButtonProps
+    //  */
+    // state?: MMButtonState
+
     /**
-     * 按钮状态
+     * 按钮颜色
      *
-     * @type {MMButtonState}
+     * @type {MMButtonColor}
      * @memberof IButtonProps
      */
-    state?: MMButtonState
+    color?: MMButtonColor
+
+    /**
+     * 加载状态
+     *
+     * @type {boolean}
+     * @memberof IButtonProps
+     */
+    loading?: boolean
 
     /**
      * 按钮类型
@@ -72,6 +89,7 @@ export default class MMButton extends Component<IButtonProps> {
     };
 
     static defaultProps = {
+        // color: MMButtonColor.Red
     };
 
     state = {
@@ -89,16 +107,10 @@ export default class MMButton extends Component<IButtonProps> {
         }
     }
 
-    get stateClass() {
-        switch (this.props.state) {
-            case MMButtonState.Success:
-                return styles.MMButton__success;
-            case MMButtonState.Warning:
-                return styles.MMButton__warning;
-            case MMButtonState.Danger:
-                return styles.MMButton__danger;
-            case MMButtonState.Cool:
-                return styles.MMButton__cool;
+    get colorClass() {
+        switch (this.props.color) {
+            case MMButtonColor.Red:
+                return styles.MMButton__red;
             default:
                 return '';
         }
@@ -141,11 +153,15 @@ export default class MMButton extends Component<IButtonProps> {
     }
 
     render() {
-        return <View className={classnames(styles.MMButton, this.stateClass, this.radiusClass,
+        const { loading } = this.props;
+        return <View className={classnames(styles.MMButton, this.radiusClass, this.colorClass,
             this.typeClass, this.sizeClass, this.inlineClass, this.disabledClass)}
             onClick={this.onClick}>
             <View className={styles.MMButton_content}>
-                {this.props.children}
+                {loading && <View className={styles.MMButton_loading}>
+                    <MMLoading width={styles.loadingSize} height={styles.loadingSize}></MMLoading>
+                </View>}
+                <View>{this.props.children}</View>
             </View>
         </View>;
     }
