@@ -100,8 +100,6 @@ export default class MMButton extends Component<IButtonProps> {
         switch (this.props.type) {
             case MMButtonType.Hollow:
                 return styles.MMButton__type_hollow;
-            case MMButtonType.White:
-                return styles.MMButton__type_white;
             default:
                 return '';
         }

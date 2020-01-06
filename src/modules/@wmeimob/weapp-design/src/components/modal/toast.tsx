@@ -2,13 +2,13 @@ import { View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
 import { autobind } from '@wmeimob/decorator';
 import classname from 'classnames';
-import { MMIconFont } from '..';
 import MMModal from '../modal/modal';
 import { guid } from '../utils';
 import modal from './index';
 import styles from './index.modules.less';
 import MMIconFontName from '../icon-font/name';
 import MMLoading from '../loading';
+import MMIconFont from '../icon-font';
 
 interface IMMToastProps {
     mask?: boolean;

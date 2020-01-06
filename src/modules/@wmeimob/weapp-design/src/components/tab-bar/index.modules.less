@@ -1,11 +1,9 @@
 @import '../styles/themes/default.less';
 
-@iconSize: 22;
-
 :export {
     tabBarFontColor: @tabBarFontColor;
     primaryColor   : @primaryColor;
-    iconSize       : @iconSize
+    iconSize       : @tabBarIconSize;
 }
 
 .MMTabBar_placeholder {
@@ -41,8 +39,8 @@
 }
 
 .image {
-    width : @iconSize + 0px;
-    height: @iconSize + 0px;
+    width : @tabBarIconSize + 0px;
+    height: @tabBarIconSize + 0px;
 }
 
 .selected {

@@ -198,7 +198,7 @@ export default class MMPullToRefresh extends Component<IMMPullToRefreshProps, IM
         return new Promise<Taro.clientRectElement>((resolve) => {
             const query = Taro.createSelectorQuery().in(this.$scope);
             query.select(name).boundingClientRect((res) => {
-                resolve(res as Taro.clientRectElement);
+                res && resolve(res as Taro.clientRectElement);
             }).exec();
         });
     }

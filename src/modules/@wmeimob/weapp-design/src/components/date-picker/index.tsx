@@ -2,9 +2,9 @@ import { View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
 import { autobind } from '@wmeimob/decorator';
 import dayjs, { UnitType } from 'dayjs';
-import { MMPicker } from '..';
 import { MMDatePickerType } from './const';
 import styles from './index.modules.less';
+import MMPicker from '../picker';
 
 interface IMMDatePickerProps {
 

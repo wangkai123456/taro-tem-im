@@ -1,9 +1,9 @@
 @import '../styles/themes/default.less';
+@import '../styles/color/colors.less';
 
-@itemHeight: 50;
 
 :export {
-    itemHeight: @itemHeight;
+    itemHeight: @calendarItemHeight;
 }
 
 .MMCalendar {
@@ -26,7 +26,7 @@
 .item {
     position   : relative;
     width      : calc(100% / 7);
-    height     : @itemHeight + 0px;
+    height     : @calendarItemHeight + 0px;
     font-size  : 15px;
     color      : @gray7;
     font-weight: bold;
@@ -110,7 +110,7 @@
 .month {
     padding-left  : 11px;
     padding-bottom: @containerSize;
-    height        : @itemHeight + 0px;
+    height        : @calendarItemHeight + 0px;
     line-height   : 50px - @containerSize;
     font-size     : 16px;
     font-weight   : bold;

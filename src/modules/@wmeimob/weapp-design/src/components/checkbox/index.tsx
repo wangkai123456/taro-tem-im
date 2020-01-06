@@ -6,8 +6,8 @@ import styles from './index.modules.less';
 import themesStyles from '../styles/themes/default.modules.less';
 import MMIconFont from '../icon-font/index';
 import CheckBoxList from './list';
-import { MMIconFontName } from '../const';
 import classNames from 'classnames';
+import MMIconFontName from '../icon-font/name';
 
 interface ICheckboxProps {
 

@@ -54,6 +54,7 @@ export default class MMActionSheet extends Component<IMMActionSheetProps> {
     };
 
     static defaultProps = {
+        title: '请选择',
         options: []
     };
 

@@ -2,6 +2,7 @@
 const alert = (_props: {
     title?: string
     message: string
+    okText?: string,
     onOk?: () => void
 }): void => {
     throw new Error('未实现alert函数！');
@@ -9,8 +10,11 @@ const alert = (_props: {
 
 const confirm = (_props: {
     title?: string
-    message: string
-    onOk?: () => void; onCancel?: () => void;
+    message?: string
+    okText?: string
+    cancelText?: string
+    onOk?: () => void
+    onCancel?: () => void
 }): void => {
     throw new Error('未实现confirm函数！');
 };

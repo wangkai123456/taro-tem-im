@@ -1,24 +1,25 @@
 @import '../styles/themes/default.less';
 
 
+
 .MMImagePicker {
-    display       : flex;
-    flex-direction: row;
-    flex-wrap     : wrap;
+
+    .content {
+        display       : flex;
+        flex-direction: row;
+        flex-wrap     : wrap;
+        width         : calc(100% + @spacingSize);
+    }
 }
 
 .item {
     position        : relative;
-    width           : calc((100% - @spacingSize * 3) / 4);
+    width           : calc((100% - @spacingSize * @imagePickerNumber) / @imagePickerNumber);
     background-color: @gray4;
     margin-right    : @spacingSize;
     margin-bottom   : @spacingSize;
     border-radius   : @borderRadiusSize;
     overflow        : hidden;
-
-    &:nth-of-type(4n) {
-        margin-right: 0;
-    }
 }
 
 .itemContent {

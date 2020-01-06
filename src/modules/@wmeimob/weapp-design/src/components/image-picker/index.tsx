@@ -5,7 +5,7 @@ import classname from 'classnames';
 import MMIconFont from '../icon-font';
 import styles from './index.modules.less';
 import themesStyles from '../styles/themes/default.modules.less';
-import { MMIconFontName } from '../const';
+import MMIconFontName from '../icon-font/name';
 
 interface IMMImagePickerProps {
     /**
@@ -44,23 +44,25 @@ export default class MMImagePicker extends Component<IMMImagePickerProps> {
     render() {
         const { value, count } = this.props;
         return <View className={styles.MMImagePicker}>
-            {value.map((val, index) => <View className={styles.item} key={val + index}>
-                <View className={styles.itemContent}>
-                    <Image className={styles.image} src={val}></Image>
-                </View>
-                {this.renderIconfont(index)}
-            </View>)}
-            {(count === undefined || value.length < count) && <View onClick={this.onClick}
-                className={classname(styles.item, styles.add)}>
-                <View className={styles.itemContent}>
-                </View>
-                <View className={styles.addContent}>
-                    <View>
-                        <MMIconFont size={32} color={themesStyles.gray3} value={MMIconFontName.PhotoUpload}></MMIconFont>
+            <View className={styles.content}>
+                {value.map((val, index) => <View className={styles.item} key={val + index}>
+                    <View className={styles.itemContent}>
+                        <Image className={styles.image} src={val}></Image>
                     </View>
-                    <Text className={styles.addText}>添加图片</Text>
-                </View>
-            </View>}
+                    {this.renderIconfont(index)}
+                </View>)}
+                {(count === undefined || value.length < count) && <View onClick={this.onClick}
+                    className={classname(styles.item, styles.add)}>
+                    <View className={styles.itemContent}>
+                    </View>
+                    <View className={styles.addContent}>
+                        <View>
+                            <MMIconFont size={32} color={themesStyles.gray3} value={MMIconFontName.PhotoUpload}></MMIconFont>
+                        </View>
+                        <Text className={styles.addText}>添加图片</Text>
+                    </View>
+                </View>}
+            </View>
         </View>;
     }
 

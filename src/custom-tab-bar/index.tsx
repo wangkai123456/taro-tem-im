@@ -7,17 +7,17 @@ export default class Index extends Component {
         {
             iconfont: IconFontName.Folder,
             text: '基础',
-            url: '/pages/index/index'
+            url: '/pages/template/index/index'
         },
         {
             iconfont: IconFontName.Send,
             text: '请求',
-            url: '/pages/request/index'
+            url: '/pages/template/request/index'
         },
         {
             iconfont: IconFontName.Class,
             text: '其他',
-            url: '/pages/other/index'
+            url: '/pages/template/other/index'
         }
     ];
 

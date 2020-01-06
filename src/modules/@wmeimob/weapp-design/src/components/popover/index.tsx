@@ -1,11 +1,11 @@
 import { View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
 import { autobind } from '@wmeimob/decorator';
-import { MMIconFont } from '..';
 import IconFontName from '../icon-font/name';
 import styles from './index.modules.less';
 import classNames from 'classnames';
 import { MMPopoverType } from './const';
+import MMIconFont from '../icon-font';
 
 interface IMMPopoverProps {
     /**

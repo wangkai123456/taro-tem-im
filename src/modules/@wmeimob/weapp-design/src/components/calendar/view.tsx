@@ -3,7 +3,6 @@ import { BaseEventOrig, ITouchEvent } from '@tarojs/components/types/common';
 import Taro, { Component } from '@tarojs/taro';
 import { autobind, debounce } from '@wmeimob/decorator';
 import dayjs from 'dayjs';
-import { MMButton } from '..';
 import MMPopup from '../modal/popup';
 import styles from './index.modules.less';
 import MMCalendarItem from './viewItem';

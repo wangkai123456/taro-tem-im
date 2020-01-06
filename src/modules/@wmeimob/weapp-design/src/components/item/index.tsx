@@ -3,10 +3,10 @@ import Taro, { Component } from '@tarojs/taro';
 import { autobind } from '@wmeimob/decorator';
 import styles from './index.modules.less';
 import MMIconFont from '../icon-font';
-import { MMIconFontName } from '../const';
 import themes from '../styles/themes/default.modules.less';
 import classNames from 'classnames';
 import { BaseEventOrig } from '@tarojs/components/types/common';
+import MMIconFontName from '../icon-font/name';
 
 interface ICheckboxProps {
     /**

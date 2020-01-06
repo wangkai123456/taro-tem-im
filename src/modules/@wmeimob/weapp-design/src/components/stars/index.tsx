@@ -2,10 +2,10 @@ import { View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
 import { autobind } from '@wmeimob/decorator';
 import styles from './index.modules.less';
-import { MMIconFont } from '..';
 import IconFontName from '../icon-font/name';
 import themesStyles from '../styles/themes/default.modules.less';
 import { MMStarsSize } from './const';
+import MMIconFont from '../icon-font';
 
 interface IStarsProps {
 

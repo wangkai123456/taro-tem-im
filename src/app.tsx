@@ -4,8 +4,8 @@ import Taro, { Component, Config } from '@tarojs/taro';
 import './app.less';
 import global from './globalStore';
 import mount from './lifeCycle';
-import Index from './pages/index';
-import pagesIndexStore from './pages/index/store';
+import Index from './pages/template/index';
+import pagesIndexStore from './pages/template/index/store';
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -28,26 +28,26 @@ class App extends Component {
      */
     config: Config = {
         pages: [
-            'pages/index/index',
-            'pages/other/index',
-            'pages/mobx/index',
-            'pages/login/index',
-            'pages/product/index',
-            'pages/test/index',
-            'pages/decorator/index',
-            'pages/transparent/index',
-            'pages/request/index'
+            'pages/template/index/index',
+            'pages/template/other/index',
+            'pages/template/mobx/index',
+            'pages/template/login/index',
+            'pages/template/product/index',
+            'pages/template/test/index',
+            'pages/template/decorator/index',
+            'pages/template/transparent/index',
+            'pages/template/request/index'
         ],
         tabBar: {
             custom: true,
             list: [{
-                'pagePath': 'pages/index/index',
+                'pagePath': 'pages/template/index/index',
                 'text': '首页'
             }, {
-                'pagePath': 'pages/request/index',
+                'pagePath': 'pages/template/request/index',
                 'text': '请求'
             }, {
-                'pagePath': 'pages/other/index',
+                'pagePath': 'pages/template/other/index',
                 'text': '其他'
             }]
         },

@@ -2,10 +2,10 @@ import { Text, View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
 import { autobind } from '@wmeimob/decorator';
 import classNames from 'classnames';
-import { MMIconFont } from '..';
-import { MMIconFontName } from '../const';
+import MMIconFont from '../icon-font';
+import MMDropDownSelect from './components/select';
 import styles from './index.modules.less';
-import { IDropDownData, IMMDropDownDataType, IDropDownDataSelect } from './types';
+import { IDropDownData, IMMDropDownDataType } from './types';
 
 interface IMMDropDownProps {
 
@@ -101,21 +101,6 @@ export default class MMDropDown extends Component<IMMDropDownProps, IMMDropDownS
         }
     }
 
-    private renderSelect(dropDownData: IDropDownDataSelect, index: number) {
-        const { data, value } = dropDownData;
-        return <View className={styles.select}>
-            {data.map(dataValue => {
-                const selected = dataValue === value;
-                return <View className={classNames(styles.select_item, selected ? styles.selected : '')}
-                    onClick={() => this.onSelectClick(dataValue, dropDownData, index)}
-                    key={dataValue}>
-                    <Text>{dataValue}</Text>
-                    {selected && <MMIconFont size={15} value={MMIconFontName.Check}></MMIconFont>}
-                </View >
-            })}
-        </View>
-    }
-
     private onSelectClick(value: string, dropDownData: IDropDownData, index: number) {
         const data = [...this.props.data];
         const newDropDownData = { ...dropDownData, value };
@@ -128,7 +113,7 @@ export default class MMDropDown extends Component<IMMDropDownProps, IMMDropDownS
 
     private renderDate(data: IDropDownData, index: number) {
         if (data.type === IMMDropDownDataType.Select) {
-            return this.renderSelect(data, index)
+            return <MMDropDownSelect data={data} onChange={dataValue => this.onSelectClick(dataValue, data, index)}></MMDropDownSelect>
         }
         return <View></View>;
     }

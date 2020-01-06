@@ -3,9 +3,9 @@ import { Component, getCurrentPages, getMenuButtonBoundingClientRect, navigateBa
 import { autobind } from '@wmeimob/decorator';
 import classnames from 'classnames';
 import MMIconFont from '../icon-font';
-import { MMNavigationType } from './const';
 import styles from './index.modules.less';
-import { MMIconFontName } from '../const';
+import MMIconFontName from '../icon-font/name';
+import { MMNavigationType } from './const';
 
 interface IMMNavigationProps {
     /**

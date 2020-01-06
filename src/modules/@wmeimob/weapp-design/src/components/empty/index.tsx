@@ -8,6 +8,7 @@ import internet from './images/internet.png';
 import location from './images/location.png';
 import message from './images/message.png';
 import record from './images/record.png';
+import data from './images/data.png';
 import update from './images/update.png';
 import styles from './index.modules.less';
 import classNames from 'classnames';
@@ -77,7 +78,7 @@ export default class MMEmpty extends Component<IMMEmptyProps> {
             case MMEmptyType.Update:
                 return update;
             default:
-                return grade;
+                return data;
         }
     }
 

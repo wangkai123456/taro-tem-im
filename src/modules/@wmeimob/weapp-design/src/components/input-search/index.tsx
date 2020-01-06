@@ -8,7 +8,7 @@ import { MMInputSearchType } from './const';
 import styles from './index.modules.less';
 import MMIconFontName from '../icon-font/name';
 
-interface eventValue {
+interface EventValue {
     /** 输入值 */
     value: string,
     /** 光标位置 */
@@ -52,7 +52,7 @@ interface IMMInputSearchProps {
      *
      * @memberof IMMInputSearchProps
      */
-    onInput?: (event: BaseEventOrig<eventValue>) => void
+    onInput?: (event: BaseEventOrig<EventValue>) => void
 }
 
 @autobind

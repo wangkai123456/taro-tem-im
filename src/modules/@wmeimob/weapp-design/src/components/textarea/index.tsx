@@ -19,16 +19,16 @@ export default class MMTextarea extends Component<TextareaProps> {
     };
 
     state = {
-        focus: true
+        focus: false
     }
 
     render() {
         const { value, focus, cursor, placeholder, autoFocus, maxlength, disabled, fixed, showConfirmBar, autoHeight,
             cursorSpacing, onLineChange, onConfirm, adjustPosition, selectionStart, selectionEnd } = this.props;
-        return <View>
+        return <View onClick={() => this.setState({ focus: true })} >
             {
                 focus ?
-                    <Textarea focus
+                    <Textarea focus={focus}
                         cursor={cursor}
                         selectionStart={selectionStart}
                         selectionEnd={selectionEnd}
@@ -45,8 +45,8 @@ export default class MMTextarea extends Component<TextareaProps> {
                         placeholder={placeholder}
                         placeholderClass={styles.placeholderClass}
                         onInput={this.props.onInput}
-                        className={styles.MMTextarea} value={value} onBlur={this.onBlur} onFocus={this.onFocus}></Textarea>
-                    : <View onClick={() => this.setState({ focus: true })} className={classNames(styles.MMTextarea, autoHeight ? styles.autoHeight : '')} >
+                        className={classNames(this.props.className, styles.MMTextarea)} value={value} onBlur={this.onBlur} onFocus={this.onFocus}></Textarea>
+                    : <View className={classNames(styles.MMTextarea, this.props.className, autoHeight ? styles.autoHeight : '')} >
                         <Text>{value}</Text>
                         {value === '' && placeholder && <Text className={styles.placeholderClass}>{placeholder}</Text>}
                     </View>

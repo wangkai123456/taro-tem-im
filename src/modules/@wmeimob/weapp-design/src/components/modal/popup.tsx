@@ -20,6 +20,7 @@ export default class MMPopup extends Component {
     };
 
     alert(_props: {
+        okText?: string,
         message: string, title?: string, onOk?: () => void
     }) {
         modal.alert(_props);
@@ -27,7 +28,9 @@ export default class MMPopup extends Component {
 
     confirm(_props: {
         title?: string;
-        message: string;
+        message?: string;
+        okText?: string;
+        cancelText?: string;
         onOk: () => void;
         onCancel?: () => void;
     }) {
@@ -81,11 +84,12 @@ export default class MMPopup extends Component {
         return <View>{confirmProps.children}</View>;
     }
 
-    private alertFunction({ message, title, onOk }: {
+    private alertFunction({ message, title, onOk, okText }: {
+        okText?: string,
         message: string, title?: string, onOk?: () => void
     }) {
         const buttons = [{
-            text: '确定',
+            text: okText || '确定',
             onClick: () => this.setState({
                 alertProps: {
                     visible: false
@@ -103,12 +107,14 @@ export default class MMPopup extends Component {
         this.setState({ alertProps });
     }
 
-    private confirmFunction({ title, message, onOk, onCancel }: {
+    private confirmFunction({ title, message, onOk, okText, cancelText, onCancel }: {
         title: string,
+        okText?: string;
+        cancelText?: string;
         message: string; onOk?: () => void; onCancel?: () => void;
     }) {
         const buttons = [{
-            text: '取消',
+            text: cancelText || '取消',
             color: styles.gray7,
             onClick: () => {
                 onCancel && onCancel();
@@ -116,7 +122,7 @@ export default class MMPopup extends Component {
             }
         },
         {
-            text: '确定',
+            text: okText || '确定',
             onClick: () => {
                 onOk && onOk();
                 this.setState({ confirmProps: { visible: false } });

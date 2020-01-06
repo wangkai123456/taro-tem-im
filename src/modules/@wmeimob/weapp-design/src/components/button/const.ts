@@ -1,8 +1,7 @@
 
 export enum MMButtonType {
     Default,
-    Hollow,
-    White
+    Hollow
 }
 
 export enum MMButtonColor {
