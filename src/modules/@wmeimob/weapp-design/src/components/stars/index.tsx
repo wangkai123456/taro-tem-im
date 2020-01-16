@@ -1,8 +1,8 @@
 import { View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '@wmeimob/decorator';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
 import styles from './index.modules.less';
-import IconFontName from '../icon-font/name';
+import IconFontName from '../icon-font/const';
 import themesStyles from '../styles/themes/default.modules.less';
 import { MMStarsSize } from './const';
 import MMIconFont from '../icon-font';

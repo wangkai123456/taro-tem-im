@@ -1,7 +1,7 @@
 import { Swiper, SwiperItem, View } from '@tarojs/components';
 import { BaseEventOrig } from '@tarojs/components/types/common';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '@wmeimob/decorator';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
 import styles from './index.modules.less';
 import themesStyles from '../styles/themes/default.modules.less';
 import MMDivider from '../divider';

@@ -1,12 +1,12 @@
 import { Input, View } from '@tarojs/components';
 import { BaseEventOrig } from '@tarojs/components/types/common';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '@wmeimob/decorator';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
 import classNames from 'classnames';
 import MMIconFont from '../icon-font';
 import { MMInputSearchType } from './const';
 import styles from './index.modules.less';
-import MMIconFontName from '../icon-font/name';
+import MMIconFontName from '../icon-font/const';
 
 interface EventValue {
     /** 输入值 */

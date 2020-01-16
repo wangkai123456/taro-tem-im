@@ -6,7 +6,8 @@ export enum MMButtonType {
 
 export enum MMButtonColor {
     Default,
-    Red
+    Red,
+    Gray
 }
 
 export enum MMButtonSize {

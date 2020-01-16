@@ -1,12 +1,12 @@
 import { View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '@wmeimob/decorator';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
 import classname from 'classnames';
 import MMModal from '../modal/modal';
 import { guid } from '../utils';
 import modal from './index';
 import styles from './index.modules.less';
-import MMIconFontName from '../icon-font/name';
+import MMIconFontName from '../icon-font/const';
 import MMLoading from '../loading';
 import MMIconFont from '../icon-font';
 

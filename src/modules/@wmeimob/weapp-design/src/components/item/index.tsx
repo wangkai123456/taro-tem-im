@@ -1,12 +1,12 @@
 import { View, ScrollView } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '@wmeimob/decorator';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
 import styles from './index.modules.less';
 import MMIconFont from '../icon-font';
-import themes from '../styles/themes/default.modules.less';
 import classNames from 'classnames';
 import { BaseEventOrig } from '@tarojs/components/types/common';
-import MMIconFontName from '../icon-font/name';
+import MMIconFontName from '../icon-font/const';
+import { selectRect } from '../utils';
 
 interface ICheckboxProps {
     /**
@@ -30,7 +30,7 @@ interface ICheckboxProps {
      * @type {MMIconFontName}
      * @memberof ICheckboxProps
      */
-    leftIconfontValue?: MMIconFontName | string;
+    iconfontValue?: MMIconFontName | string;
 
     /**
      * 左侧图标颜色
@@ -38,7 +38,7 @@ interface ICheckboxProps {
      * @type {string}
      * @memberof ICheckboxProps
      */
-    leftIconfontColor?: string;
+    iconfontColor?: string;
 
     /**
      * 左侧文字
@@ -46,39 +46,7 @@ interface ICheckboxProps {
      * @type {string}
      * @memberof ICheckboxProps
      */
-    leftText?: string
-
-    /**
-     * 右侧渲染
-     *
-     * @type {(JSX.Element | string)}
-     * @memberof ICheckboxProps
-     */
-    renderRight?: JSX.Element | string;
-
-    /**
-     * 右侧渲染图片
-     *
-     * @type {(MMIconFontName | string)}
-     * @memberof ICheckboxProps
-     */
-    rightIconfontValue?: MMIconFontName | string;
-
-    /**
-     * 右侧图标颜色
-     *
-     * @type {string}
-     * @memberof ICheckboxProps
-     */
-    rightIconfontColor?: string;
-
-    /**
-     * 右侧文字
-     *
-     * @type {string}
-     * @memberof ICheckboxProps
-     */
-    rightText?: string
+    text?: string
 
     /**
      * 分割线是否显示
@@ -111,8 +79,6 @@ export default class MMItem extends Component<ICheckboxProps> {
     };
 
     static defaultProps = {
-        rightIconfontValue: MMIconFontName.Next,
-        rightIconfontColor: themes.gray5,
         divider: true,
         // sliderButton: ['删除', '取消'],
         sliderVisible: true,
@@ -185,8 +151,7 @@ export default class MMItem extends Component<ICheckboxProps> {
     }
 
     private renderContent() {
-        const { renderRight, onClick, renderLeft, leftText, leftIconfontColor: leftIconfontNameColor, sliderButton,
-            rightIconfontColor: rightIconfontNameColor, rightText, leftIconfontValue: leftIconfontName, rightIconfontValue: rightIconfontName } = this.props;
+        const { onClick, text: leftText, iconfontColor: leftIconfontNameColor, sliderButton, iconfontValue: leftIconfontName } = this.props;
         const { scrollViewWidth } = this.state;
         return <View onClick={onClick} className={styles.MMItem} style={{ width: sliderButton ? scrollViewWidth + 'px' : 'auto' }}>
             {leftIconfontName && <View className={styles.leftIconfont}>
@@ -195,38 +160,25 @@ export default class MMItem extends Component<ICheckboxProps> {
             <View className={classNames(this.className)}>
                 <View className={styles.left}>
                     {leftText && <View className={styles.leftText}>{leftText}</View>}
-                    {renderLeft}
                     {this.props.renderLeft}
                 </View>
                 <View className={styles.right}>
-                    {this.props.renderRight}
-                    {renderRight}
-                    {rightText && <View className={styles.rightText}>{rightText}</View>}
-                    {rightIconfontName && <MMIconFont color={rightIconfontNameColor} value={rightIconfontName}></MMIconFont>}
+                    {this.props.children}
                 </View>
             </View>
         </View>;
     }
 
     private async calculateScrollViewHeight() {
-        const scrollView = await this.getViewRes('#MMScrollView');
+        const scrollView = await selectRect('#MMScrollView', this.$scope);
         this.setState({
             scrollViewWidth: scrollView.width
         })
 
-        const topViewRes = await this.getViewRes('#MMPullToRefreshTop');
+        const topViewRes = await selectRect('#MMPullToRefreshTop', this.$scope);
 
         const res = Taro.getSystemInfoSync();
         this.buttonWidth = topViewRes.left - res.screenWidth;
-    }
-
-    private getViewRes(name: string) {
-        return new Promise<Taro.clientRectElement>((resolve) => {
-            const query = Taro.createSelectorQuery().in(this.$scope);
-            query.select(name).boundingClientRect((res) => {
-                resolve(res as Taro.clientRectElement);
-            }).exec();
-        });
     }
 
     private onScroll(event: BaseEventOrig<{ scrollLeft: number }>) {

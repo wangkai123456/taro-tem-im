@@ -1,6 +1,6 @@
 import { View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '@wmeimob/decorator';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
 import styles from './index.modules.less';
 import classNames from 'classnames';
 import { MMTabsType } from './const';
@@ -24,11 +24,18 @@ interface IMMTabBarProps {
     selectedIndex: number
 
     /**
-     * 改变事件
+     * 改变事件 如果selectedIndex 未改变不触发
      *
      * @memberof IMMTabBarProps
      */
-    onChange: (index: number) => void
+    onChange?: (index: number) => void
+
+    /**
+     * 点击事件
+     *
+     * @memberof IMMTabBarProps
+     */
+    onClick?: (index: number) => void
 
     /**
      * 导航类型
@@ -76,16 +83,25 @@ export default class MMTabs extends Component<IMMTabBarProps, IMMTabBarState> {
     }
 
     render() {
-        const { data, selectedIndex, onChange } = this.props;
+        const { data, selectedIndex } = this.props;
         return <View className={this.className}>
             <View className={styles.content} >
                 {data.map((value, index) =>
                     <View key={value + index}
                         className={classNames(styles.item, selectedIndex === index ? styles.selected : {})}
-                        onClick={() => onChange(index)}
+                        onClick={() => this.onClick(index)}
                     >{value}</View>)}
             </View>
             <View className={styles.line} style={{ left: 100 / data.length * (0.5 + selectedIndex) + '%' }}></View>
         </View>;
+    }
+
+    private onClick(index) {
+        const { selectedIndex, onChange, onClick } = this.props;
+        if (selectedIndex !== index) {
+            onChange && onChange(index);
+        }
+
+        onClick && onClick(index);
     }
 }

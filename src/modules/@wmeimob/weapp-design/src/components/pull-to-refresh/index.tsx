@@ -3,11 +3,12 @@ import { View, ScrollView } from '@tarojs/components';
 import { ITouch, ITouchEvent } from '@tarojs/components/types/common';
 import Taro, { Component } from '@tarojs/taro';
 import classname from 'classnames';
-import { autobind } from '@wmeimob/decorator';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
 import { MMPullToRefreshState } from './const';
 import styles from './index.modules.less';
 import MMLoading from '../loading';
 import { MMLoadingType } from '../loading/types';
+import { selectRect } from '../utils';
 
 interface IMMPullToRefreshProps {
     /**
@@ -184,22 +185,10 @@ export default class MMPullToRefresh extends Component<IMMPullToRefreshProps, IM
     }
 
     private async calculateScrollViewHeight() {
-        const topViewRes = await this.getViewRes('#MMPullToRefreshTop');
-        Taro.getSystemInfo({
-            success: res => {
-                this.setState({
-                    scrollViewHeight: res.screenHeight - topViewRes.top
-                });
-            }
-        });
-    }
-
-    private getViewRes(name: string) {
-        return new Promise<Taro.clientRectElement>((resolve) => {
-            const query = Taro.createSelectorQuery().in(this.$scope);
-            query.select(name).boundingClientRect((res) => {
-                res && resolve(res as Taro.clientRectElement);
-            }).exec();
+        const topViewRes = await selectRect('#MMPullToRefreshTop', this.$scope);
+        const res = await Taro.getSystemInfoSync();
+        this.setState({
+            scrollViewHeight: res.screenHeight - topViewRes.top
         });
     }
 
@@ -249,7 +238,7 @@ export default class MMPullToRefresh extends Component<IMMPullToRefreshProps, IM
             return;
         }
 
-        this.setState({ top: MMPullToRefresh.loadingHeight });
+        this.setState({ top: MMPullToRefresh.loadingHeight, pulling: false });
         this.startTouch = undefined;
 
         this.props.onRefresh();

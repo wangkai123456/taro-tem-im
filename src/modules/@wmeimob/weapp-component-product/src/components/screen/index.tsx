@@ -1,6 +1,6 @@
 import { View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '@wmeimob/decorator';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
 import classNames from 'classnames';
 import styles from './index.module.less';
 import { IScreenItem, IScreenItemSingleElection, IScreenSingleElectionData, IScreenType } from './types';

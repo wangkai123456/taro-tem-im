@@ -5,7 +5,6 @@ declare module '*.jpeg';
 declare module '*.svg';
 declare module '*.css';
 declare module '*.less';
-declare module '*.less';
 declare module '*.sass';
 declare module '*.styl';
 

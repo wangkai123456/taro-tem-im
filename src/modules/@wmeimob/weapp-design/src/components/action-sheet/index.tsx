@@ -2,9 +2,9 @@ import { View } from '@tarojs/components';
 
 import Taro, { Component } from '@tarojs/taro';
 import MMModal from '../modal/modal';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import styles from './index.modules.less'
-import { autobind } from '@wmeimob/decorator';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
 import { MMModalAnimationType, MMModalJustifyContent } from '../modal/const';
 import H2 from '../head/h2';
 
@@ -24,6 +24,15 @@ interface IMMActionSheetProps {
      * @memberof IMMActionSheetProps
      */
     visible: boolean;
+
+    /**
+     * 选中
+     *
+     * @type {number}
+     * @memberof IMMActionSheetProps
+     */
+    selectedIndex?: number
+
     /**
      * 选项
      *
@@ -65,7 +74,7 @@ export default class MMActionSheet extends Component<IMMActionSheetProps> {
             classNameArray.push(styles.content__hide);
         }
 
-        return classnames(...classNameArray);
+        return classNames(...classNameArray);
     }
 
     onOptionsClick(value: string, index: number) {
@@ -74,6 +83,7 @@ export default class MMActionSheet extends Component<IMMActionSheetProps> {
     }
 
     render() {
+        const { selectedIndex } = this.props;
         return <MMModal onClose={this.props.onClose} visible={this.props.visible}
             justifyContent={MMModalJustifyContent.flexEnd} animationType={MMModalAnimationType.down}
             className={styles.MMActionSheet}>
@@ -82,7 +92,7 @@ export default class MMActionSheet extends Component<IMMActionSheetProps> {
                     <H2>{this.props.title}</H2>
                 </View>
                 {this.props.options.map((value, index) => <View onClick={() => this.onOptionsClick(value, index)}
-                    key={value + index} className={styles.item}>{value}</View>)}
+                    key={value + index} className={classNames(styles.item, index === selectedIndex && styles.selected)}>{value}</View>)}
                 <View onClick={this.props.onClose} className={styles.cancel}>取消</View>
             </View>
         </MMModal>;

@@ -1,12 +1,12 @@
 import { Input, View } from '@tarojs/components';
 import { BaseEventOrig } from '@tarojs/components/types/common';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '@wmeimob/decorator';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
 import { minus, plus } from 'number-precision';
 import MMIconFont from '../icon-font';
 import themesStyles from '../styles/themes/default.modules.less';
 import styles from './index.modules.less';
-import MMIconFontName from '../icon-font/name';
+import MMIconFontName from '../icon-font/const';
 
 interface IStepperProps {
     /**

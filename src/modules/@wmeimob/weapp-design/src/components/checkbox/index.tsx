@@ -1,13 +1,13 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import { autobind } from '@wmeimob/decorator';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
 
 import styles from './index.modules.less';
 import themesStyles from '../styles/themes/default.modules.less';
 import MMIconFont from '../icon-font/index';
 import CheckBoxList from './list';
 import classNames from 'classnames';
-import MMIconFontName from '../icon-font/name';
+import MMIconFontName from '../icon-font/const';
 
 interface ICheckboxProps {
 

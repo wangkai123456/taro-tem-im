@@ -1,11 +1,11 @@
 import { View } from '@tarojs/components';
 
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '@wmeimob/decorator';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
 import classnames from 'classnames';
 import styles from './index.modules.less';
 
-interface IIconfontProps {
+export interface IMMIconfontProps {
     /**
      * 图标值
      *
@@ -34,7 +34,7 @@ interface IIconfontState {
 }
 
 @autobind
-export default class MMIconFont extends Component<IIconfontProps, IIconfontState> {
+export default class MMIconFont extends Component<IMMIconfontProps, IIconfontState> {
     static defaultProps = {
         size: 20
     };

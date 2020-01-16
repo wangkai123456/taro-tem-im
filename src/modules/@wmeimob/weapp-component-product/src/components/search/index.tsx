@@ -1,6 +1,6 @@
 import { View, Image } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '@wmeimob/decorator';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
 import { MMInputSearch, MMNavigation, MMPopup, MMIconFont, MMPullToRefresh } from '~/modules/@wmeimob/weapp-design/src/components';
 import { key } from '../constant';
 import styles from './index.module.less';

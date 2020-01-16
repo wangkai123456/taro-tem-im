@@ -1,9 +1,9 @@
 import { Text, View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '@wmeimob/decorator';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
 import classNames from 'classnames';
 import MMIconFont from '~/components/icon-font';
-import MMIconFontName from '~/components/icon-font/name';
+import MMIconFontName from '~/components/icon-font/const';
 import { IDropDownDataSelect } from '../../types';
 import styles from './index.modules.less';
 

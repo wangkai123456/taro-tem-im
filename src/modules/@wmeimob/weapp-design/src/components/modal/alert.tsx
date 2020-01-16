@@ -1,7 +1,7 @@
 import { View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
 import classnames from 'classnames';
-import { autobind } from '@wmeimob/decorator';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
 import MMModal, { IMMModalProps } from './modal';
 import styles from './index.modules.less';
 

@@ -38,7 +38,7 @@ props.list.map((value, index) => <View key={value.title + index}>
 
 ## 小程序的富文本插件不是官方的那个，必须放在render函数里面不然渲染不出来。
 
-## key 为 state 在taro里面会解构不出来
+## key 为 state 在taro里面会解构不出来 还有 getState。反正不要写state
 
 ## map 里面的 value 的引用会发生改变 需要使用 bind才固定 onClick={this.onItemClick.bind(this, data)}
 

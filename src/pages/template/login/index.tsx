@@ -1,7 +1,7 @@
 import { View, Button } from '@tarojs/components';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
-import { autobind } from '@wmeimob/decorator';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
 import { MMNavigation } from '../../../modules/@wmeimob/weapp-design/src/components';
 import * as styles from './index.module.less';
 

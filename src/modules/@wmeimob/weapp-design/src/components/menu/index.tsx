@@ -1,9 +1,9 @@
 import { ScrollView, View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '@wmeimob/decorator';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
 import classNames from 'classnames';
 import styles from './index.modules.less';
-import { guid } from '../utils';
+import { guid, selectRect } from '../utils';
 
 export interface IMMMenuData {
     text: string
@@ -159,16 +159,10 @@ export default class MMMenu extends Component<IMMMenuProps> {
     }
 
     private async calculateScrollViewHeight() {
-        const topViewRes = await this.getViewRes('#' + this.id);
+        const topViewRes = await selectRect('#' + this.id, this.$scope);
         const res = Taro.getSystemInfoSync();
         this.setState({
             scrollViewHeight: res.screenHeight - topViewRes.top
         })
-    }
-
-    private getViewRes(name: string) {
-        return new Promise<Taro.NodesRef.BoundingClientRectCallbackResult>((resolve) =>
-            Taro.createSelectorQuery().in(this.$scope).select(name).boundingClientRect(res => resolve(res)).exec()
-        );
     }
 }

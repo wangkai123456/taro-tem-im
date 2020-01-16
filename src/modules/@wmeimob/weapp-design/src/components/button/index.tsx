@@ -1,7 +1,7 @@
 import { View } from '@tarojs/components';
 import { ITouchEvent } from '@tarojs/components/types/common';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind, lock } from '@wmeimob/decorator';
+import { autobind, lock } from '~/modules/@wmeimob/decorator/src';
 import classnames from 'classnames';
 import MMLoading from '../loading';
 import { MMButtonColor, MMButtonRadius, MMButtonSize, MMButtonType } from './const';
@@ -109,6 +109,8 @@ export default class MMButton extends Component<IButtonProps> {
         switch (this.props.color) {
             case MMButtonColor.Red:
                 return styles.MMButton__red;
+            case MMButtonColor.Gray:
+                return styles.MMButton__gray;
             default:
                 return '';
         }

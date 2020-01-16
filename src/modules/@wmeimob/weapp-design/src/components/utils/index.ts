@@ -29,3 +29,20 @@ function getisNewIphone() {
     }
     return false;
 }
+
+/**
+ * 查询元素大小
+ *
+ * @export
+ * @param {string} name
+ * @param {*} scope
+ * @returns
+ */
+export function selectRect(name: string, scope: any) {
+    return new Promise<Taro.clientRectElement>((resolve) => {
+        const query = Taro.createSelectorQuery().in(scope);
+        query.select(name).boundingClientRect((res) => {
+            resolve(res as Taro.clientRectElement);
+        }).exec();
+    });
+}

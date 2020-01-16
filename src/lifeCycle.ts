@@ -1,4 +1,4 @@
-import { delInjectionToken, injectionToken, watchRequest } from './components/request/listener';
+import { initRequestLifecycle } from './components/request/listener';
 import { extendTaroNavigate } from './components/taro';
 
 /**
@@ -7,16 +7,7 @@ import { extendTaroNavigate } from './components/taro';
  * @export
  */
 export default function mount() {
+    initRequestLifecycle();
     extendTaroNavigate();
-    injectionToken();
-    watchRequest();
 }
 
-/**
- * app退出
- *
- * @export
- */
-export function unMount() {
-    delInjectionToken();
-}

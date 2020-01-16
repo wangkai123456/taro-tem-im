@@ -28,6 +28,10 @@
 		"game": {
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 1,
 			"list": [
@@ -42,6 +46,13 @@
 					"id": -1,
 					"name": "pages/test/index",
 					"pathName": "pages/test/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/template/request/index",
+					"pathName": "pages/template/request/index",
 					"scene": null
 				}
 			]

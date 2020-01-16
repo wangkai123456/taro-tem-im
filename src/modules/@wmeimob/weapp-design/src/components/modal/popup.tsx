@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '@wmeimob/decorator';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
 import modal from './index';
 import { View } from '@tarojs/components';
 import MMToast from './toast';

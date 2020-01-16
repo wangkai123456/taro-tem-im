@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '@wmeimob/decorator';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
 import MMLottie from '../lottie';
 import data from './data';
 import dataBlack from './data-black';

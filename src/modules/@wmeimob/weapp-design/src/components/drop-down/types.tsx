@@ -1,4 +1,4 @@
-import MMIconFontName from "../icon-font/name";
+import MMIconFontName from "../icon-font/const";
 
 export enum IMMDropDownDataType {
     Single,

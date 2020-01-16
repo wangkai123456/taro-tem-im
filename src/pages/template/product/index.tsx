@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
-import { autobind } from '@wmeimob/decorator';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
 import { MMCProductDetails } from '~/modules/@wmeimob/weapp-component-product/src/components';
 
 @autobind

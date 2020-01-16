@@ -1,11 +1,12 @@
 import { ScrollView, View } from '@tarojs/components';
 import { BaseEventOrig, ITouchEvent } from '@tarojs/components/types/common';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind, debounce } from '@wmeimob/decorator';
+import { autobind, debounce } from '~/modules/@wmeimob/decorator/src';
 import dayjs from 'dayjs';
 import MMPopup from '../modal/popup';
 import styles from './index.modules.less';
 import MMCalendarItem from './viewItem';
+import { selectRect } from '../utils';
 
 export interface IMMCalendarViewProps {
     /**
@@ -115,8 +116,6 @@ export class MMCalendarView extends Component<IMMCalendarViewProps, IMMCalendarV
     render() {
         const { scrollViewHeight, noMore } = this.state;
         const [startTime, endTime] = this.props.value || [];
-        const startTimeString = startTime ? dayjs(startTime).format('YYYY年MM月DD日') : '';
-        const endTimeString = endTime ? dayjs(endTime).format('YYYY年MM月DD日') : '';
         return <View className={styles.MMCalendar}>
             <MMPopup ref={ref => this.popup = ref as MMPopup}></MMPopup>
             <View className={styles.weekTitle} onTouchMove={this.onTouchMove}>
@@ -134,17 +133,6 @@ export class MMCalendarView extends Component<IMMCalendarViewProps, IMMCalendarV
                 <View className={styles.loading}>
                     {noMore ? '' : '加载中'}
                 </View>
-                {/* <View className={styles.tools}>
-                    <View className={styles.toolsContent}>
-                        <View className={styles.timeBox}>
-                            {startTimeString && <View>开始:{startTimeString}</View>}
-                            {endTimeString && <View>结束:{endTimeString}</View>}
-                        </View>
-                        <View>
-                            <MMButton onClick={this.onConfirm}>确定</MMButton>
-                        </View>
-                    </View>
-                </View> */}
             </ScrollView>
         </View>
     }
@@ -160,7 +148,7 @@ export class MMCalendarView extends Component<IMMCalendarViewProps, IMMCalendarV
     }
 
     async calculateScrollViewHeight() {
-        const topViewRes = await this.getViewRes('#MMCalendarViewTop');
+        const topViewRes = await selectRect('#MMCalendarViewTop', this.$scope);
         Taro.getSystemInfo({
             success: res => {
                 this.setState({
@@ -180,23 +168,6 @@ export class MMCalendarView extends Component<IMMCalendarViewProps, IMMCalendarV
 
     private onTouchMove(event: ITouchEvent) {
         event.stopPropagation();
-    }
-
-    private onConfirm() {
-        if (this.props.value.length !== 2) {
-            this.popup.toast('请选择');
-            return;
-        }
-        this.props.onClick();
-    }
-
-    private getViewRes(name: string) {
-        return new Promise<Taro.clientRectElement>((resolve) => {
-            const query = Taro.createSelectorQuery().in(this.$scope);
-            query.select(name).boundingClientRect((res) => {
-                resolve(res as Taro.clientRectElement);
-            }).exec();
-        });
     }
 
     private onScrollToLower() {

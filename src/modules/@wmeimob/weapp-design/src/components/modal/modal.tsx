@@ -2,7 +2,7 @@
 import { View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
 import classnames from 'classnames';
-import { autobind } from '@wmeimob/decorator';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
 import { MMModalAnimationType, MMModalJustifyContent } from './const';
 import { ITouchEvent } from '@tarojs/components/types/common';
 import styles from './index.modules.less';

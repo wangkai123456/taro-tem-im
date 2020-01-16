@@ -1,6 +1,6 @@
 import { View } from '@tarojs/components';
 import Taro, { Component, Config } from '@tarojs/taro';
-import { autobind } from '@wmeimob/decorator';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
 import { ComponentType } from 'react';
 import { BaseEventOrig } from '@tarojs/components/types/common';
 

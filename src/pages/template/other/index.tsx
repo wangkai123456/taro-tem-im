@@ -2,7 +2,7 @@
 import { View } from '@tarojs/components';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
-import { autobind } from '@wmeimob/decorator';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
 import H2 from '~/modules/@wmeimob/weapp-design/src/components/head/h2';
 import MMItem from '~/modules/@wmeimob/weapp-design/src/components/item';
 import MMNavigation from '~/modules/@wmeimob/weapp-design/src/components/navigation';
@@ -28,26 +28,26 @@ class Index extends Component {
                 <View className='container'>
                     <H2>其他</H2>
                     <View className='spacing'></View>
-                    <MMItem leftText="装饰器" onClick={() => Taro.navigateTo({
+                    <MMItem text="装饰器" onClick={() => Taro.navigateTo({
                         url: '/pages/template/decorator/index'
                     })}></MMItem>
                     <View className='spacing'></View>
-                    <MMItem leftText="透明MMNavigation" onClick={() => Taro.navigateTo({
+                    <MMItem text="透明MMNavigation" onClick={() => Taro.navigateTo({
                         url: '/pages/template/transparent/index'
                     })}></MMItem>
 
                     <View className='spacing'></View>
-                    <MMItem leftText="mobx和自定义组件" onClick={() => Taro.navigateTo({
+                    <MMItem text="mobx和自定义组件" onClick={() => Taro.navigateTo({
                         url: '/pages/template/mobx/index'
                     })}></MMItem>
 
                     <View className='spacing'></View>
-                    <MMItem leftText="跳转登录页" onClick={() => Taro.navigateTo({
+                    <MMItem text="跳转登录页" onClick={() => Taro.navigateTo({
                         url: '/pages/template/login/index'
                     })}></MMItem>
 
                     <View className='spacing'></View>
-                    <MMItem leftText="商品组件" onClick={() => Taro.navigateTo({
+                    <MMItem text="商品组件" onClick={() => Taro.navigateTo({
                         url: '/pages/template/product/index'
                     })}></MMItem>
                 </View>

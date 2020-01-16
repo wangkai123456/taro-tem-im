@@ -1,11 +1,12 @@
 import { View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '@wmeimob/decorator';
-import IconFontName from '../icon-font/name';
+import { autobind } from '~/modules/@wmeimob/decorator/src';
+import IconFontName from '../icon-font/const';
 import styles from './index.modules.less';
 import classNames from 'classnames';
 import { MMPopoverType } from './const';
 import MMIconFont from '../icon-font';
+import { selectRect } from '../utils';
 
 interface IMMPopoverProps {
     /**
@@ -75,20 +76,11 @@ export default class MMPopover extends Component<IMMPopoverProps> {
     }
 
     async componentDidMount() {
-        const topViewRes = await this.getViewRes('#MMPopover');
+        const topViewRes = await selectRect('#MMPopover', this.$scope);
         const { screenWidth } = Taro.getSystemInfoSync();
         if (screenWidth - topViewRes.right < 10) {
             this.setState({ right: true })
         }
-    }
-
-    private getViewRes(name: string) {
-        return new Promise<Taro.clientRectElement>((resolve) => {
-            const query = Taro.createSelectorQuery().in(this.$scope);
-            query.select(name).boundingClientRect((res) => {
-                resolve(res as Taro.clientRectElement);
-            }).exec();
-        });
     }
 }
 
