@@ -40,6 +40,8 @@ props.list.map((value, index) => <View key={value.title + index}>
 
 ## key 为 state 在taro里面会解构不出来 还有 getState。反正不要写state
 
+## get xxx()  xxx 会跑到state里面去
+
 ## map 里面的 value 的引用会发生改变 需要使用 bind才固定 onClick={this.onItemClick.bind(this, data)}
 
     renderData() {

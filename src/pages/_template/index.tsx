@@ -1,13 +1,13 @@
 import { View } from '@tarojs/components';
 import Taro, { Component, Config } from '@tarojs/taro';
-import { ComponentType } from 'react';
 import { autobind } from '~/modules/@wmeimob/decorator/src';
 import * as styles from './index.module.less';
 
 @autobind
-class Index extends Component {
+export default class Page extends Component {
     config: Config = {
-        navigationBarTitleText: '模板'
+        navigationBarTitleText: '',
+        navigationStyle: 'custom'
     };
 
     state = {
@@ -17,10 +17,7 @@ class Index extends Component {
     render() {
         return (
             <View className={styles.page}>
-
             </View>
         );
     }
 }
-
-export default Index as ComponentType;
