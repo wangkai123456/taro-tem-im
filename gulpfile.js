@@ -1,7 +1,27 @@
 const tools = require('@wmeimob/node-tools');
 
 function express() {
-    return tools.express.run();
+    const app = tools.express.run();
+    app.get('/user/wxauth', (req, res) => {
+        return res.send(JSON.stringify({
+            token: '1234567890',
+            openid: 'openid'
+        }));
+    });
+
+    app.get('/login', (req, res) => {
+        if (req.get('Authorization') === '1234567890') {
+            return res.send(JSON.stringify({
+                code: 200,
+                msg: '登录成功'
+            }));
+        } else {
+            return res.send(JSON.stringify({
+                code: 401
+            }));
+        }
+    });
+    return app;
 }
 exports.express = express;
 

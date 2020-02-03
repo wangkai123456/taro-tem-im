@@ -35,7 +35,7 @@ class Index extends Component {
     }
 
     async onUnLoginClick() {
-        const { data } = await post('http://localhost:8080/code', { status: 401 });
+        const { data } = await get('http://localhost:8080/login');
         console.log(data);
     }
 

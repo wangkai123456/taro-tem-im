@@ -2,7 +2,7 @@ export enum RequestEventEnum {
     /**
      * 即将发送
      */
-    WillMount,
+    WillSend,
     /**
      * 发送完毕
      */

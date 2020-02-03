@@ -30,11 +30,21 @@ export interface IRequestOption extends Partial<Taro.request.Param<string | IReq
      */
     isCatchFail?: boolean;
 
+    /**
+     * 不发送请求
+     *
+     * @type {boolean}
+     * @memberof IRequestOption
+     */
+    unWillSend?: boolean
+
 }
 
 export interface RequestEventList extends IFunction {
-    [RequestEventEnum.WillMount]: (params: Taro.request.Param<string | IRequestData>) => void;
-    [RequestEventEnum.DidMount]: (res: Taro.request.Promised<any>) => void;
+    [RequestEventEnum.WillSend]: (params: Taro.request.Param<string | IRequestData>) => void;
+    [RequestEventEnum.DidMount]: (res: Taro.request.Promised<any>, params: {
+        url: string, data: IRequestData | string, options: IRequestOption
+    }) => void | Promise<Taro.request.Promised<any>>
 }
 
 class APPRequest {
@@ -56,7 +66,9 @@ class APPRequest {
             ...requestOptions
         };
 
-        await this.eventEmitter.emit(RequestEventEnum.WillMount, params);
+        if (!options.unWillSend) {
+            await this.eventEmitter.emit(RequestEventEnum.WillSend, params);
+        }
 
         let res: Taro.request.Promised<any> = null as any;
         try {
@@ -68,7 +80,18 @@ class APPRequest {
             } as any;
         }
 
-        await this.eventEmitter.emit(RequestEventEnum.DidMount, res);
+        const mountReturn = await this.eventEmitter.emit(RequestEventEnum.DidMount, res, {
+            url, data, options
+        });
+
+        for (const key in mountReturn) {
+            if (mountReturn.hasOwnProperty(key)) {
+                const element = mountReturn[key];
+                if (element) {
+                    return element;
+                }
+            }
+        }
 
         if (requestOptions.showFailToast) {
             this.failToast(res, requestUrl);
@@ -113,11 +136,13 @@ class APPRequest {
 
             if (data.code) {
                 // 弹出后端报错
-                Taro.showToast({
-                    icon: 'none',
-                    title: `${data.msg}`,
-                    duration: 2500
-                });
+                if (data.msg) {
+                    Taro.showToast({
+                        icon: 'none',
+                        title: `${data.msg}`,
+                        duration: 2500
+                    });
+                }
             } else if (response.statusCode && response.statusCode > 0) {
                 Taro.showToast({
                     icon: 'none',
