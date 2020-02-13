@@ -1,11 +1,12 @@
 /* eslint-disable no-console */
-import { Button, View } from '@tarojs/components';
+import { Button, View, Image } from '@tarojs/components';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
 import { autobind } from '~/modules/@wmeimob/decorator/src';
 import { get, post } from '~/components/request';
 import MMNavigation from '~/modules/@wmeimob/weapp-design/src/components/navigation';
 import MMTabBar from '~/modules/@wmeimob/weapp-design/src/components/tab-bar';
+import { uploadImage } from '~/components/upload';
 import * as styles from './index.module.less';
 
 @autobind
@@ -16,30 +17,30 @@ class Index extends Component {
     };
 
     state = {
-
+        uploadImgArr: [] as any
     };
 
-    async onGetClick() {
+    async onGetClick () {
         const { data } = await get('/');
         console.log(data);
     }
 
-    async onPostClick() {
+    async onPostClick () {
         const { data } = await post('http://localhost:8080/api');
         console.log(data);
     }
 
-    async onPostDataClick() {
+    async onPostDataClick () {
         const { data } = await post('http://localhost:8080/data', { xxx: 1 });
         console.log(data);
     }
 
-    async onUnLoginClick() {
+    async onUnLoginClick () {
         const { data } = await get('http://localhost:8080/login');
         console.log(data);
     }
 
-    async onErrorClick() {
+    async onErrorClick () {
         try {
             await post('http://localhost:8080/code', {
                 status: 418, data: {
@@ -53,7 +54,7 @@ class Index extends Component {
         }
     }
 
-    async onConnectClick() {
+    async onConnectClick () {
         try {
             await post('http://www.adfadf.com/xxxxxxxxxx');
             console.log('抛出了错误！');
@@ -62,7 +63,29 @@ class Index extends Component {
         }
     }
 
-    render() {
+    onUploadClick (files) {
+        Taro.chooseImage({
+            count: 9,
+            success: (src) => {
+                this.upLoad(src.tempFilePaths)
+            }
+        });
+    }
+
+    async upLoad (files) {
+        const aliYunFiles = await Promise.all(files.map((item) => {
+            uploadImage(item.url).then(value => {
+                item.url = value;
+            });
+            return item;
+        }));
+        this.setState({
+            uploadImgArr: aliYunFiles
+        });
+    }
+
+    render () {
+        const { uploadImgArr } = this.state
         return (
             <View className={styles.page}>
                 <MMNavigation title="请求"></MMNavigation>
@@ -72,6 +95,14 @@ class Index extends Component {
                 <Button onClick={this.onUnLoginClick}>未登录</Button>
                 <Button onClick={this.onErrorClick}>错误弹窗</Button>
                 <Button onClick={this.onConnectClick}>网络连接失败</Button>
+                <View className={styles.imgWrap}>
+                    {uploadImgArr.map((item, index) => (
+                        <View key={String(index)} className={styles.imgStyle}>
+                            <Image src={item} mode="aspectFill" className={styles.imgItem}></Image>
+                        </View>
+                    ))}
+                </View>
+                <Button onClick={this.onUploadClick.bind(this, uploadImgArr)}>图片上传阿里云</Button>
                 <MMTabBar></MMTabBar>
             </View>
         );
