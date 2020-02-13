@@ -6,7 +6,7 @@ import { autobind } from '~/modules/@wmeimob/decorator/src';
 import { get, post } from '~/components/request';
 import MMNavigation from '~/modules/@wmeimob/weapp-design/src/components/navigation';
 import MMTabBar from '~/modules/@wmeimob/weapp-design/src/components/tab-bar';
-import { uploadImage } from '~/components/upload';
+import { uploadImageAliYun } from '~/components/upload';
 import * as styles from './index.module.less';
 
 @autobind
@@ -74,7 +74,7 @@ class Index extends Component {
 
     async upLoad (files) {
         const aliYunFiles = await Promise.all(files.map((item) => {
-            uploadImage(item.url).then(value => {
+            uploadImageAliYun(item.url).then(value => {
                 item.url = value;
             });
             return item;
