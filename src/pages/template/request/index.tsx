@@ -17,13 +17,8 @@ class Index extends Component {
     };
 
     state = {
-        uploadImgArr: [],
-        sign: {}
+        uploadImgArr: []
     };
-
-    componentDidMount () {
-        this.getOssToken()
-    }
 
     async onGetClick () {
         const { data } = await get('/');
@@ -68,41 +63,17 @@ class Index extends Component {
         }
     }
 
-    async getOssToken () {
-        const res = await get('aliyun/oss-token');
-        this.setState({
-            sign: res.data
-        })
-    }
-
     onUploadClick (files) {
-        const { sign, uploadImgArr } = this.state;
         Taro.chooseImage({
             count: 9,
             success: (src) => {
-                for (const item of src.tempFilePaths) {
-                    sign && uploadImageAliYun(item, sign, (result) => {
-                        // 具体的业务逻辑操作
-                        this.setState({
-                            uploadImgArr: uploadImgArr.push(result)
-                        })
-                    }, (result) => {
-                        console.log('uploadFail', result);
-                    })
-                }
+                console.log(src)
+                uploadImageAliYun(src.tempFilePath).then(value => {
+                    this.setState({
+                        uploadImgArr: value
+                    });
+                });
             }
-        });
-    }
-
-    async upLoad (files) {
-        const aliYunFiles = await Promise.all(files.map((item) => {
-            uploadImageAliYun(item.url).then(value => {
-                item.url = value;
-            });
-            return item;
-        }));
-        this.setState({
-            uploadImgArr: aliYunFiles
         });
     }
 
