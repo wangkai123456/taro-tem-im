@@ -8,15 +8,7 @@ import { guid } from '../utils';
  */
 
 export async function uploadImageAliYun (fileList: string[]) {
-    // const { data: { accessid, signature, policy, dir, host } } = await get(`/aliyun/oss-token`);
-    const { accessid, signature, policy, dir, host } = {
-        accessid: "LTAI4Fp6LmckowLdj716gVAr",
-        dir: "img/",
-        expire: "1582089616",
-        host: "https://eternaldance1.oss-cn-shanghai.aliyuncs.com",
-        policy: "eyJleHBpcmF0aW9uIjoiMjAyMC0wMi0xOVQwNToyMDoxNi44ODZaIiwiY29uZGl0aW9ucyI6W1siY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsMTA0ODU3NjBdLFsic3RhcnRzLXdpdGgiLCIka2V5IiwiaW1nLyJdXX0=",
-        signature: "uH+IZcisCS9IzQW2VD6pWwYwcJY="
-    }
+    const { data: { accessid, signature, policy, dir, host } } = await get(`/aliyun/oss-token`);
     return Promise.all(fileList.map(file => new Promise(resolve => {
         const formData = {
             signature,
