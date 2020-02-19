@@ -68,7 +68,7 @@ class Index extends Component {
             count: 9,
             success: (src) => {
                 console.log(src)
-                uploadImageAliYun(src.tempFilePath).then(value => {
+                uploadImageAliYun(src.tempFilePaths).then(value => {
                     this.setState({
                         uploadImgArr: value
                     });
