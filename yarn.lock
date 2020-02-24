@@ -4716,7 +4716,7 @@ eslint-config-alloy@3.0.0:
 
 "eslint-config-wmeimob@ssh://git@git.f.wmeimob.com:9922/Frontend/eslint-config-wmeimob.git":
   version "1.0.0"
-  resolved "ssh://git@git.f.wmeimob.com:9922/Frontend/eslint-config-wmeimob.git#bd3f5f6d8b7fae7128228bbfecee012e9af6f56b"
+  resolved "ssh://git@git.f.wmeimob.com:9922/Frontend/eslint-config-wmeimob.git#560cedd4f72a3e09ece7636667a9745c916247e7"
   dependencies:
     "@typescript-eslint/eslint-plugin" "2.3.3"
     "@typescript-eslint/parser" "2.3.3"

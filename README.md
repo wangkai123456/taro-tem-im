@@ -55,8 +55,7 @@ src:开发目录
     app.tsx:js入口  
     config.ts:配置文件  
     globalStore.ts:全局数据
-    index.html:html5项目的入口  
-    tools:帮助项目开发的脚本目录  
+    index.html:html5项目的入口
 tools:工具脚手架
 ```
 
