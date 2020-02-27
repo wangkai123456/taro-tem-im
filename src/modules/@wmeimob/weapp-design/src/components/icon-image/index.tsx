@@ -2,7 +2,7 @@
 import IconFontName from './const';
 import classNames from 'classnames';
 import * as styles from "./index.modules.less";
-import { autobind } from '~/modules/@wmeimob/decorator/src';
+import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 

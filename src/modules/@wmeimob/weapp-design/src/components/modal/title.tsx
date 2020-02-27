@@ -1,7 +1,7 @@
 
 import { View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '~/modules/@wmeimob/decorator/src';
+import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import styles from './index.modules.less';
 
 export interface IMMModalPopupTitle {
@@ -32,7 +32,7 @@ export default class MMModalPopupTitle extends Component<IMMModalPopupTitle> {
         return <View >
             <View className={styles.title}>
                 {cancelText && <View className={styles.title_button} onClick={onCancel}>{cancelText}</View>}
-                {title && <View className={styles.title_content}>{title}</View>}
+                <View className={styles.title_content}>{title}</View>
                 {okText && <View className={styles.title_button} onClick={onOk}>{okText}</View>}
             </View>
         </View>;

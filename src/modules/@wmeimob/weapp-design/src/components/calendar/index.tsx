@@ -1,9 +1,9 @@
 import { View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '~/modules/@wmeimob/decorator/src';
+import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import dayjs from 'dayjs';
 import { MMModalAnimationType, MMModalJustifyContent } from '../modal/const';
-import MMModal from '../modal/modal';
+import MMModal from '../modal/index';
 import MMModalPopupTitle from '../modal/title';
 import styles from './index.modules.less';
 import { IMMCalendarViewProps, MMCalendarView } from './view';

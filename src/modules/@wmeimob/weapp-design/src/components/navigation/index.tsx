@@ -1,6 +1,6 @@
 import { View } from '@tarojs/components';
 import { Component, getCurrentPages, getMenuButtonBoundingClientRect, navigateBack, getSystemInfoSync } from '@tarojs/taro';
-import { autobind } from '~/modules/@wmeimob/decorator/src';
+import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import classnames from 'classnames';
 import MMIconFont from '../icon-font';
 import styles from './index.modules.less';

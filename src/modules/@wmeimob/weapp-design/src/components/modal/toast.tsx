@@ -1,10 +1,9 @@
 import { View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '~/modules/@wmeimob/decorator/src';
+import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import classname from 'classnames';
-import MMModal from '../modal/modal';
+import MMModal from '../modal/index';
 import { guid } from '../utils';
-import modal from './index';
 import styles from './index.modules.less';
 import MMIconFontName from '../icon-font/const';
 import MMLoading from '../loading';
@@ -50,14 +49,6 @@ export default class MMToast extends Component<IMMToastProps, IMMToastState> {
 
     clearSetTimeout;
 
-    componentDidShow() {
-        (modal as any)['toast'] = this.message;
-        (modal as any)['success'] = (msg: string) => this.message(msg, MMIconFontName.Right);
-        (modal as any)['fail'] = (msg: string) => this.message(msg, MMIconFontName.Error);
-        (modal as any)['warning'] = (msg: string) => this.message(msg, MMIconFontName.Warning);
-        (modal as any)['loading'] = (msg: string) => this.message(msg, undefined, true);
-    }
-
     /**
      * 动画
      *
@@ -100,12 +91,6 @@ export default class MMToast extends Component<IMMToastProps, IMMToastState> {
         this.clearSetTimeout = setTimeout(() => this.clear(), (this.props.duration as number) + transitionTiming);
     }
 
-    clear() {
-        this.setState({
-            messages: []
-        });
-    }
-
     render() {
         return <MMModal visible={this.state.visible} mask={this.props.mask}>
             <View className={styles.MMToast}>
@@ -122,7 +107,7 @@ export default class MMToast extends Component<IMMToastProps, IMMToastState> {
         </MMModal>;
     }
 
-    getMessageClassName(value: { id: string; message: string; state: ToastState }): string | undefined {
+    private getMessageClassName(value: { id: string; message: string; state: ToastState }): string | undefined {
         const classArray = [styles.MMToast_message];
         switch (value.state) {
             case ToastState.showing:
@@ -134,6 +119,12 @@ export default class MMToast extends Component<IMMToastProps, IMMToastState> {
         }
 
         return classname(...classArray);
+    }
+
+    private clear() {
+        this.setState({
+            messages: []
+        });
     }
 }
 

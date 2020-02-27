@@ -1,7 +1,7 @@
 import { Input, View } from '@tarojs/components';
 import { BaseEventOrig } from '@tarojs/components/types/common';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '~/modules/@wmeimob/decorator/src';
+import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import { minus, plus } from 'number-precision';
 import MMIconFont from '../icon-font';
 import themesStyles from '../styles/themes/default.modules.less';
@@ -33,12 +33,21 @@ interface IStepperProps {
     defaultValue?: number;
 
     /**
+     * 当前值
+     *
+     * @type {number}
+     * @memberof IStepperProps
+     */
+    value?: number
+
+    /**
      * 每次改变步数,可以为小数
      *
      * @type {number}
      * @memberof IStepperProps
      */
     step?: number;
+
     /**
      * 变化时回调函数
      *
@@ -69,7 +78,7 @@ export default class MMStepper extends Component<IStepperProps, IStepperState> {
     };
 
     public get value() {
-        return this.state.value;
+        return this.props.value === undefined ? this.state.value : this.props.value;
     }
 
     plus() {

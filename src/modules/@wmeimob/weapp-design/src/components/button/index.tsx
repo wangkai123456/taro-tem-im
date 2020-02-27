@@ -1,21 +1,13 @@
 import { View } from '@tarojs/components';
 import { ITouchEvent } from '@tarojs/components/types/common';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind, lock } from '~/modules/@wmeimob/decorator/src';
+import { autobind, lock } from '~/modules/@wmeimob/decorator/src/components';
 import classnames from 'classnames';
 import MMLoading from '../loading';
 import { MMButtonColor, MMButtonRadius, MMButtonSize, MMButtonType } from './const';
 import styles from './index.modules.less';
 
 interface IButtonProps {
-
-    // /**
-    //  * 按钮状态
-    //  *
-    //  * @type {MMButtonState}
-    //  * @memberof IButtonProps
-    //  */
-    // state?: MMButtonState
 
     /**
      * 按钮颜色
@@ -50,20 +42,20 @@ interface IButtonProps {
     size?: MMButtonSize
 
     /**
-     * 是否设置为行内按钮
-     *
-     * @type {boolean}
-     * @memberof IButtonProps
-     */
-    inline?: boolean
-
-    /**
      * 禁用
      *
      * @type {boolean}
      * @memberof IButtonProps
      */
     disabled?: boolean
+
+    /**
+     * 文字
+     *
+     * @type {string}
+     * @memberof IButtonProps
+     */
+    text?: string
 
     /**
      * 圆角
@@ -100,6 +92,8 @@ export default class MMButton extends Component<IButtonProps> {
         switch (this.props.type) {
             case MMButtonType.Hollow:
                 return styles.MMButton__type_hollow;
+            case MMButtonType.Gradient:
+                return styles.MMButton__type_gradient;
             default:
                 return '';
         }
@@ -138,13 +132,6 @@ export default class MMButton extends Component<IButtonProps> {
         }
     }
 
-    get inlineClass() {
-        if (this.props.inline) {
-            return styles.MMButton__inline;
-        }
-        return '';
-    }
-
     get disabledClass() {
         if (this.props.disabled) {
             return styles.MMButton__disabled;
@@ -153,15 +140,15 @@ export default class MMButton extends Component<IButtonProps> {
     }
 
     render() {
-        const { loading } = this.props;
+        const { loading, text } = this.props;
         return <View className={classnames(styles.MMButton, this.radiusClass, this.colorClass,
-            this.typeClass, this.sizeClass, this.inlineClass, this.disabledClass)}
+            this.typeClass, this.sizeClass, this.disabledClass)}
             onClick={this.onClick}>
             <View className={styles.MMButton_content}>
                 {loading && <View className={styles.MMButton_loading}>
                     <MMLoading width={styles.loadingSize} height={styles.loadingSize}></MMLoading>
                 </View>}
-                <View>{this.props.children}</View>
+                <View>{this.props.children}{text}</View>
             </View>
         </View>;
     }

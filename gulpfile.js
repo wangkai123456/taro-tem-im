@@ -42,6 +42,6 @@ exports.iconfont = iconfont;
 
 
 function add() {
-    return tools.addComponent.add('/src');
+    return tools.addComponent.add();
 }
 exports.add = add;

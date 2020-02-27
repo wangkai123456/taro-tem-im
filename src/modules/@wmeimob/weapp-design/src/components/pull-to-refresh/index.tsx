@@ -3,7 +3,7 @@ import { View, ScrollView } from '@tarojs/components';
 import { ITouch, ITouchEvent } from '@tarojs/components/types/common';
 import Taro, { Component } from '@tarojs/taro';
 import classname from 'classnames';
-import { autobind } from '~/modules/@wmeimob/decorator/src';
+import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import { MMPullToRefreshState } from './const';
 import styles from './index.modules.less';
 import MMLoading from '../loading';

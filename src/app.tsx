@@ -32,7 +32,6 @@ class App extends Component {
             'pages/template/other/index',
             'pages/template/mobx/index',
             'pages/template/login/index',
-            'pages/template/product/index',
             'pages/template/test/index',
             'pages/template/decorator/index',
             'pages/template/transparent/index',

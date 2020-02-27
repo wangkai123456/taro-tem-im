@@ -1,8 +1,8 @@
 import { View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '~/modules/@wmeimob/decorator/src';
+import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import { MMModalAnimationType, MMModalJustifyContent } from '../modal/const';
-import MMModal from '../modal/modal';
+import MMModal from '../modal/index';
 import styles from './index.modules.less';
 import MMPickerView from './view';
 import MMModalPopupTitle from '../modal/title';
@@ -77,14 +77,14 @@ export default class MMPicker extends Component<MMPickerProps> {
     };
 
     render() {
-        const { visible, data, value, onCancel, onOk } = this.props;
+        const { visible, data, value, onCancel } = this.props;
         return <View className={name}>
             <MMModal visible={visible} animationType={MMModalAnimationType.down}
                 justifyContent={MMModalJustifyContent.flexEnd}
                 onClose={this.props.onCancel} >
                 <View className={styles.modal}>
                     <MMModalPopupTitle onCancel={onCancel}
-                        onOk={() => onOk([...this.props.value])} title={this.props.title} ></MMModalPopupTitle>
+                        onOk={this.onOk} title={this.props.title} ></MMModalPopupTitle>
                     <View className={styles.content}>
                         {data.map((dataValue, index) => <View className={styles.modal_picker} key={index + '1'}>
                             <MMPickerView data={dataValue} value={value[index]} onChange={value => this.onChange(index, value)}></MMPickerView>
@@ -93,6 +93,16 @@ export default class MMPicker extends Component<MMPickerProps> {
                 </View>
             </MMModal>
         </View>;
+    }
+
+    private onOk() {
+        const selectList = [...this.props.value].map((value, index) => {
+            if (!value) {
+                return this.props.data[index][0].id;
+            }
+            return value;
+        });
+        this.props.onOk(selectList)
     }
 
     private onChange(index: number, val: string) {

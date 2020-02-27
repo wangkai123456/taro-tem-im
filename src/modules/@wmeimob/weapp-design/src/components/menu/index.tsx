@@ -1,6 +1,6 @@
 import { ScrollView, View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '~/modules/@wmeimob/decorator/src';
+import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import classNames from 'classnames';
 import styles from './index.modules.less';
 import { guid, selectRect } from '../utils';

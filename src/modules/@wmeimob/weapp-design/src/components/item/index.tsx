@@ -1,6 +1,6 @@
 import { View, ScrollView } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '~/modules/@wmeimob/decorator/src';
+import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import styles from './index.modules.less';
 import MMIconFont from '../icon-font';
 import classNames from 'classnames';
@@ -49,14 +49,6 @@ interface ICheckboxProps {
     text?: string
 
     /**
-     * 分割线是否显示
-     *
-     * @type {boolean}
-     * @memberof ICheckboxProps
-     */
-    divider?: boolean
-
-    /**
      * 滑块文本
      *
      * @type {string}
@@ -95,11 +87,6 @@ export default class MMItem extends Component<ICheckboxProps> {
 
     get className() {
         const classnames = [styles.content];
-
-        if (this.props.divider) {
-            classnames.push(styles.divider);
-        }
-
         return classnames;
     }
 

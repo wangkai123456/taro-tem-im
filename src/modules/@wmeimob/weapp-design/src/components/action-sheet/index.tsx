@@ -1,10 +1,10 @@
 import { View } from '@tarojs/components';
 
 import Taro, { Component } from '@tarojs/taro';
-import MMModal from '../modal/modal';
+import MMModal from '../modal/index';
 import classNames from 'classnames';
 import styles from './index.modules.less'
-import { autobind } from '~/modules/@wmeimob/decorator/src';
+import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import { MMModalAnimationType, MMModalJustifyContent } from '../modal/const';
 import H2 from '../head/h2';
 

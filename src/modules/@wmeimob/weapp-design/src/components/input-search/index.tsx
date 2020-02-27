@@ -1,7 +1,7 @@
 import { Input, View } from '@tarojs/components';
 import { BaseEventOrig } from '@tarojs/components/types/common';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '~/modules/@wmeimob/decorator/src';
+import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import classNames from 'classnames';
 import MMIconFont from '../icon-font';
 import { MMInputSearchType } from './const';

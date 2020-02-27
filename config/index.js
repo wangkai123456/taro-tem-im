@@ -25,7 +25,11 @@ const config = {
             ]
         },
         less: {
-            javascriptEnabled: true
+            javascriptEnabled: true,
+            paths: [
+                path.resolve(__dirname, "../src/modules"),
+                path.resolve(__dirname, "../node_modules")
+            ]
         }
     },
     defineConstants: {},

@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '~/modules/@wmeimob/decorator/src';
+import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import MMIconFont, { IMMIconfontProps } from '../icon-font';
 import themes from '../styles/themes/default.modules.less';
 import IconFontName from '~/components/icon-font/const';

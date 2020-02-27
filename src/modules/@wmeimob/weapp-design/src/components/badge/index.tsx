@@ -1,8 +1,8 @@
 import { View, Text } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '~/modules/@wmeimob/decorator/src';
 import classnames from 'classnames';
 import styles from './index.modules.less';
+import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 
 interface IButtonProps {
     /**

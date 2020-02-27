@@ -1,10 +1,9 @@
 import { Swiper, SwiperItem, View } from '@tarojs/components';
 import { BaseEventOrig } from '@tarojs/components/types/common';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '~/modules/@wmeimob/decorator/src';
-import styles from './index.modules.less';
+import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import themesStyles from '../styles/themes/default.modules.less';
-import MMDivider from '../divider';
+import styles from './index.modules.less';
 
 interface MMPickerViewProps {
     data: { id: string; text: string }[];
@@ -23,7 +22,10 @@ export default class MMPickerView extends Component<MMPickerViewProps> {
     };
 
     render() {
-        const current = this.props.data.findIndex(value => value.id === this.props.value);
+        let current = this.props.data.findIndex(value => value.id === this.props.value);
+        if (current === -1) {
+            current = 0;
+        }
         return <View className={styles.MMPicker}>
             <Swiper className={styles.swiper} display-multiple-items={5} vertical={true} current={current} onChange={this.onChange}>
                 <SwiperItem><View className={styles.item}></View></SwiperItem>

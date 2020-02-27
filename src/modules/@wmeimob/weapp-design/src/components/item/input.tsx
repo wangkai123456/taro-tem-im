@@ -1,6 +1,6 @@
 import { Input } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '~/modules/@wmeimob/decorator/src';
+import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import styles from './input.modules.less';
 import { BaseEventOrigFunction } from '@tarojs/components/types/common';
 

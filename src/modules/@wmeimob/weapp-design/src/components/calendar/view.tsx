@@ -1,7 +1,7 @@
 import { ScrollView, View } from '@tarojs/components';
 import { BaseEventOrig, ITouchEvent } from '@tarojs/components/types/common';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind, debounce } from '~/modules/@wmeimob/decorator/src';
+import { autobind, debounce } from '~/modules/@wmeimob/decorator/src/components';
 import dayjs from 'dayjs';
 import MMPopup from '../modal/popup';
 import styles from './index.modules.less';

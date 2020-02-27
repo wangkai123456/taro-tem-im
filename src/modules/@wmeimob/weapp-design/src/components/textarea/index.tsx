@@ -1,7 +1,7 @@
 import { Text, Textarea, View } from '@tarojs/components';
 import { TextareaProps } from '@tarojs/components/types/Textarea';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '~/modules/@wmeimob/decorator/src';
+import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import styles from './index.modules.less';
 import classNames from 'classnames';
 
@@ -48,7 +48,7 @@ export default class MMTextarea extends Component<TextareaProps> {
                         className={classNames(this.props.className, styles.MMTextarea)} value={value} onBlur={this.onBlur} onFocus={this.onFocus}></Textarea>
                     : <View className={classNames(styles.MMTextarea, this.props.className, autoHeight ? styles.autoHeight : '')} >
                         <Text>{value}</Text>
-                        {value === '' && placeholder && <Text className={styles.placeholderClass}>{placeholder}</Text>}
+                        {(value === '' || value === undefined) && placeholder && <Text className={styles.placeholderClass}>{placeholder}</Text>}
                     </View>
             }
         </View>;

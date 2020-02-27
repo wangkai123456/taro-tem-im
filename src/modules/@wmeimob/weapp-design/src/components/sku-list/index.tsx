@@ -1,8 +1,9 @@
 import { View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '~/modules/@wmeimob/decorator/src';
+import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import classname from 'classnames';
 import styles from './index.modules.less';
+import H2 from '../head/h2';
 
 interface IList {
     title: string;
@@ -61,7 +62,9 @@ export default class MMSkuList extends Component<IMMSkuListProps> {
         const { list } = this.props;
         return <View className={styles.MMSkuList}>
             {list.map((listValue, index) => <View key={'list' + index}>
-                <View className={styles.title}>{listValue.title}</View>
+                <View className="spacing-big"></View>
+                <H2>{listValue.title}</H2>
+                <View className="spacing-big"></View>
                 <View className={styles.content}>
                     {listValue.items.map(item => <View key={item.id}
                         className={this.getItemClassName(item, index)} onClick={() => this.onClick(item, index)}>{item.text}</View>)}

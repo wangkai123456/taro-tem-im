@@ -20,7 +20,7 @@
     margin-right: @spacingSize;
 }
 
-.button(@name, @buttonColor, @buttonColorActive) {
+.button(@name, @buttonColor, @buttonColorActive, @buttonColorGradient) {
     .@{name} {
         box-sizing      : border-box;
         background-color: @buttonColor;
@@ -47,7 +47,9 @@
         }
 
         &.MMButton__small {
-            height: @buttonSmallHeight;
+            height     : @buttonSmallHeight;
+            font-size  : 13px;
+            font-weight: bold;
         }
 
         &.MMButton__small.MMButton__radius_large {
@@ -75,8 +77,8 @@
             }
         }
 
-        &.MMButton__inline {
-            display: inline-block;
+        &.MMButton__type_gradient {
+            background: linear-gradient(90deg, @buttonColorGradient, @buttonColor);
         }
 
         &.MMButton__disabled {
@@ -98,6 +100,7 @@
 
 }
 
-.button(MMButton, @buttonColor, @buttonColorActive);
-.button(MMButton__red, @buttonRedColor, @buttonRedColorActive);
-.button(MMButton__gray, @buttonGrayColor, @buttonGrayColorActive);
+.button(MMButton, @buttonColor, @buttonColorActive, @buttonColorGradient);
+.button(MMButton__red, @buttonRedColor, @buttonRedColorActive, @buttonRedColorGradient);
+.button(MMButton__gray, @buttonGrayColor, @buttonGrayColorActive, @buttonGrayColorGradient);
+.button(MMButton__gray2, @gray5, @gray4, @buttonGrayColorGradient);

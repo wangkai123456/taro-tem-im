@@ -1,6 +1,7 @@
 
 export enum MMButtonType {
     Default,
+    Gradient,
     Hollow
 }
 

@@ -1,6 +1,6 @@
 import { Canvas, Image, View } from '@tarojs/components';
 import Taro, { Component, execObject } from '@tarojs/taro';
-import { autobind } from '~/modules/@wmeimob/decorator/src';
+import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 // 修改了 动画卡主的问题 https://developers.weixin.qq.com/community/develop/doc/0004a2139ecbe82ed3991f58756400
 import lottie from './lottie-miniprogram';
 import { AnimationItem } from './types';

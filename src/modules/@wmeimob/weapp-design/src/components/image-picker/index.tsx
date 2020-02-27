@@ -1,6 +1,6 @@
 import { View, Image, Text } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '~/modules/@wmeimob/decorator/src';
+import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import classname from 'classnames';
 import MMIconFont from '../icon-font';
 import styles from './index.modules.less';

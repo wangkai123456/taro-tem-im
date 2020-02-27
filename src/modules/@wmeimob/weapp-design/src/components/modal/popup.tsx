@@ -1,10 +1,10 @@
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '~/modules/@wmeimob/decorator/src';
-import modal from './index';
+import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import { View } from '@tarojs/components';
 import MMToast from './toast';
 import MMModalAlert from './alert';
 import styles from '../styles/themes/default.modules.less';
+import MMIconFontName from '../icon-font/name';
 
 @autobind
 export default class MMPopup extends Component {
@@ -19,11 +19,15 @@ export default class MMPopup extends Component {
         }
     };
 
+    toastCompoent: MMToast
+
     alert(_props: {
         okText?: string,
-        message: string, title?: string, onOk?: () => void
+        message?: string,
+        title?: string,
+        onOk?: () => void
     }) {
-        modal.alert(_props);
+        this.alertFunction(_props);
     }
 
     confirm(_props: {
@@ -34,37 +38,32 @@ export default class MMPopup extends Component {
         onOk: () => void;
         onCancel?: () => void;
     }) {
-        modal.confirm(_props);
+        this.confirmFunction(_props);
     }
 
     toast(messages: string) {
-        modal.toast(messages);
-    }
-
-    componentDidMount() {
-        modal.alert = this.alertFunction;
-        modal.confirm = this.confirmFunction;
+        this.toastCompoent.message(messages);
     }
 
     success(message: string) {
-        modal.success(message);
+        this.toastCompoent.message(message, MMIconFontName.Right)
     }
 
     fail(message: string) {
-        modal.fail(message);
+        this.toastCompoent.message(message, MMIconFontName.Error);
     }
 
     warning(message: string) {
-        modal.warning(message);
+        this.toastCompoent.message(message, MMIconFontName.Warning);
     }
 
     loading(message: string) {
-        modal.loading(message);
+        this.toastCompoent.message(message, undefined, true)
     }
 
     render() {
         return <View>
-            <MMToast></MMToast>
+            <MMToast ref={ref => this.toastCompoent = ref as any}></MMToast>
             <MMModalAlert {...this.state.alertProps}>
                 {this.renderAlertContent()}
             </MMModalAlert>
@@ -86,7 +85,7 @@ export default class MMPopup extends Component {
 
     private alertFunction({ message, title, onOk, okText }: {
         okText?: string,
-        message: string, title?: string, onOk?: () => void
+        message?: string, title?: string, onOk?: () => void
     }) {
         const buttons = [{
             text: okText || '确定',
@@ -108,10 +107,12 @@ export default class MMPopup extends Component {
     }
 
     private confirmFunction({ title, message, onOk, okText, cancelText, onCancel }: {
-        title: string,
+        title?: string,
         okText?: string;
         cancelText?: string;
-        message: string; onOk?: () => void; onCancel?: () => void;
+        message?: string;
+        onOk?: () => void;
+        onCancel?: () => void;
     }) {
         const buttons = [{
             text: cancelText || '取消',

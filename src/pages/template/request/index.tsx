@@ -2,7 +2,7 @@
 import { Button, View, Image } from '@tarojs/components';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { ComponentType } from 'react';
-import { autobind } from '~/modules/@wmeimob/decorator/src';
+import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import { get, post } from '~/components/request';
 import MMNavigation from '~/modules/@wmeimob/weapp-design/src/components/navigation';
 import MMTabBar from '~/modules/@wmeimob/weapp-design/src/components/tab-bar';
@@ -20,27 +20,27 @@ class Index extends Component {
         uploadImgArr: []
     };
 
-    async onGetClick () {
+    async onGetClick() {
         const { data } = await get('/');
         console.log(data);
     }
 
-    async onPostClick () {
+    async onPostClick() {
         const { data } = await post('http://localhost:8080/api');
         console.log(data);
     }
 
-    async onPostDataClick () {
+    async onPostDataClick() {
         const { data } = await post('http://localhost:8080/data', { xxx: 1 });
         console.log(data);
     }
 
-    async onUnLoginClick () {
+    async onUnLoginClick() {
         const { data } = await get('http://localhost:8080/login');
         console.log(data);
     }
 
-    async onErrorClick () {
+    async onErrorClick() {
         try {
             await post('http://localhost:8080/code', {
                 status: 418, data: {
@@ -54,7 +54,7 @@ class Index extends Component {
         }
     }
 
-    async onConnectClick () {
+    async onConnectClick() {
         try {
             await post('http://www.adfadf.com/xxxxxxxxxx');
             console.log('抛出了错误！');
@@ -63,7 +63,7 @@ class Index extends Component {
         }
     }
 
-    onUploadClick (files) {
+    onUploadClick(files) {
         Taro.chooseImage({
             count: 9,
             success: (src) => {
@@ -77,7 +77,7 @@ class Index extends Component {
         });
     }
 
-    render () {
+    render() {
         const { uploadImgArr } = this.state
         return (
             <View className={styles.page}>

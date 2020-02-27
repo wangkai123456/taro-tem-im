@@ -1,12 +1,20 @@
 import { View } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '~/modules/@wmeimob/decorator/src';
 import dayjs, { UnitType } from 'dayjs';
 import { MMDatePickerType } from './const';
 import styles from './index.modules.less';
 import MMPicker from '../picker';
+import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 
 interface IMMDatePickerProps {
+
+    /**
+     * 默认时间
+     *
+     * @type {Date}
+     * @memberof IMMDatePickerProps
+     */
+    defaultValue?: Date
 
     /**
      * 当前选中时间
@@ -14,7 +22,7 @@ interface IMMDatePickerProps {
      * @type {Date}
      * @memberof IMMImagePickerProps
      */
-    value: Date
+    value?: Date
 
     /**
      * 类型
@@ -67,7 +75,7 @@ interface IMMDatePickerProps {
      *
      * @memberof IMMDatePickerProps
      */
-    onChange: (value: Date) => void;
+    onChange?: (value: Date) => void;
 }
 
 @autobind
@@ -86,19 +94,31 @@ export default class MMDatePicker extends Component<IMMDatePickerProps> {
 
     static defaultProps = {
         type: MMDatePickerType.dateTime,
-        minDate: new Date(2000, 1, 1, 0, 0, 0),
-        maxDate: new Date(2020, 1, 1, 23, 59, 59)
+        minDate: new Date(),
+        maxDate: dayjs().add(10, 'year').toDate()
     };
 
-    private get value() {
-        const day = dayjs(this.props.value as Date);
+    state = {
+        value: this.props.defaultValue || this.props.minDate
+    }
+
+    private get dateValue(): Date {
+        if (this.props.value) {
+            return this.props.value;
+        }
+
+        return this.state.value as Date;
+    }
+
+    private get pickerValue() {
+        const day = dayjs(this.dateValue);
         return MMDatePicker.typeKeyObject[this.props.type as MMDatePickerType].map(value => day[value]().toString())
     }
 
     render() {
         const { visible, onCancel } = this.props;
         return <View className={styles.MMDatePicker}>
-            <MMPicker visible={visible} data={this.getDate()} value={this.value}
+            <MMPicker visible={visible} data={this.getDate()} value={this.pickerValue}
                 onChange={this.onChange.bind(this)} onOk={this.onOk} onCancel={onCancel}></MMPicker>
         </View >;
     }
@@ -137,7 +157,7 @@ export default class MMDatePicker extends Component<IMMDatePickerProps> {
         const { maxDate, minDate } = this.props;
         const min = dayjs(minDate as Date);
         const max = dayjs(maxDate as Date);
-        const day = dayjs(this.props.value);
+        const day = dayjs(this.dateValue);
 
         let minMonth = 0;
         let maxMonth = 11;
@@ -169,7 +189,7 @@ export default class MMDatePicker extends Component<IMMDatePickerProps> {
         const { maxDate, minDate } = this.props;
         const min = dayjs(minDate as Date);
         const max = dayjs(maxDate as Date);
-        const day = dayjs(this.props.value);
+        const day = dayjs(this.dateValue);
 
         let minDay = 1;
         let maxDay = day.endOf('month').date();
@@ -201,7 +221,7 @@ export default class MMDatePicker extends Component<IMMDatePickerProps> {
         const { maxDate, minDate } = this.props;
         const min = dayjs(minDate as Date);
         const max = dayjs(maxDate as Date);
-        const day = dayjs(this.props.value);
+        const day = dayjs(this.dateValue);
 
         let minHour = 0;
         let maxHour = 23;
@@ -233,7 +253,7 @@ export default class MMDatePicker extends Component<IMMDatePickerProps> {
         const { maxDate, minDate } = this.props;
         const min = dayjs(minDate as Date);
         const max = dayjs(maxDate as Date);
-        const day = dayjs(this.props.value);
+        const day = dayjs(this.dateValue);
 
         let minMinute = 0;
         let maxMinute = 59;
@@ -257,15 +277,24 @@ export default class MMDatePicker extends Component<IMMDatePickerProps> {
     }
 
     private onOk() {
-        this.props.onOk(this.props.value);
+        if (this.props.value) {
+            this.props.onOk(this.props.value);
+        } else {
+            this.props.onOk(this.props.minDate as any);
+        }
     }
 
     private onChange(index: number, value: string) {
-        let day = dayjs(this.props.value)
+        let day = dayjs(this.dateValue)
         const keyList: UnitType[] = MMDatePicker.typeKeyObject[this.props.type as MMDatePickerType];
         day = day.set(keyList[index], Number(value));
 
-        this.props.onChange(this.correct(day.toDate()));
+        const dataValue = this.correct(day.toDate());
+
+        this.setState({
+            value: dataValue
+        })
+        this.props.onChange && this.props.onChange(dataValue);
     }
 
     private correct(date: Date) {
