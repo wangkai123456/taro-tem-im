@@ -1,10 +1,9 @@
 
 import { View } from '@tarojs/components';
-import Taro, { Component, Config } from '@tarojs/taro';
-import { ComponentType } from 'react';
+import Taro, { Component } from '@tarojs/taro';
 import * as styles from './index.module.less';
 
-class Index extends Component {
+export default class Index extends Component {
     state = {
     };
 
@@ -23,5 +22,3 @@ class Index extends Component {
         );
     }
 }
-
-export default Index as ComponentType;

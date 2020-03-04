@@ -106,10 +106,15 @@ gulp iconfont
 gulp add --name=weapp-design
 ```
 
+监听iconImage 图片添加自动添加样式
+
+```sh
+gulp watch
+```
+
 ## 其他
 
-AppID  
-接口文档地址  
+[前端组件列表](https://git.f.wmeimob.com/Frontend/front-end-catalog/src/master/project.md)
 
 ## 资料
 

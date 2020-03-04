@@ -1,4 +1,5 @@
 const tools = require('@wmeimob/node-tools');
+const iconImageWatch = require('@wmeimob/node-tools/dist/icon-image');
 
 function express() {
     const app = tools.express.run();
@@ -40,8 +41,12 @@ async function iconfont() {
 }
 exports.iconfont = iconfont;
 
-
 function add() {
     return tools.addComponent.add();
 }
 exports.add = add;
+
+function watch() {
+    return iconImageWatch.default();
+}
+exports.watch = watch;
