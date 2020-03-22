@@ -1,1 +1,1 @@
-export const regularMobile = /^1[0-9]{10}$/g
+export const regularMobile = /^1[0-9]{10}$/
