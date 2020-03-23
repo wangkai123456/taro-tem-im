@@ -7,7 +7,7 @@ import coreAutobind from 'core-decorators/lib/autobind';
  * @export
  * @returns
  */
-export let autobind = coreAutobind;
+export const autobind = coreAutobind;
 
 /**
  * 函数在未运行完成前 锁死
@@ -45,7 +45,7 @@ export function lock(): MethodDecorator {
  * @param {number} [time=100]
  * @returns {MethodDecorator}
  */
-export function throttle(time: number = 200): MethodDecorator {
+export function throttle(time = 200): MethodDecorator {
     let date = new Date();
     return (_target, _name, descriptor: any) => {
         const fun = descriptor.value;
@@ -67,7 +67,7 @@ export function throttle(time: number = 200): MethodDecorator {
  * @param {number} [time=10]
  * @returns {MethodDecorator}
  */
-export function debounce(time: number = 200): MethodDecorator {
+export function debounce(time = 200): MethodDecorator {
     let st;
     return (_target, _name, descriptor: any) => {
         const fun = descriptor.value;
@@ -81,7 +81,6 @@ export function debounce(time: number = 200): MethodDecorator {
     };
 }
 
-
 /**
  * 特殊限流，最后一次的函数肯定触发
  *
@@ -89,7 +88,7 @@ export function debounce(time: number = 200): MethodDecorator {
  * @param {number} [time=200]
  * @returns {MethodDecorator}
  */
-export function throttleLast(time: number = 200): MethodDecorator {
+export function throttleLast(time = 200): MethodDecorator {
     let date = new Date();
     let stLast;
     return (_target, _name, descriptor: any) => {
@@ -105,6 +104,37 @@ export function throttleLast(time: number = 200): MethodDecorator {
                     fun.apply(this, args);
                 }, time);
             }
+        };
+        return descriptor;
+    };
+}
+
+/**
+ * 所有函数返回值均是最后一个函数的返回值 返回值转为promise
+ *
+ * @export
+ * @param {number} [time=200]
+ * @returns {MethodDecorator}
+ */
+export function merge(time = 200): MethodDecorator {
+    let st;
+    let resloveFunction: any;
+    let returnPromise: Promise<any>
+    return (_target, _name, descriptor: any) => {
+        const fun = descriptor.value;
+        descriptor.value = function (...args) {
+            if (!returnPromise) {
+                returnPromise = new Promise(resolve => {
+                    resloveFunction = resolve;
+                })
+            }
+
+            clearTimeout(st);
+            st = setTimeout(() => {
+                resloveFunction(fun.apply(this, args));
+            }, time);
+
+            return returnPromise;
         };
         return descriptor;
     };

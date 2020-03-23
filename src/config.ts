@@ -8,3 +8,5 @@ export const loginUrl = '/pages/template/login/index';
 
 // 启动静默授权
 export const silentAuthorization = true;
+
+export const aliyunOssTokenUrl = '/aliyun/oss-token';

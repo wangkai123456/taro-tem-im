@@ -1,5 +1,10 @@
 # 小程序开发模板
 
+## nodejs 环境要求
+
+[nodejs >= 11.10.1](https://nodejs.org/dist/v11.15.0/)
+注意：nodejs v12 版本有bug
+
 ## taro环境安装
 
 yarn add global @tarojs/cli  

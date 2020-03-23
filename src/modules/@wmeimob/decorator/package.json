@@ -1,19 +1,19 @@
 {
-  "name": "@wmeimob/decorator",
-  "version": "1.0.0",
-  "description": "",
-  "main": "dist/components/index.js",
-  "types": "types/index.d.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "ssh://git@git.f.wmeimob.com:9922/Frontend/decorator.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "core-decorators": "^0.20.0"
-  }
+    "name": "@wmeimob/decorator",
+    "version": "1.0.1",
+    "description": "",
+    "main": "dist/components/index.js",
+    "types": "types/index.d.ts",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "ssh://git@git.f.wmeimob.com:9922/Frontend/decorator.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "core-decorators": "^0.20.0"
+    }
 }
