@@ -2,6 +2,8 @@
 
 ## 图片过大 css 文件不会转base64. 需要使用 Image标签引入
 
+## props key 不能是id，会导致获取不到。就当是关键字吧~
+
 ## mobx 数组在render的 map会导致监听失效
 
 ## 含有 JSX 的 switch case 语句必须每种情况都用花括号 `{}` 包裹结果,switch 值必须先解构，  不能包含 default

@@ -12,7 +12,7 @@ export interface IRequestData {
  *
  * @interface IInterceptor
  */
-export interface IRequestOption extends Partial<Taro.request.Param<string | IRequestData>> {
+export interface IRequestOption extends Partial<Taro.request.Option<string | IRequestData>> {
 
     /**
      * 启动错误弹窗
@@ -41,10 +41,10 @@ export interface IRequestOption extends Partial<Taro.request.Param<string | IReq
 }
 
 export interface RequestEventList extends IFunction {
-    [RequestEventEnum.WillSend]: (params: Taro.request.Param<string | IRequestData>) => void;
-    [RequestEventEnum.DidMount]: (res: Taro.request.Promised<any>, params: {
+    [RequestEventEnum.WillSend]: (params: Taro.request.Option<string | IRequestData>) => void;
+    [RequestEventEnum.DidMount]: (res: Taro.request.SuccessCallbackResult<any>, params: {
         url: string, data: IRequestData | string, options: IRequestOption
-    }) => void | Promise<Taro.request.Promised<any>>
+    }) => void | Promise<Taro.request.SuccessCallbackResult<any>>
 }
 
 class APPRequest {
@@ -70,7 +70,7 @@ class APPRequest {
             await this.eventEmitter.emit(RequestEventEnum.WillSend, params);
         }
 
-        let res: Taro.request.Promised<any> = null as any;
+        let res: Taro.request.SuccessCallbackResult<any> = null as any;
         try {
             res = await Taro.request(params);
         } catch (error) {
@@ -130,7 +130,7 @@ class APPRequest {
         return requestUrl;
     }
 
-    private async failToast(response: Taro.request.Promised, url: string) {
+    private async failToast(response: Taro.request.SuccessCallbackResult<any>, url: string) {
         if (!this.validateStatus(response)) {
             const { data } = response;
 
@@ -165,8 +165,8 @@ class APPRequest {
         }
     }
 
-    private catchFail(response: Taro.request.Promised) {
-        return new Promise<Taro.request.Promised>((resolve, reject) => {
+    private catchFail(response: Taro.request.SuccessCallbackResult<any>) {
+        return new Promise<Taro.request.SuccessCallbackResult<any>>((resolve, reject) => {
             if (this.validateStatus(response)) {
                 resolve(response);
             } else {
@@ -175,7 +175,7 @@ class APPRequest {
         });
     }
 
-    private validateStatus(response: Taro.request.Promised) {
+    private validateStatus(response: Taro.request.SuccessCallbackResult<any>) {
         // 后端有状态码 就会报错
         if (response.data && response.data.code) {
             return false;

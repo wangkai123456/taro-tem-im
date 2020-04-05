@@ -7,7 +7,7 @@
 
 ## taro环境安装
 
-yarn add global @tarojs/cli  
+yarn add global @tarojs/cli@1.3.38
 yarn add global mirror-config-china  
 
 ## 安装

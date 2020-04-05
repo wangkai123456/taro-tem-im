@@ -21,8 +21,8 @@ export type IEventList<T> = {
 };
 
 export interface IFunction {
-    [K: string]: (...params) => void;
-    [K: number]: (...params) => void;
+    [K: string]: (...params: any[]) => void;
+    [K: number]: (...params: any[]) => void;
 }
 
 export default class EventEmitter<T extends IFunction> {
