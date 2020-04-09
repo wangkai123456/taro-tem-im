@@ -1,69 +1,69 @@
 {
-	"miniprogramRoot": "dist/",
-	"projectname": "weapp-template",
-	"description": "",
-	"appid": "touristappid",
-	"setting": {
-		"urlCheck": true,
-		"es6": false,
-		"postcss": false,
-		"minified": false
-	},
-	"compileType": "miniprogram",
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": 1,
-			"list": [
-				{
-					"id": -1,
-					"name": "pages/decorator/index",
-					"pathName": "pages/decorator/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/test/index",
-					"pathName": "pages/test/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/template/request/index",
-					"pathName": "pages/template/request/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/template/request/index",
-					"pathName": "pages/template/request/index",
-					"query": "",
-					"scene": null
-				}
-			]
-		}
-	}
+    "miniprogramRoot": "dist/",
+    "projectname": "weapp-template",
+    "description": "",
+    "appid": "wx4b8d832e9d005635",
+    "setting": {
+        "urlCheck": true,
+        "es6": false,
+        "postcss": false,
+        "minified": false
+    },
+    "compileType": "miniprogram",
+    "simulatorType": "wechat",
+    "simulatorPluginLibVersion": {},
+    "condition": {
+        "search": {
+            "current": -1,
+            "list": []
+        },
+        "conversation": {
+            "current": -1,
+            "list": []
+        },
+        "plugin": {
+            "current": -1,
+            "list": []
+        },
+        "game": {
+            "list": []
+        },
+        "gamePlugin": {
+            "current": -1,
+            "list": []
+        },
+        "miniprogram": {
+            "current": 1,
+            "list": [
+                {
+                    "id": -1,
+                    "name": "pages/decorator/index",
+                    "pathName": "pages/decorator/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages/test/index",
+                    "pathName": "pages/test/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages/template/request/index",
+                    "pathName": "pages/template/request/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages/template/request/index",
+                    "pathName": "pages/template/request/index",
+                    "query": "",
+                    "scene": null
+                }
+            ]
+        }
+    }
 }

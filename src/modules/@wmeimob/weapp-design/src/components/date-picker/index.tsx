@@ -119,7 +119,7 @@ export default class MMDatePicker extends Component<IMMDatePickerProps> {
         const { visible, onCancel } = this.props;
         return <View className={styles.MMDatePicker}>
             <MMPicker visible={visible} data={this.getDate()} value={this.pickerValue}
-                onChange={this.onChange.bind(this)} onOk={this.onOk} onCancel={onCancel}></MMPicker>
+                onChange={this.onChange.bind(this)} onOk={this.onOk} onCancel={onCancel} />
         </View >;
     }
 

@@ -33,7 +33,7 @@ class Index extends Component {
     render() {
         return (
             <View className={styles.page}>
-                <MMNavigation type={MMNavigationType.transparent} title="透明导航"></MMNavigation>
+                <MMNavigation type={MMNavigationType.transparent} title="透明导航" />
                 <Image className={styles.image} src={imageSrc} />
             </View>
         );

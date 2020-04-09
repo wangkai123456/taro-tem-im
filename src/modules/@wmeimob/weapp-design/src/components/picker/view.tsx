@@ -27,27 +27,33 @@ export default class MMPickerView extends Component<MMPickerViewProps> {
             current = 0;
         }
         return <View className={styles.MMPicker}>
-            <Swiper className={styles.swiper} display-multiple-items={5} vertical={true} current={current} onChange={this.onChange}>
-                <SwiperItem><View className={styles.item}></View></SwiperItem>
-                <SwiperItem><View className={styles.item}></View></SwiperItem>
+            <Swiper className={styles.swiper} display-multiple-items={5} vertical={true}
+                duration={0} current={current} onChange={this.onChange}>
+                <SwiperItem><View className={styles.item} /></SwiperItem>
+                <SwiperItem><View className={styles.item} /></SwiperItem>
                 {this.props.data.map((item, index) => <SwiperItem key={item.id}>
                     <View style={this.getStyle(index)} className={styles.item}>{item.text}</View>
                 </SwiperItem>)}
-                <SwiperItem><View className={styles.item}></View></SwiperItem>
-                <SwiperItem><View className={styles.item}></View></SwiperItem>
+                <SwiperItem><View className={styles.item} /></SwiperItem>
+                <SwiperItem><View className={styles.item} /></SwiperItem>
             </Swiper>
-            <View className={styles.select}>
-            </View>
+            <View className={styles.select} />
         </View>;
     }
 
     private onChange(event: BaseEventOrig<{ current: number }>) {
+        const current = this.props.data.findIndex(value => value.id === this.props.value);
+        if (current === event.detail.current) {
+            return;
+        }
         this.props.onChange(this.props.data[event.detail.current].id)
     }
 
     private getStyle(currentIndex) {
-        const index = this.props.data.findIndex(value => value.id === this.props.value);
-
+        let index = this.props.data.findIndex(value => value.id === this.props.value);
+        if (index === -1) {
+            index = 0;
+        }
         const abs = Math.abs(currentIndex - index);
 
         if (abs === 1) {

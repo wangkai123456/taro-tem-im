@@ -7,20 +7,18 @@
 }
 
 .MMTabs {
-    .divider();
-    position        : relative;
-    background-color: @gray1;
+    position: relative;
 }
 
 .content {
+    position   : relative;
     display    : flex;
     align-items: center;
 }
 
 .item {
-    margin     : 10px 0;
-    height     : 30px;
-    line-height: 30px;
+    height     : 40px;
+    line-height: 40px;
     flex       : 1;
     text-align : center;
     font-size  : 13px;
@@ -33,13 +31,44 @@
 
 .line {
     position        : absolute;
-    left            : 0;
+    left            : 50%;
     bottom          : 0;
     margin-left     : -13px;
     width           : 26px;
     height          : 3px;
     background-color: @primaryColor;
     transition      : all 0.4s;
+}
+
+
+.MMTabs__scroll {
+    overflow-x         : auto;
+    // background-color: white;
+
+    .content {
+        display        : flex;
+        justify-content: flex-start;
+        padding-left   : @containerSize;
+        padding-right  : @spacingSize * 4;
+    }
+
+    .item {
+        flex         : initial;
+        position     : relative;
+        padding-right: @spacingSize * 4;
+        white-space  : nowrap;
+    }
+
+    .line {
+        margin-left: -13px - @spacingSize * 2;
+        display    : none;
+    }
+
+    .selected {
+        .line {
+            display: block;
+        }
+    }
 }
 
 

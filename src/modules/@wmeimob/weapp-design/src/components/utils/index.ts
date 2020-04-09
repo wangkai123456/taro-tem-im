@@ -24,10 +24,10 @@ export const isNewIphone = getisNewIphone();
 function getisNewIphone() {
     const info = Taro.getSystemInfoSync();
 
-    if (info.model === 'iPhone X' || info.model === 'iPhone XR' || info.model === 'iPhone 11') {
-        return true;
+    if (/iPhone 5/.test(info.model) || /iPhone 6/.test(info.model) || /iPhone 7/.test(info.model) || /iPhone 8/.test(info.model)) {
+        return false;
     }
-    return false;
+    return true;
 }
 
 /**
@@ -39,10 +39,32 @@ function getisNewIphone() {
  * @returns
  */
 export function selectRect(name: string, scope: any) {
-    return new Promise<Taro.clientRectElement>((resolve) => {
+    return new Promise<Taro.NodesRef.BoundingClientRectCallbackResult>((resolve) => {
         const query = Taro.createSelectorQuery().in(scope);
         query.select(name).boundingClientRect((res) => {
-            resolve(res as Taro.clientRectElement);
+            resolve(res as Taro.NodesRef.BoundingClientRectCallbackResult);
         }).exec();
     });
 }
+
+/**
+ * 获取枚举的key
+ *
+ * @export
+ * @param {*} obj
+ * @returns
+ */
+export function enumKeys(obj: any) {
+    const list: string[] = [];
+
+    for (const key in Object.keys(obj)) {
+        if (obj.hasOwnProperty(key)) {
+            const element = obj[key];
+            if (typeof element !== 'number') {
+                list.push(element)
+            }
+        }
+    }
+    return list;
+}
+

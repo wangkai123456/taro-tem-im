@@ -1,5 +1,5 @@
 
 export enum MMLoadingType {
-    White,
-    Black
+    Default,
+    White
 }

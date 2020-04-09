@@ -6,8 +6,8 @@ import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import { get, post } from '~/components/request';
 import MMNavigation from '~/modules/@wmeimob/weapp-design/src/components/navigation';
 import MMTabBar from '~/modules/@wmeimob/weapp-design/src/components/tab-bar';
-import { uploadImageAliYun } from '~/components/upload';
 import * as styles from './index.module.less';
+import { uploadImages } from '~/components/aliyun';
 
 @autobind
 class Index extends Component {
@@ -68,7 +68,7 @@ class Index extends Component {
             count: 9,
             success: (src) => {
                 console.log(src)
-                uploadImageAliYun(src.tempFilePaths).then(value => {
+                uploadImages(src.tempFilePaths).then(value => {
                     this.setState({
                         uploadImgArr: value
                     });
@@ -81,7 +81,7 @@ class Index extends Component {
         const { uploadImgArr } = this.state
         return (
             <View className={styles.page}>
-                <MMNavigation title="请求"></MMNavigation>
+                <MMNavigation title="请求" />
                 <Button onClick={this.onGetClick}>get请求</Button>
                 <Button onClick={this.onPostClick}>post请求</Button>
                 <Button onClick={this.onPostDataClick}>传递参数</Button>
@@ -91,12 +91,12 @@ class Index extends Component {
                 <View className={styles.imgWrap}>
                     {uploadImgArr.map((item, index) => (
                         <View key={String(index)} className={styles.imgStyle}>
-                            <Image src={item} mode="aspectFill" className={styles.imgItem}></Image>
+                            <Image src={item} mode="aspectFill" className={styles.imgItem} />
                         </View>
                     ))}
                 </View>
                 <Button onClick={this.onUploadClick.bind(this, uploadImgArr)}>图片上传阿里云</Button>
-                <MMTabBar></MMTabBar>
+                <MMTabBar />
             </View>
         );
     }

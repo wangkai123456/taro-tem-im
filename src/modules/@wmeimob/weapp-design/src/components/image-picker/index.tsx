@@ -47,17 +47,16 @@ export default class MMImagePicker extends Component<IMMImagePickerProps> {
             <View className={styles.content}>
                 {value.map((val, index) => <View className={styles.item} key={val + index}>
                     <View className={styles.itemContent}>
-                        <Image className={styles.image} src={val}></Image>
+                        <Image className={styles.image} src={val} />
                     </View>
                     {this.renderIconfont(index)}
                 </View>)}
                 {(count === undefined || value.length < count) && <View onClick={this.onClick}
                     className={classname(styles.item, styles.add)}>
-                    <View className={styles.itemContent}>
-                    </View>
+                    <View className={styles.itemContent} />
                     <View className={styles.addContent}>
                         <View>
-                            <MMIconFont size={32} color={themesStyles.gray3} value={MMIconFontName.PhotoUpload}></MMIconFont>
+                            <MMIconFont size={32} color={themesStyles.gray3} value={MMIconFontName.PhotoUpload} />
                         </View>
                         <Text className={styles.addText}>添加图片</Text>
                     </View>
@@ -68,7 +67,7 @@ export default class MMImagePicker extends Component<IMMImagePickerProps> {
 
     private renderIconfont(index) {
         return <View className={styles.delete} onClick={() => this.onDelete(index)}>
-            <MMIconFont size={10} color={themesStyles.gray1} value={MMIconFontName.Close}></MMIconFont>
+            <MMIconFont size={10} color={themesStyles.gray1} value={MMIconFontName.Close} />
         </View>;
     }
 

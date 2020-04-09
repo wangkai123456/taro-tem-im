@@ -1,4 +1,4 @@
-import { View } from '@tarojs/components';
+import { View, ScrollView } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
 import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import styles from './index.modules.less';
@@ -71,11 +71,14 @@ export default class MMTabs extends Component<IMMTabBarProps, IMMTabBarState> {
         const classnames = [styles.MMTabs];
 
         switch (this.props.type) {
-            case MMTabsType.circle:
+            case MMTabsType.Circle:
                 classnames.push(styles.MMTabs__circle);
                 break;
-            case MMTabsType.button:
+            case MMTabsType.Button:
                 classnames.push(styles.MMTabs__button);
+                break;
+            case MMTabsType.Scroll:
+                classnames.push(styles.MMTabs__scroll);
                 break;
         }
 
@@ -83,17 +86,19 @@ export default class MMTabs extends Component<IMMTabBarProps, IMMTabBarState> {
     }
 
     render() {
-        const { data, selectedIndex } = this.props;
+        const { data, selectedIndex, type } = this.props;
         return <View className={this.className}>
             <View className={styles.content} >
                 {data.map((value, index) =>
                     <View key={value + index}
                         className={classNames(styles.item, selectedIndex === index ? styles.selected : {})}
-                        onClick={() => this.onClick(index)}
-                    >{value}</View>)}
+                        onClick={() => this.onClick(index)} >
+                        {value}
+                        {type === MMTabsType.Scroll && <View className={styles.line} />}
+                    </View>)}
+                {type !== MMTabsType.Scroll && <View className={styles.line} style={{ left: 100 / data.length * (0.5 + selectedIndex) + '%' }} />}
             </View>
-            <View className={styles.line} style={{ left: 100 / data.length * (0.5 + selectedIndex) + '%' }}></View>
-        </View>;
+        </View>
     }
 
     private onClick(index) {

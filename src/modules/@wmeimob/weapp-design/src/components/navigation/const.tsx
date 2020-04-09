@@ -1,5 +1,6 @@
 export enum MMNavigationType {
-    default,
-    transparent,
-    primary
+    Default,
+    Transparent,
+    Primary,
+    Gradient
 }

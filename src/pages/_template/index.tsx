@@ -18,7 +18,7 @@ export default class Page extends Component {
     render() {
         return (
             <View className={styles.page}>
-                <MMNavigation title="首页"></MMNavigation>
+                <MMNavigation title="首页" />
             </View>
         );
     }

@@ -1,6 +1,7 @@
 
 export enum MMTabsType {
-    none,
-    circle,
-    button
+    None,
+    Circle,
+    Button,
+    Scroll
 }

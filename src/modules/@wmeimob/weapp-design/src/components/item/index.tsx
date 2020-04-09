@@ -1,12 +1,12 @@
 import { View, ScrollView } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
-import { autobind } from '~/modules/@wmeimob/decorator/src/components';
+import { autobind, lock, debounce } from '~/modules/@wmeimob/decorator/src/components';
 import styles from './index.modules.less';
 import MMIconFont from '../icon-font';
 import classNames from 'classnames';
 import { BaseEventOrig } from '@tarojs/components/types/common';
 import MMIconFontName from '../icon-font/const';
-import { selectRect } from '../utils';
+import { selectRect, guid } from '../utils';
 
 interface ICheckboxProps {
     /**
@@ -71,9 +71,6 @@ export default class MMItem extends Component<ICheckboxProps> {
     };
 
     static defaultProps = {
-        divider: true,
-        // sliderButton: ['删除', '取消'],
-        sliderVisible: true,
         onClick: () => null
     };
 
@@ -84,6 +81,8 @@ export default class MMItem extends Component<ICheckboxProps> {
 
     private buttonWidth = 0;
     private scrollLeft = 0;
+
+    private uuid = guid();
 
     get className() {
         const classnames = [styles.content];
@@ -105,14 +104,13 @@ export default class MMItem extends Component<ICheckboxProps> {
 
     renderScrollView() {
         const { scrollLeft } = this.state;
-        return <ScrollView scrollWithAnimation={false}
-            id="MMScrollView"
-            throttle={false} scrollX scrollLeft={scrollLeft} className={styles.scrollView} onScroll={this.onScroll as any}
+        return <ScrollView id="MMScrollView" scrollWithAnimation={false} scrollX scrollLeft={scrollLeft}
+            throttle={false} className={styles.scrollView} onScroll={this.onScroll as any}
             onTouchEnd={this.onTouchEnd}>
             <View className={styles.scrollViewContent}>
                 {this.renderContent()}
                 {this.renderButtons()}
-                <View id="MMPullToRefreshTop"></View>
+                <View id="MMPullToRefreshTop" />
             </View>
         </ScrollView>
     }
@@ -142,11 +140,12 @@ export default class MMItem extends Component<ICheckboxProps> {
         const { scrollViewWidth } = this.state;
         return <View onClick={onClick} className={styles.MMItem} style={{ width: sliderButton ? scrollViewWidth + 'px' : 'auto' }}>
             {leftIconfontName && <View className={styles.leftIconfont}>
-                <MMIconFont color={leftIconfontNameColor} value={leftIconfontName}></MMIconFont>
+                <MMIconFont color={leftIconfontNameColor} value={leftIconfontName} />
             </View>}
             <View className={classNames(this.className)}>
                 <View className={styles.left}>
                     {leftText && <View className={styles.leftText}>{leftText}</View>}
+                    <View className="spacing" />
                     {this.props.renderLeft}
                 </View>
                 <View className={styles.right}>
@@ -168,37 +167,25 @@ export default class MMItem extends Component<ICheckboxProps> {
         this.buttonWidth = topViewRes.left - res.screenWidth;
     }
 
+    @debounce(300)
     private onScroll(event: BaseEventOrig<{ scrollLeft: number }>) {
         this.scrollLeft = event.detail.scrollLeft;
+        this.setState({
+            scrollLeft: event.detail.scrollLeft
+        })
     }
 
     private onTouchEnd() {
         const max = this.buttonWidth / 2;
         const { scrollLeft } = this;
         if (scrollLeft >= max) {
-            if (this.state.scrollLeft === this.buttonWidth) {
-                this.setState({
-                    scrollLeft: this.state.scrollLeft + 1
-                }, () => this.setState({
-                    scrollLeft: this.buttonWidth
-                }))
-            } else {
-                this.setState({
-                    scrollLeft: this.buttonWidth
-                })
-            }
+            this.setState({
+                scrollLeft: this.buttonWidth
+            })
         } else {
-            if (this.state.scrollLeft === 0) {
-                this.setState({
-                    scrollLeft: this.state.scrollLeft + 1
-                }, () => this.setState({
-                    scrollLeft: 0
-                }))
-            } else {
-                this.setState({
-                    scrollLeft: 0
-                })
-            }
+            this.setState({
+                scrollLeft: 0
+            })
         }
     }
 }

@@ -88,50 +88,50 @@ class Index extends Component {
         const { user: { userName } } = global;
         return (
             <View>
-                <MMNavigation title="基础用法"></MMNavigation>
+                <MMNavigation title="基础用法" />
                 <View className="container">
-                    <MMPopup ref={ref => this.popup = ref as MMPopup}></MMPopup>
-                    <View className='spacing'></View>
+                    <MMPopup ref={ref => this.popup = ref as MMPopup} />
+                    <View className='spacing' />
                     <H2>样式写法</H2>
                     <H3>单个样式</H3>
-                    <View className={styles.test}></View>
+                    <View className={styles.test} />
                     <H3>多个样式</H3>
-                    <View className={classNames(styles.test, styles.test)}></View>
+                    <View className={classNames(styles.test, styles.test)} />
 
-                    <View className='spacing'></View>
+                    <View className='spacing' />
                     <H2>事件写法</H2>
                     <View onClick={this.onClick}>点击事件</View>
 
-                    <View className='spacing'></View>
+                    <View className='spacing' />
                     <H2>全局变量mobx 类似vuex</H2>
                     <View>
                         <Text>用户名:{userName}</Text>
                     </View>
 
-                    <View className='spacing'></View>
+                    <View className='spacing' />
                     <H2>状态</H2>
                     <View>
                         <Text>{text}</Text>
                     </View>
 
-                    <View className='spacing'></View>
+                    <View className='spacing' />
                     <H2>参数</H2>
                     <View>
                         <MMButton >slot</MMButton>
                     </View>
 
-                    <View className='spacing'></View>
+                    <View className='spacing' />
                     <H2>数组渲染</H2>
                     <View>
                         {this.renderList()}
                     </View>
 
-                    <View className='spacing'></View>
+                    <View className='spacing' />
                     <H2>图片渲染</H2>
                     <Image src={imageSrc} />
 
                 </View>
-                <MMTabBar></MMTabBar>
+                <MMTabBar />
             </View>
         );
     }

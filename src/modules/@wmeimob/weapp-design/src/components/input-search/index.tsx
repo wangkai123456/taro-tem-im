@@ -88,12 +88,12 @@ export default class MMInputSearch extends Component<IMMInputSearchProps> {
     render() {
         return <View className={classNames(...this.className)}>
             <View className={styles.content} >
-                <MMIconFont value={MMIconFontName.Search} size={16} color={styles.gray4}></MMIconFont>
+                <MMIconFont value={MMIconFontName.Search} size={16} color={styles.gray4} />
                 <View className={styles.placeholder}>
                     {this.props.placeholder}
                 </View>
                 <View className={classNames(styles.input_box, styles.input_box__focus)}>
-                    <Input value={this.state.value} onFocus={this.onFocus} onInput={this.onInput} onBlur={this.onBlur}></Input>
+                    <Input value={this.state.value} onFocus={this.onFocus} onInput={this.onInput} onBlur={this.onBlur} />
                 </View>
             </View>
             <View className={styles.text} onClick={this.onSearch}>

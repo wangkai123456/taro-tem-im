@@ -15,6 +15,7 @@ interface IItemInputProps {
         keyCode: number;
     }>
 
+    textAlign?: 'right' | 'left'
 }
 
 @autobind
@@ -24,14 +25,17 @@ export default class MMItemInput extends Component<IItemInputProps> {
     };
 
     static defaultProps = {
+        textAlign: 'right'
     };
 
     state = {
     }
 
     render() {
-        const { onInput, placeholder, value } = this.props;
+        const { onInput, placeholder, value, textAlign } = this.props;
         return <Input placeholderClass={styles.placeholder} value={value}
-            placeholder={placeholder} className={styles.input} onInput={onInput} />;
+            style={{ textAlign }}
+            placeholder={placeholder} className={styles.input}
+            onInput={onInput} />;
     }
 }

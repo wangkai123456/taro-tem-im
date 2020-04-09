@@ -52,7 +52,6 @@ export default class MMSwitch extends Component<IMMSwitchProps> {
     }
 
     render() {
-        return <View className={this.className} onClick={() => !this.props.disabled && this.props.onChange(!this.props.checked)}>
-        </View>;
+        return <View className={this.className} onClick={() => !this.props.disabled && this.props.onChange(!this.props.checked)} />;
     }
 }

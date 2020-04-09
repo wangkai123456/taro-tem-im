@@ -6,14 +6,32 @@ import { guid } from '~/modules/@wmeimob/weapp-design/src/components/utils';
 
 class AliYun {
     /**
+     * 几倍图
+     *
+     * @static
+     * @memberof AliYun
+     */
+    static multiple = 2
+
+    /**
+     * 整数
+     *
+     * @static
+     * @memberof AliYun
+     */
+    static trunc(nu: number) {
+        return Math.trunc(nu) * AliYun.multiple;
+    }
+
+    /**
      * 上传文件
      *
      * @param {string[]} fileList
      * @returns
      * @memberof AliYun
      */
-    static async uploadImageAliYun(fileList: string[]) {
-        const { data: { accessid, signature, policy, dir, host } } = await AliYun.getAliyunOssToken();
+    static async uploadImages(fileList: string[]) {
+        const { data: { accessid, signature, policy, dir, host } } = await AliYun.getOssToken();
 
         const reg = /^https/;
 
@@ -44,7 +62,7 @@ class AliYun {
     }
 
     @merge()
-    static getAliyunOssToken() {
+    static getOssToken() {
         return get(aliyunOssTokenUrl);
     }
 
@@ -57,7 +75,7 @@ class AliYun {
      * @memberof AliYun
      */
     static getResizeUrl({ width, height }: { width: number, height: number }) {
-        return `?x-oss-process=image/resize,w_${Math.trunc(width) * 2},h_${Math.trunc(height) * 2}`;
+        return `?x-oss-process=image/resize,w_${AliYun.trunc(width)},h_${AliYun.trunc(height)}`;
     }
 
     /**
@@ -69,8 +87,8 @@ class AliYun {
      * @memberof AliYun
      */
     static getVideoSnapshotUrl({ width, height }: { width: number, height: number }) {
-        return `?x-oss-process=video/snapshot,t_7000,f_jpg,w_${width},h_${height},m_fast`
+        return `?x-oss-process=video/snapshot,t_7000,f_jpg,w_${AliYun.trunc(width)},h_${AliYun.trunc(height)},m_fast`
     }
 }
 
-export const { uploadImageAliYun, getResizeUrl, getVideoSnapshotUrl } = AliYun;
+export const { uploadImages, getResizeUrl, getVideoSnapshotUrl } = AliYun;

@@ -132,13 +132,13 @@ export default class MMCheckbox extends Component<ICheckboxProps, ICheckboxState
 
     renderRadio() {
         return <View className={classNames(styles.radio, this.checked ? styles.selected : '')}>
-            <View></View>
+            <View />
         </View>;
     }
 
     renderCheckbox() {
         return <View className={classNames(styles.MMCheckbox, this.checked ? styles.selected : '')}>
-            <MMIconFont size={10} color={themesStyles.gray1} value={this.checked ? MMIconFontName.Check : ''} ></MMIconFont>
+            <MMIconFont size={10} color={themesStyles.gray1} value={this.checked ? MMIconFontName.Check : ''} />
         </View>;
     }
 }

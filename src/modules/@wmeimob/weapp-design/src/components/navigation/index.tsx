@@ -55,7 +55,7 @@ export default class MMNavigation extends Component<IMMNavigationProps, IMMNavig
     static defaultProps = {
         defaultChecked: false,
         backVisible: true,
-        type: MMNavigationType.default
+        type: MMNavigationType.Default
     };
 
     state: IMMNavigationState = {
@@ -65,11 +65,14 @@ export default class MMNavigation extends Component<IMMNavigationProps, IMMNavig
     get className() {
         const classNames = [styles.fixed];
         switch (this.props.type) {
-            case MMNavigationType.transparent:
+            case MMNavigationType.Transparent:
                 classNames.push(styles.fixed__transparent);
                 break;
-            case MMNavigationType.primary:
+            case MMNavigationType.Primary:
                 classNames.push(styles.fixed__primary);
+                break;
+            case MMNavigationType.Gradient:
+                classNames.push(styles.fixed__gradient);
                 break;
         }
 
@@ -103,8 +106,8 @@ export default class MMNavigation extends Component<IMMNavigationProps, IMMNavig
         const { length } = getCurrentPages();
         const { type } = this.props;
         return length > 1 && <View className={styles.goback} onClick={this.onGoBack} >
-            <MMIconFont color={type === MMNavigationType.default ? undefined : 'white'}
-                value={MMIconFontName.Back}></MMIconFont>
+            <MMIconFont color={type === MMNavigationType.Default ? undefined : 'white'}
+                value={MMIconFontName.Back} />
         </View>;
     }
 }

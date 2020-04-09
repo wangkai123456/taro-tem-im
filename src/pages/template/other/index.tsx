@@ -23,36 +23,32 @@ class Index extends Component {
     render() {
         return (
             <View className={styles.page}>
-                <MMNavigation title="其他"></MMNavigation>
-                <View className='spacing'></View>
+                <MMNavigation title="其他" />
+                <View className='spacing' />
                 <View className='container'>
                     <H2>其他</H2>
-                    <View className='spacing'></View>
+                    <View className='spacing' />
                     <MMItem text="装饰器" onClick={() => Taro.navigateTo({
                         url: '/pages/template/decorator/index'
-                    })}></MMItem>
-                    <View className='spacing'></View>
+                    })} />
+                    <View className='spacing' />
                     <MMItem text="透明MMNavigation" onClick={() => Taro.navigateTo({
                         url: '/pages/template/transparent/index'
-                    })}></MMItem>
+                    })} />
 
-                    <View className='spacing'></View>
+                    <View className='spacing' />
                     <MMItem text="mobx和自定义组件" onClick={() => Taro.navigateTo({
                         url: '/pages/template/mobx/index'
-                    })}></MMItem>
+                    })} />
 
-                    <View className='spacing'></View>
+                    <View className='spacing' />
                     <MMItem text="跳转登录页" onClick={() => Taro.navigateTo({
                         url: '/pages/template/login/index'
-                    })}></MMItem>
+                    })} />
 
-                    <View className='spacing'></View>
-                    <MMItem text="商品组件" onClick={() => Taro.navigateTo({
-                        url: '/pages/template/product/index'
-                    })}></MMItem>
                 </View>
 
-                <MMTabBar></MMTabBar>
+                <MMTabBar />
             </View>
         );
     }

@@ -1,6 +1,6 @@
 {
     "name": "@wmeimob/weapp-design",
-    "version": "1.0.5",
+    "version": "1.0.7",
     "private": true,
     "description": "小程序ui框架",
     "main": "src/components/index.ts",
@@ -15,6 +15,7 @@
         "types"
     ],
     "scripts": {
+        "build": "taro build --type weapp",
         "build:weapp": "taro build --type weapp",
         "build:swan": "taro build --type swan",
         "build:alipay": "taro build --type alipay",
@@ -65,7 +66,7 @@
         "babel-preset-env": "^1.6.1",
         "eslint": "5.16.0",
         "@wmeimob/node-tools": "ssh://git@git.f.wmeimob.com:9922/Frontend/node-tools.git#v1.0.1",
-        "eslint-config-wmeimob": "ssh://git@git.f.wmeimob.com:9922/Frontend/eslint-config-wmeimob.git",
+        "eslint-config-wmeimob": "ssh://git@git.f.wmeimob.com:9922/Frontend/eslint-config-wmeimob.git#1.0.2",
         "gulp": "^4.0.2",
         "stylelint": "9.3.0",
         "stylelint-config-taro-rn": "1.3.38",

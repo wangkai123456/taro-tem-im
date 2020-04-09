@@ -33,7 +33,7 @@ class Index extends Component {
 
     render() {
         return (<View className={styles.page}>
-            <MMNavigation title="登录"></MMNavigation>
+            <MMNavigation title="登录" />
             <Button onClick={this.onLogin}>获取微信授权</Button>
         </View>);
     }

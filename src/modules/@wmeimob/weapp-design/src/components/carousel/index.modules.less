@@ -1,20 +1,16 @@
 @import '../styles/themes/default.less';
 
-@MMCarousel: MMCarousel;
 
-.MMCarousel {
+.MMCarouselStyle {
     position: relative;
+    width   : 100vw;
+    height  : calc(100vw / 375 * 200);
 }
 
-.content {
-    position      : relative;
-    width         : 100%;
-    display       : flex;
-    flex-direction: row;
-}
-
-.item {
-    width: 100vw;
+.image {
+    height         : calc(100vw / 375 * 200);
+    width          : 100%;
+    background-size: cover;
 }
 
 .dot {
@@ -35,17 +31,10 @@
     border-radius   : 2.5px;
     background-color: white;
     margin          : 0 3px;
+    transition      : all 0.3s;
 }
 
 .dotItem__selected {
-    background-color: @gray8;
-}
-
-
-.scrollView {
-    ::-webkit-scrollbar {
-        width : 0;
-        height: 0;
-        color : transparent;
-    }
+    width           : 10px;
+    background-color: @primaryColor;
 }

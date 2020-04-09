@@ -41,9 +41,9 @@ class Index extends Component {
         const { counter, listUpdate } = global;
         return (
             <View className="content">
-                <MMNavigation title="mobx和自定义组件"></MMNavigation>
+                <MMNavigation title="mobx和自定义组件" />
                 <View className="container">
-                    <View className="spacing"></View>
+                    <View className="spacing" />
                     {
                         /*
                          * 先建构再赋值
@@ -62,7 +62,7 @@ class Index extends Component {
                         <Text>item:{value.text}</Text>
                     </View>)}
                     <Text className="hide">{listUpdate}</Text>
-                    <DiyComponent></DiyComponent>
+                    <DiyComponent />
                 </View>
             </View>
         );

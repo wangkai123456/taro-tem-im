@@ -7,12 +7,11 @@
 }
 
 .MMItem {
-    flex-shrink        : 0;
-    // width           : 100vw;
-    display            : flex;
-    align-items        : center;
-    background-color   : @gray1;
-    font-size          : 13px;
+    flex-shrink: 0;
+    display    : flex;
+    align-items: center;
+    height     : 50px;
+    font-size  : 13px;
 }
 
 .scrollViewContent {
@@ -43,7 +42,6 @@
 }
 
 .left {
-    flex       : 1;
     display    : flex;
     height     : 100%;
     align-items: center;
@@ -54,25 +52,25 @@
 }
 
 .right {
-    display    : flex;
-    height     : 100%;
-    align-items: center;
+    display        : flex;
+    justify-content: flex-end;
+    flex           : 1;
+    display        : flex;
+    height         : 100%;
+    align-items    : center;
 }
 
 .content {
     display        : flex;
     flex           : 1;
-    line-height    : 50px;
     justify-content: space-between;
     align-items    : center;
 }
 
 .leftText {
-    margin-right: @spacingSize * 3;
-    color       : @gray7;
+    color: @gray7;
 }
 
 .rightText {
-    margin-left: @spacingSize * 3;
-    color      : @gray5;
+    color: @gray7;
 }

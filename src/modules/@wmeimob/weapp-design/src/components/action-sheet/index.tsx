@@ -1,5 +1,4 @@
-import { View } from '@tarojs/components';
-
+import { View, Text } from '@tarojs/components';
 import Taro, { Component } from '@tarojs/taro';
 import MMModal from '../modal/index';
 import classNames from 'classnames';
@@ -7,6 +6,9 @@ import styles from './index.modules.less'
 import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import { MMModalAnimationType, MMModalJustifyContent } from '../modal/const';
 import H2 from '../head/h2';
+import { MMActionSheetType } from './const';
+import MMDivider from '../divider';
+import MMCheckbox from '../checkbox';
 
 interface IMMActionSheetProps {
     /**
@@ -26,12 +28,12 @@ interface IMMActionSheetProps {
     visible: boolean;
 
     /**
-     * 选中
+     * 选中值
      *
      * @type {number}
      * @memberof IMMActionSheetProps
      */
-    selectedIndex?: number
+    value?: string | string[]
 
     /**
      * 选项
@@ -39,21 +41,36 @@ interface IMMActionSheetProps {
      * @type {boolean}
      * @memberof IMMActionSheetProps
      */
-    options: string[];
+    data: { id: string; text: string }[]
 
     /**
      * 关闭事件
      *
      * @memberof IMMActionSheetProps
      */
-    onClose: () => void;
+    onCancel: () => void;
+
+    /**
+     * 点击事件
+     *
+     * @memberof IMMActionSheetProps
+     */
+    onOk?: () => void;
+
+    /**
+     * 类型
+     *
+     * @type {MMActionSheetType}
+     * @memberof IMMActionSheetProps
+     */
+    type?: MMActionSheetType
 
     /**
      * 点击选项
      *
      * @memberof IMMActionSheetProps
      */
-    onOptionsClick?: (value: string, index: number) => void;
+    onOptionsClick?: (value: { id: string; text: string }, index: number) => void;
 }
 
 @autobind
@@ -64,7 +81,8 @@ export default class MMActionSheet extends Component<IMMActionSheetProps> {
 
     static defaultProps = {
         title: '请选择',
-        options: []
+        data: [],
+        type: MMActionSheetType.Default
     };
 
     get contentClassName() {
@@ -77,25 +95,41 @@ export default class MMActionSheet extends Component<IMMActionSheetProps> {
         return classNames(...classNameArray);
     }
 
-    onOptionsClick(value: string, index: number) {
+    onOptionsClick(value: { id: string; text: string }, index: number) {
         this.props.onOptionsClick && this.props.onOptionsClick(value, index);
-        this.props.onClose();
     }
 
     render() {
-        const { selectedIndex } = this.props;
-        return <MMModal onClose={this.props.onClose} visible={this.props.visible}
+        const { type, data, value: selecteValue, onOk, onCancel } = this.props;
+        return <MMModal onClose={onCancel} visible={this.props.visible}
             justifyContent={MMModalJustifyContent.flexEnd} animationType={MMModalAnimationType.down}
             className={styles.MMActionSheet}>
             <View className={this.contentClassName}>
                 <View className={styles.title}>
                     <H2>{this.props.title}</H2>
                 </View>
-                {this.props.options.map((value, index) => <View onClick={() => this.onOptionsClick(value, index)}
-                    key={value + index} className={classNames(styles.item, index === selectedIndex && styles.selected)}>{value}</View>)}
-                <View onClick={this.props.onClose} className={styles.cancel}>取消</View>
+                {data.map((value, index) => <View onClick={() => this.onOptionsClick(value, index)}
+                    key={value.id} className={this.getItemClassName(value)}>
+                    <Text>{value.text}</Text>
+                    {type === MMActionSheetType.Multiple &&
+                        <MMCheckbox checked={(selecteValue as string[]).includes(value.id)} />}
+                </View>)}
+                <View className="spacing" />
+                {type === MMActionSheetType.Multiple && <View>
+                    <View onClick={onOk && onOk} className={styles.cancel}>确定</View>
+                    <MMDivider />
+                </View>}
+                <View onClick={onCancel} className={styles.cancel}>取消</View>
             </View>
         </MMModal>;
+    }
+
+    private getItemClassName(value) {
+        const { value: selectedValue } = this.props;
+        if (this.props.type === MMActionSheetType.Default) {
+            return classNames(styles.item, value.id === selectedValue && styles.selected)
+        }
+        return classNames(styles.item, styles.itemMultiple);
     }
 }
 

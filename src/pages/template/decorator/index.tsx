@@ -24,18 +24,18 @@ class Index extends Component {
     render() {
         return (
             <View>
-                <MMNavigation title="装饰器"></MMNavigation>
+                <MMNavigation title="装饰器" />
 
                 <View className="container">
-                    <View className="spacing"></View>
+                    <View className="spacing" />
                     <View>
                         统计:{this.state.number}
                     </View>
-                    <View className="spacing"></View>
+                    <View className="spacing" />
                     <MMButton onClick={this.onLockClick}>lock按钮,函数没运行结束不会再触发</MMButton>
-                    <View className="spacing"></View>
+                    <View className="spacing" />
                     <MMButton onClick={this.onThrottleClick}>throttle按钮,一秒只能点击一次</MMButton>
-                    <View className="spacing"></View>
+                    <View className="spacing" />
                     <MMButton onClick={this.onDebounceClick}>debounce按钮,一秒2次以上触发最后一次</MMButton>
                 </View>
             </View>

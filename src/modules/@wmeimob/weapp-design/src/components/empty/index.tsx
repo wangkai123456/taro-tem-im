@@ -109,7 +109,7 @@ export default class MMEmpty extends Component<IMMEmptyProps> {
 
     render() {
         return <View className={classNames(styles.MMEmpty, this.props.fixed ? styles.fixed : '')}>
-            <Image className={styles.image} src={this.src as string}></Image>
+            <Image className={styles.image} src={this.src as string} />
             <Text className={styles.text}>{this.text}</Text>
         </View>;
     }

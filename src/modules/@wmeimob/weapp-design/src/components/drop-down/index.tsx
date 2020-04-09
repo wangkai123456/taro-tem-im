@@ -69,12 +69,12 @@ export default class MMDropDown extends Component<IMMDropDownProps, IMMDropDownS
                         onClick={() => this.onItemClick(dataValue)}
                         key={dataValue.id}>
                         <Text className={styles.text}>{dataValue.value}</Text>
-                        {dataValue.iconfont && <MMIconFont size={12} value={dataValue.iconfont}></MMIconFont>}
+                        {dataValue.iconfont && <MMIconFont size={12} value={dataValue.iconfont} />}
                     </View>
                 })}
             </View>
             {visible && <View className={styles.modal}>
-                <View className={styles.mask}></View>
+                <View className={styles.mask} />
                 <View className={styles.modal_content}>
                     {this.renderDate(selectedData as IDropDownData, selectedDataIndex as any)}
                 </View>
@@ -113,9 +113,9 @@ export default class MMDropDown extends Component<IMMDropDownProps, IMMDropDownS
 
     private renderDate(data: IDropDownData, index: number) {
         if (data.type === IMMDropDownDataType.Select) {
-            return <MMDropDownSelect data={data} onChange={dataValue => this.onSelectClick(dataValue, data, index)}></MMDropDownSelect>
+            return <MMDropDownSelect data={data} onChange={dataValue => this.onSelectClick(dataValue, data, index)} />
         }
-        return <View></View>;
+        return <View />;
     }
 }
 

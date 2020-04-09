@@ -62,9 +62,9 @@ export default class MMSkuList extends Component<IMMSkuListProps> {
         const { list } = this.props;
         return <View className={styles.MMSkuList}>
             {list.map((listValue, index) => <View key={'list' + index}>
-                <View className="spacing-big"></View>
+                <View className="spacingBig" />
                 <H2>{listValue.title}</H2>
-                <View className="spacing-big"></View>
+                <View className="spacingBig" />
                 <View className={styles.content}>
                     {listValue.items.map(item => <View key={item.id}
                         className={this.getItemClassName(item, index)} onClick={() => this.onClick(item, index)}>{item.text}</View>)}

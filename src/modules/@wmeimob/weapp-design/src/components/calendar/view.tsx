@@ -117,7 +117,7 @@ export class MMCalendarView extends Component<IMMCalendarViewProps, IMMCalendarV
         const { scrollViewHeight, noMore } = this.state;
         const [startTime, endTime] = this.props.value || [];
         return <View className={styles.MMCalendar}>
-            <MMPopup ref={ref => this.popup = ref as MMPopup}></MMPopup>
+            <MMPopup ref={ref => this.popup = ref as MMPopup} />
             <View className={styles.weekTitle} onTouchMove={this.onTouchMove}>
                 <View>日</View>
                 <View>一</View>
@@ -127,8 +127,9 @@ export class MMCalendarView extends Component<IMMCalendarViewProps, IMMCalendarV
                 <View>五</View>
                 <View>六</View>
             </View>
-            <View id="MMCalendarViewTop"></View>
-            <ScrollView scrollY throttle={false} style={{ height: scrollViewHeight + 'px' }} onScroll={this.onScroll as any} lowerThreshold={2000} onScrollToLower={this.onScrollToLower}>
+            <View id="MMCalendarViewTop" />
+            <ScrollView scrollY throttle={false} style={{ height: scrollViewHeight + 'px' }}
+                onScroll={this.onScroll as any} lowerThreshold={2000} onScrollToLower={this.onScrollToLower}>
                 {this.renderDate()}
                 <View className={styles.loading}>
                     {noMore ? '' : '加载中'}
@@ -202,7 +203,7 @@ export class MMCalendarView extends Component<IMMCalendarViewProps, IMMCalendarV
             const isScreen = Math.abs(top - scrollTop) < 1000 && Math.abs(scrollTop - top) < 1000;
             top += (dayRowNumber + 1) * styles.itemHeight;
             return <View key={date.toString()} >
-                <MMCalendarItem inScreen={isScreen} date={date} {...this.props}></MMCalendarItem>
+                <MMCalendarItem inScreen={isScreen} date={date} {...this.props} />
             </View>
         });
     }

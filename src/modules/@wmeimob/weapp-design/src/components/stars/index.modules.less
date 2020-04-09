@@ -1,12 +1,27 @@
 @import '../styles/themes/default.less';
 
-.MMStars {
+.MMStarsStyles {
+    position: relative;
+    display : inline-block;
+}
+
+.content {
+    display : flex;
+    position: absolute;
+    left    : 0;
+    top     : 0;
+    height  : 100%;
+    overflow: hidden;
+}
+
+.box {
     display: flex;
 }
 
-
 .item {
+    flex-shrink: 0;
+
     &:last-of-type {
-        margin-right: 0;
+        margin-right: 0 !important;
     }
 }

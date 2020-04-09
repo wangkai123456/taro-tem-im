@@ -23,8 +23,9 @@ export default class MMTextarea extends Component<TextareaProps> {
     }
 
     render() {
-        const { value, focus, cursor, placeholder, autoFocus, maxlength, disabled, fixed, showConfirmBar, autoHeight,
-            cursorSpacing, onLineChange, onConfirm, adjustPosition, selectionStart, selectionEnd } = this.props;
+        const { value, cursor, placeholder, autoFocus, maxlength, disabled, fixed, showConfirmBar, autoHeight,
+            cursorSpacing, onLineChange, onConfirm, selectionStart, selectionEnd } = this.props;
+        const { focus } = this.state;
         return <View onClick={() => this.setState({ focus: true })} >
             {
                 focus ?
@@ -32,7 +33,7 @@ export default class MMTextarea extends Component<TextareaProps> {
                         cursor={cursor}
                         selectionStart={selectionStart}
                         selectionEnd={selectionEnd}
-                        adjustPosition={adjustPosition}
+                        adjustPosition={true}
                         onConfirm={event => onConfirm && onConfirm(event)}
                         onLineChange={event => onLineChange && onLineChange(event)}
                         autoHeight={autoHeight}
@@ -45,7 +46,7 @@ export default class MMTextarea extends Component<TextareaProps> {
                         placeholder={placeholder}
                         placeholderClass={styles.placeholderClass}
                         onInput={this.props.onInput}
-                        className={classNames(this.props.className, styles.MMTextarea)} value={value} onBlur={this.onBlur} onFocus={this.onFocus}></Textarea>
+                        className={classNames(this.props.className, styles.MMTextarea)} value={value} onBlur={this.onBlur} onFocus={this.onFocus} />
                     : <View className={classNames(styles.MMTextarea, this.props.className, autoHeight ? styles.autoHeight : '')} >
                         <Text>{value}</Text>
                         {(value === '' || value === undefined) && placeholder && <Text className={styles.placeholderClass}>{placeholder}</Text>}

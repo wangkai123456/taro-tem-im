@@ -84,10 +84,10 @@ export default class MMPicker extends Component<MMPickerProps> {
                 onClose={this.props.onCancel} >
                 <View className={styles.modal}>
                     <MMModalPopupTitle onCancel={onCancel}
-                        onOk={this.onOk} title={this.props.title} ></MMModalPopupTitle>
+                        onOk={this.onOk} title={this.props.title} />
                     <View className={styles.content}>
                         {data.map((dataValue, index) => <View className={styles.modal_picker} key={index + '1'}>
-                            <MMPickerView data={dataValue} value={value[index]} onChange={value => this.onChange(index, value)}></MMPickerView>
+                            <MMPickerView data={dataValue} value={value[index]} onChange={value => this.onChange(index, value)} />
                         </View>)}
                     </View>
                 </View>

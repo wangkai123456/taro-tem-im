@@ -54,8 +54,7 @@ export default class MMIconFont extends Component<IMMIconfontProps, IIconfontSta
             style.color = color;
         }
 
-        return <View className={classnames(styles.MMIconFont, styles[`icon${this.props.value}`])}
-            style={style}></View>;
+        return <View className={classnames(styles.MMIconFont, styles[`icon${this.props.value}`])} style={style} />;
     }
 }
 

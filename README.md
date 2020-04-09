@@ -5,10 +5,23 @@
 [nodejs >= 11.10.1](https://nodejs.org/dist/v11.15.0/)
 注意：nodejs v12 版本有bug
 
+## yarn 安装
+
+[yarn >= 1.22.4](https://classic.yarnpkg.com/en/docs/install)
+
 ## taro环境安装
 
 yarn add global @tarojs/cli@1.3.38
 yarn add global mirror-config-china  
+
+## gulp安装
+
+npm install gulp-cli -g
+
+## git 密钥配置
+
+ssh-keygen -t rsa -C "nideyouxiang@xxx.com"
+密钥必须使用一次(git clone ssh://XXXXX 拉一个项目的代码)，不然yarn会安装失败。
 
 ## 安装
 
@@ -54,7 +67,8 @@ src:开发目录
     custom-tab-bar：自定义导航
     modules:放置公司做的组件
     pages:页面  
-        _template:页面模版  
+        _template:页面模版  用于复制粘贴生成新页面
+        template:页面模版  用于了解基本写法
     types:d.ts 补全
     app.less:样式入口  
     app.tsx:js入口  
@@ -84,13 +98,8 @@ tools:工具脚手架
     ],
 ```
 
-## 脚手架安装使用
+## 脚手架使用
 
-```sh
-yarn add global gulp
-gulp cover
-gulp iconfont
-```
 
 覆盖node_modules
 

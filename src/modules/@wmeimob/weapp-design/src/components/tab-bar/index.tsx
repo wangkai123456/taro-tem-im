@@ -6,6 +6,9 @@ import styles from './index.modules.less';
 import classNames from 'classnames';
 import { isNewIphone } from '../utils';
 import MMBadge from '../badge';
+import sopHover from './images/sop-cgdd-hover.png'
+import sop from './images/sop-cgdd.png'
+import MMIconFontName from '../icon-font/name';
 
 interface IMMTabBarData {
     /**
@@ -63,14 +66,6 @@ interface IMMTabBarData {
 
 interface IMMTabBarProps {
     /**
-     * 数据
-     *
-     * @type {IMMTabBarData[]}
-     * @memberof IMMTabBarProps
-     */
-    defaultData?: IMMTabBarData[];
-
-    /**
      * 点击事件 返回false 可以组织页面的跳转
      *
      * @memberof IMMTabBarProps
@@ -89,7 +84,7 @@ export interface IMMTabBarState {
     currPageIndex: number
 
     /**
-     * 记录页面的所有数据
+     * 导航数据
      *
      * @type {IMMTabBarData[]}
      * @memberof IMMTabBarState
@@ -98,7 +93,7 @@ export interface IMMTabBarState {
 }
 
 const MMTabBarList: MMTabBar[] = [];
-let recordData: IMMTabBarData[];
+
 @autobind
 export default class MMTabBar extends Component<IMMTabBarProps, IMMTabBarState> {
     static currPageIndex = 0
@@ -108,21 +103,35 @@ export default class MMTabBar extends Component<IMMTabBarProps, IMMTabBarState> 
     };
 
     static defaultProps: Partial<IMMTabBarProps> = {
-        defaultData: []
     };
 
-    state = {
+    state: IMMTabBarState = {
         currPageIndex: MMTabBar.currPageIndex,
-        // eslint-disable-next-line no-invalid-this
-        data: recordData || this.props.defaultData
+        data: [
+            {
+                iconfont: MMIconFontName.Folder,
+                text: '基础',
+                url: '/pages/template/index/index'
+            },
+            {
+                iconfont: MMIconFontName.Send,
+                text: '请求',
+                url: '/pages/template/request/index'
+            },
+            {
+                iconfont: MMIconFontName.Class,
+                text: '其他',
+                url: '/pages/template/other/index'
+            }
+        ]
     }
 
     render() {
         const { currPageIndex, data } = this.state;
 
         return <View>
-            <View className={styles.MMTabBar_placeholder}></View>
-            {isNewIphone && <View className="spacing-iphone"></View>}
+            <View className={styles.MMTabBar_placeholder} />
+            {isNewIphone && <View className="spacingIphone" />}
             <View className={styles.MMTabBar}>
                 <View className={styles.content} >
                     {data.map((value, index) =>
@@ -133,27 +142,24 @@ export default class MMTabBar extends Component<IMMTabBarProps, IMMTabBarState> 
                             <View className={styles.iconfont}>
                                 {
                                     value.image ?
-                                        <Image className={styles.image} src={currPageIndex === index ? value.imageSelected : value.image}></Image> :
+                                        <Image className={styles.image} src={currPageIndex === index ? value.imageSelected : value.image} /> :
                                         <MMIconFont value={value.iconfont as string} size={styles.iconSize} color={currPageIndex === index ?
-                                            styles.primaryColor : styles.tabBarFontColor} ></MMIconFont>
+                                            styles.primaryColor : styles.tabBarFontColor} />
                                 }
                             </View>
                             <View className={styles.text}>
                                 {value.text}
                             </View>
-                            {value.redHot && <MMBadge absolute></MMBadge>}
-                            {value.count && <View className={styles.count}><MMBadge value={value.count} digit={2} absolute></MMBadge></View>}
+                            {value.redHot && <MMBadge absolute />}
+                            {value.count && <View className={styles.count}><MMBadge value={value.count} digit={2} absolute /></View>}
                         </View>)}
                 </View>
-                {isNewIphone && <View className="spacing-iphone"></View>}
+                {isNewIphone && <View className="spacingIphone" />}
             </View>
         </View>;
     }
 
     componentDidMount() {
-        if (!recordData) {
-            recordData = this.props.defaultData as any;
-        }
         MMTabBarList.push(this);
     }
 

@@ -50,10 +50,10 @@ export default class MMCalendar extends Component<IMMCalendarProps, IMMCalendarS
     render() {
         return <MMModal visible={this.props.visible} animationType={MMModalAnimationType.down}
             justifyContent={MMModalJustifyContent.flexEnd} onClose={this.props.onClose}>
-            <MMModalPopupTitle title="日期选择" onCancel={this.props.onClose} onOk={this.props.onClick}></MMModalPopupTitle>
+            <MMModalPopupTitle title="日期选择" onCancel={this.props.onClose} onOk={this.props.onClick} />
             <View className={styles.MMCalendar}>
                 <MMCalendarView ref={ref => this.calendarView = ref as MMCalendarView}
-                    scrollViewHeight={450} {...this.props}></MMCalendarView>
+                    scrollViewHeight={450} {...this.props} />
             </View>
         </MMModal >;
     }

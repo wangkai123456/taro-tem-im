@@ -95,15 +95,15 @@ export default class MMStepper extends Component<IStepperProps, IStepperState> {
         const { min } = this.props;
         return <View className={styles.MMStepper}>
             <View className={styles.MMStepper_reduce} onClick={this.minus}>
-                <MMIconFont size={11} color={themesStyles.gray6} value={MMIconFontName.Lessen}></MMIconFont>
+                <MMIconFont size={11} color={themesStyles.gray6} value={MMIconFontName.Lessen} />
             </View>
             <View className={styles.MMStepper_text}>
                 <Input type={(min !== undefined && min < 0) ? "text" : "number"} className={styles.MMStepper_input}
                     value={this.state.value as any}
-                    onBlur={this.onInput}></Input>
+                    onBlur={this.onInput} />
             </View>
             <View className={styles.MMStepper_plues} onClick={this.plus}>
-                <MMIconFont size={11} color={themesStyles.gray6} value={MMIconFontName.Addition}></MMIconFont>
+                <MMIconFont size={11} color={themesStyles.gray6} value={MMIconFontName.Addition} />
             </View>
         </View>;
     }

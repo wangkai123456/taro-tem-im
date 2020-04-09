@@ -83,13 +83,30 @@ export default class MMStars extends Component<IStarsProps> {
         }
     }
 
+    get width() {
+        const { count, value } = this.props;
+        const nu = value / (count as number) * 100;
+        return {
+            width: nu + '%'
+        }
+    }
+
     render() {
         const countArray = new Array(this.props.count).fill(1);
         const { onChange, value, iconfontName } = this.props;
-        return <View className={styles.MMStars}>
-            {countArray.map((val, index) => <View className={styles.item} style={this.style} key={val + index} onClick={() => onChange && onChange(index + 1)}>
-                <MMIconFont size={this.size} color={index < value ? themesStyles.yellow : themesStyles.gray4}
-                    value={iconfontName as IconFontName}></MMIconFont></View>)}
+        return <View className={styles.MMStarsStyles}>
+            <View className={styles.box} style={this.width}>
+                {countArray.map((val, index) => <View className={styles.item} style={this.style} key={val + index} onClick={() => onChange && onChange(index + 1)}>
+                    <MMIconFont size={this.size} color={themesStyles.gray4}
+                        value={iconfontName as IconFontName} /></View>)}
+            </View>
+
+            <View className={styles.content} style={this.width}>
+                {countArray.map((val, index) => <View className={styles.item} style={this.style}
+                    key={val + index} onClick={() => onChange && onChange(index + 1)}>
+                    <MMIconFont size={this.size} color={themesStyles.yellow}
+                        value={iconfontName as IconFontName} /></View>)}
+            </View>
         </View>;
     }
 }

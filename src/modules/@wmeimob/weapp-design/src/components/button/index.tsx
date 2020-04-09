@@ -146,7 +146,7 @@ export default class MMButton extends Component<IButtonProps> {
             onClick={this.onClick}>
             <View className={styles.MMButton_content}>
                 {loading && <View className={styles.MMButton_loading}>
-                    <MMLoading width={styles.loadingSize} height={styles.loadingSize}></MMLoading>
+                    <MMLoading width={styles.loadingSize} height={styles.loadingSize} />
                 </View>}
                 <View>{this.props.children}{text}</View>
             </View>

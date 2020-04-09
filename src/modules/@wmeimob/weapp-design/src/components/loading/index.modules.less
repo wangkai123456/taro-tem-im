@@ -1,0 +1,70 @@
+@import '../styles/themes/default.less';
+@import '../styles/color/colors.less';
+
+
+.loading {
+    position           : relative;
+    display            : flex;
+    flex-direction     : column;
+    align-items        : center;
+    width              : 100px;
+    height             : 100px;
+    // background-color: red;
+}
+
+.content {
+    width           : 72%;
+    height          : 72%;
+    border-radius   : 10%;
+    background-color: @primaryColor;
+    animation       : square-jelly-box-animate 0.65s -0.1s linear infinite
+}
+
+
+@keyframes square-jelly-box-animate {
+    17% {
+        border-bottom-right-radius: 10%
+    }
+
+    25% {
+        transform: translateY(25%) rotate(22.5deg)
+    }
+
+    50% {
+        border-bottom-right-radius: 100%;
+        transform                 : translateY(50%) scale(1, 0.9) rotate(45deg)
+    }
+
+    75% {
+        transform: translateY(25%) rotate(67.5deg)
+    }
+
+    100% {
+        transform: translateY(0) rotate(90deg)
+    }
+}
+
+.loading_white {
+    .content {
+        background-color: @gray1;
+    }
+}
+
+
+.shadow {
+    position     : absolute;
+    width        : 50%;
+    height       : 7%;
+    background   : #000;
+    border-radius: 50%;
+    opacity      : .25;
+    bottom       : 0;
+    animation    : square-jelly-box-shadow 0.65s -0.1s linear infinite
+}
+
+
+@keyframes square-jelly-box-shadow {
+    50% {
+        transform: scale(1.6, 1)
+    }
+}

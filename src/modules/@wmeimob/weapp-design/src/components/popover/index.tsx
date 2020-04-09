@@ -60,18 +60,18 @@ export default class MMPopover extends Component<IMMPopoverProps> {
             this.props.visible ? styles.visible : '');
         return this.props.data && <View
             className={className}>
-            <View id="MMPopover" className={styles.queryView}></View>
+            <View id="MMPopover" className={styles.queryView} />
             {this.props.data.map((value, index) => <View className={styles.item}
                 onClick={() => this.props.onClick(value, index)}
                 key={value.value}>
                 <View className={styles.iconfontView}>
-                    <MMIconFont value={value.iconfont} size={22}></MMIconFont>
+                    <MMIconFont value={value.iconfont} size={22} />
                 </View>
                 <View>
                     {value.value}
                 </View>
             </View>)}
-            <View className={styles.arrow}></View>
+            <View className={styles.arrow} />
         </View>;
     }
 

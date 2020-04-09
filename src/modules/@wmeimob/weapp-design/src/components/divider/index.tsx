@@ -52,8 +52,7 @@ export default class MMDivider extends Component<IMMDividerProps> {
     }
 
     render() {
-        return <View style={this.style} className={this.className}>
-        </View>;
+        return <View style={this.style} className={this.className} />;
     }
 }
 

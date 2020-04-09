@@ -71,7 +71,7 @@ export default class MMMenu extends Component<IMMMenuProps> {
         const { data } = this.props;
 
         return data && <View className={styles.MMMenu}>
-            <View id={this.id}></View>
+            <View id={this.id} />
             {this.renderScrollView()}
         </View>;
     }

@@ -7,7 +7,6 @@ import { autobind } from '~/modules/@wmeimob/decorator/src/components';
 import { MMPullToRefreshState } from './const';
 import styles from './index.modules.less';
 import MMLoading from '../loading';
-import { MMLoadingType } from '../loading/types';
 import { selectRect } from '../utils';
 
 interface IMMPullToRefreshProps {
@@ -143,12 +142,12 @@ export default class MMPullToRefresh extends Component<IMMPullToRefreshProps, IM
         const height = MMPullToRefresh.loadingHeight;
         const style = this.state.scrollViewHeight !== 0 ? { height: this.state.scrollViewHeight + 'px' } : {};
         return <View className={styles.MMPullToRefresh}>
-            <View id="MMPullToRefreshTop"></View>
+            <View id="MMPullToRefreshTop" />
             <ScrollView scrollY={true} throttle={false} style={style} onScroll={this.onScroll} lowerThreshold={100} onScrollToLower={this.onScrollToLower}>
                 <View className={this.classNameContent} style={{ top: this.state.top + 'px' }} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd} >
                     <View className={styles.loading} style={{ marginTop: -height + 'px', height: height + 'px' }}>
                         {/* {this.getRefresh()} */}
-                        <MMLoading width={20} type={MMLoadingType.Black} height={20}></MMLoading>
+                        <MMLoading width={25} height={25} />
                     </View>
                     {this.props.children}
                     {state !== nu && this.renderPull()}
@@ -162,7 +161,7 @@ export default class MMPullToRefresh extends Component<IMMPullToRefreshProps, IM
         const { noMore } = this.props;
         return <View className={styles.more}>
             {
-                noMore ? '没有更多了' : <MMLoading width={20} type={MMLoadingType.Black} height={20}></MMLoading>
+                noMore ? '没有更多了' : <MMLoading width={25} height={25} />
             }
         </View>
     }

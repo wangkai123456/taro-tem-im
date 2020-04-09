@@ -45,8 +45,7 @@ export default class MMIconImage extends Component<IIconfontProps> {
             style.height = height + "px";
         }
 
-        return <View className={classNames(styles.iconfont, styles[value])}
-            style={style}></View>;
+        return <View className={classNames(styles.iconfont, styles[value])} style={style} />;
     }
 }
 
