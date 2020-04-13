@@ -21,6 +21,7 @@ npm install gulp-cli -g
 ## git 密钥配置
 
 ssh-keygen -t rsa -C "nideyouxiang@xxx.com"
+不要设置密钥密码！
 密钥必须使用一次(git clone ssh://XXXXX 拉一个项目的代码)，不然yarn会安装失败。
 
 ## 安装
