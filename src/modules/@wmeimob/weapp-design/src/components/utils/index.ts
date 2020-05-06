@@ -24,10 +24,11 @@ export const isNewIphone = getisNewIphone();
 function getisNewIphone() {
     const info = Taro.getSystemInfoSync();
 
-    if (/iPhone 5/.test(info.model) || /iPhone 6/.test(info.model) || /iPhone 7/.test(info.model) || /iPhone 8/.test(info.model)) {
-        return false;
+    if (/iPhone X/.test(info.model) || /iPhone 11/.test(info.model) || /iPhone 12/.test(info.model) ||
+        /iPhone 13/.test(info.model) || /iPhone 14/.test(info.model) || /iPhone 15/.test(info.model)) {
+        return true;
     }
-    return true;
+    return false;
 }
 
 /**
