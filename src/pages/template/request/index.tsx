@@ -96,7 +96,7 @@ class Index extends Component {
                     ))}
                 </View>
                 <Button onClick={this.onUploadClick.bind(this, uploadImgArr)}>图片上传阿里云</Button>
-                <MMTabBar />
+                <MMTabBar path={this.$router.path} />
             </View>
         );
     }

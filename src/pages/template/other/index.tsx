@@ -48,7 +48,7 @@ class Index extends Component {
 
                 </View>
 
-                <MMTabBar />
+                <MMTabBar path={this.$router.path} />
             </View>
         );
     }

@@ -131,7 +131,7 @@ class Index extends Component {
                     <Image src={imageSrc} />
 
                 </View>
-                <MMTabBar />
+                <MMTabBar path={this.$router.path} />
             </View>
         );
     }

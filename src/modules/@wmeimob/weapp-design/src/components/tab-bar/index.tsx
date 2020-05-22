@@ -72,6 +72,7 @@ interface IMMTabBarProps {
      */
     onClick?: (data: IMMTabBarData) => boolean | void;
 
+    path?: string
 }
 
 export interface IMMTabBarState {
@@ -161,6 +162,16 @@ export default class MMTabBar extends Component<IMMTabBarProps, IMMTabBarState> 
 
     componentDidMount() {
         MMTabBarList.push(this);
+        this.setPath();
+    }
+
+    setPath() {
+        const { path } = this.props;
+        if (path) {
+            this.setAllState({
+                currPageIndex: this.state.data.findIndex(value => value.url === path.replace(/\?.*$/g, ''))
+            })
+        }
     }
 
     setRedDot(index: number, redHot: boolean) {
