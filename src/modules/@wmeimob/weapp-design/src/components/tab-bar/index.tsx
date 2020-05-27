@@ -6,8 +6,6 @@ import styles from './index.modules.less';
 import classNames from 'classnames';
 import { isNewIphone } from '../utils';
 import MMBadge from '../badge';
-import sopHover from './images/sop-cgdd-hover.png'
-import sop from './images/sop-cgdd.png'
 import MMIconFontName from '../icon-font/name';
 
 interface IMMTabBarData {
@@ -110,7 +108,8 @@ export default class MMTabBar extends Component<IMMTabBarProps, IMMTabBarState> 
         currPageIndex: MMTabBar.currPageIndex,
         data: [
             {
-                iconfont: MMIconFontName.Folder,
+                image: styles.sop,
+                imageSelected: styles.sopHover,
                 text: '基础',
                 url: '/pages/template/index/index'
             },
@@ -143,7 +142,7 @@ export default class MMTabBar extends Component<IMMTabBarProps, IMMTabBarState> 
                             <View className={styles.iconfont}>
                                 {
                                     value.image ?
-                                        <Image className={styles.image} src={currPageIndex === index ? value.imageSelected : value.image} /> :
+                                        <View className={classNames(styles.image, currPageIndex === index ? value.imageSelected : value.image)} /> :
                                         <MMIconFont value={value.iconfont as string} size={styles.iconSize} color={currPageIndex === index ?
                                             styles.primaryColor : styles.tabBarFontColor} />
                                 }
