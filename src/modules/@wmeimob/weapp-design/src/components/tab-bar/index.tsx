@@ -126,6 +126,10 @@ export default class MMTabBar extends Component<IMMTabBarProps, IMMTabBarState> 
         ]
     }
 
+    componentDidShow() {
+        this.setPath();
+    }
+
     render() {
         const { currPageIndex, data } = this.state;
 
