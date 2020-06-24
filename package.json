@@ -56,6 +56,7 @@
         "weapp-design": "^0.0.0"
     },
     "devDependencies": {
+        "@tarojs/cli": "1.3.38",
         "@tarojs/plugin-babel": "1.3.38",
         "@tarojs/plugin-csso": "1.3.38",
         "@tarojs/plugin-less": "1.3.38",
