@@ -1,11 +1,14 @@
-import '@tarojs/async-await';
-import { Provider } from '@tarojs/mobx';
-import Taro, { Component, Config } from '@tarojs/taro';
-import './app.less';
-import global from './globalStore';
-import mount from './lifeCycle';
-import Index from './pages/template/index';
-import pagesIndexStore from './pages/template/index/store';
+import "@tarojs/async-await";
+import { Provider } from "@tarojs/mobx";
+import Taro, { Component, Config } from "@tarojs/taro";
+import "./app.less";
+import global from "./globalStore";
+import mount from "./lifeCycle";
+import Index from "./pages/template/index";
+import pagesIndexStore from "./pages/template/index/store";
+import './libs'
+// import JMessage from "./libs/jmessage-wxapplet-sdk-1.4.3.min";
+// import JMessage from "./libs/jmessage-sdk-web.2.6.0.min";
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -28,34 +31,38 @@ class App extends Component {
    */
   config: Config = {
     pages: [
-      'pages/template/index/index',
-      'pages/template/other/index',
-      'pages/template/mobx/index',
-      'pages/template/login/index',
-      'pages/template/test/index',
-      'pages/template/decorator/index',
-      'pages/template/transparent/index',
-      'pages/template/request/index'
+      "pages/template/index/index",
+      "pages/template/other/index",
+      "pages/template/mobx/index",
+      "pages/template/login/index",
+      "pages/template/test/index",
+      "pages/template/decorator/index",
+      "pages/template/transparent/index",
+      "pages/template/request/index"
     ],
     tabBar: {
       custom: true,
-      list: [{
-        'pagePath': 'pages/template/index/index',
-        'text': '首页'
-      }, {
-        'pagePath': 'pages/template/request/index',
-        'text': '请求'
-      }, {
-        'pagePath': 'pages/template/other/index',
-        'text': '其他'
-      }]
+      list: [
+        {
+          pagePath: "pages/template/index/index",
+          text: "首页"
+        },
+        {
+          pagePath: "pages/template/request/index",
+          text: "请求"
+        },
+        {
+          pagePath: "pages/template/other/index",
+          text: "其他"
+        }
+      ]
     },
     window: {
       // 默认颜色不显示下拉加载的loading图片
-      backgroundTextStyle: 'dark',
-      navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black'
+      backgroundTextStyle: "dark",
+      navigationBarBackgroundColor: "#fff",
+      navigationBarTitleText: "WeChat",
+      navigationBarTextStyle: "black"
     }
   };
 
@@ -84,4 +91,4 @@ class App extends Component {
   }
 }
 
-Taro.render(<App />, document.getElementById('app'));
+Taro.render(<App />, document.getElementById("app"));
